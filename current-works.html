@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Moved — Daily Site Operations</title>
+  <script>
+    const target=new URL("site-operations.html",location.href);
+    target.search=location.search;
+    target.hash=location.hash;
+    location.replace(target);
+  </script>
+</head>
+<body>
+  <p>This branch page moved to <a id="target" href="site-operations.html">Daily Site Operations</a>.</p>
+  <script>
+    const link=document.getElementById("target");
+    link.href="site-operations.html"+location.search+location.hash;
+  </script>
+</body>
+</html>
