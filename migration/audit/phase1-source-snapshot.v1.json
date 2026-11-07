@@ -1,0 +1,372 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "A9-RLIB-MIG-000001",
+  "date_npt": "2026-11-07",
+  "status": "SOURCE_FILE_SNAPSHOT_VERIFIED__HISTORY_NOT_MIGRATED",
+  "source": {
+    "repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+    "repository_id": "1312147922",
+    "pinned_main_commit": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "tree_sha": "801df26e061ef20f747f245ce62271e463b7056d",
+    "blob_count": 448,
+    "tree_entries": 631,
+    "blob_bytes": 5756502
+  },
+  "destination": {
+    "repository": "FabinGurung/JP_Field_and_Desk_Resource_Library",
+    "repository_id": "1448289662",
+    "untouched_main_commit": "336a274c2660998041aad506a32b76d03e194e3f",
+    "pre_snapshot_branch": "archive/snapshot/000001_PRE_resource_library_migration_20261107",
+    "staging_branch": "migration/phase1_communication_source_20261107",
+    "verified_file_snapshot_commit": "187584b3a552aaa63a9e278448ae2969f329a067",
+    "original_destination_readme_archived_at": "99_VERSION_ARCHIVE/migration/000001_PRE_DESTINATION_README.md"
+  },
+  "file_QA": {
+    "result": "PASS",
+    "source_paths_present": 448,
+    "sha_mode_size_match": 448,
+    "missing": 0,
+    "altered": 0,
+    "extra": [
+      "99_VERSION_ARCHIVE/migration/000001_PRE_DESTINATION_README.md"
+    ]
+  },
+  "branches": [
+    {
+      "source_ref": "refs/heads/archive/feature/a7-seq-000007-module-manifest",
+      "source_sha": "b5bc682d4a87d4b94c80ff04bf2ed502155bdaf4",
+      "target_ref": "refs/heads/imported/cwo/archive/feature/a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/fix/cwo-20261009-website-projection-readback",
+      "source_sha": "41681de57531ccb314afde5b5ab99adb2ad47794",
+      "target_ref": "refs/heads/imported/cwo/archive/fix/cwo-20261009-website-projection-readback",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/release/v2.0.0",
+      "source_sha": "8f9cb1b7add3ba236771a2518a981dd6fd8cd3f7",
+      "target_ref": "refs/heads/imported/cwo/archive/release/v2.0.0",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/restore-pre-construction-demo-pages-20261002",
+      "source_sha": "12d89cd2b7625709480f16e8705425b1cc8db7e6",
+      "target_ref": "refs/heads/imported/cwo/archive/restore-pre-construction-demo-pages-20261002",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/post-a7-seq-000007-module-manifest",
+      "source_sha": "cf7fcad6bffe2d6d6c0c7cb412c53f2310c784e1",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/post-a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-a7-seq-000007-module-manifest",
+      "source_sha": "8f9cb1b7add3ba236771a2518a981dd6fd8cd3f7",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-daily-ops-20261005",
+      "source_sha": "a50900291849309848099e0a2eec7ae7af14674d",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-daily-ops-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-daily-ops-20261006",
+      "source_sha": "10a1f7ac5bb762d1ba1f16eee15c7ddf20517e12",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-daily-ops-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-daily-ops-20261007",
+      "source_sha": "cf7fcad6bffe2d6d6c0c7cb412c53f2310c784e1",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-daily-ops-20261007",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-guide-phase2-20261006",
+      "source_sha": "2b0cfc5971997154f0932f38d0100fe873cf119c",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-guide-phase2-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-guide-phase3-20261006",
+      "source_sha": "d7294e62102944f9e75f417b4d70f42b411f21cc",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-guide-phase3-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-main-promotion-v2.0.0-20261006",
+      "source_sha": "9c51563e3494a0941e2268ff38033885d6c1c03a",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-main-promotion-v2.0.0-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-owner-workspace-howto-20261006",
+      "source_sha": "0ed5452772f35249ee0674ff58d481246722ce08",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-owner-workspace-howto-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-pages-policy-restore-archive-20261005",
+      "source_sha": "e290fe442b8dd59a2ac4eb484308aef451e7d2bc",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-pages-policy-restore-archive-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-pages-policy-v13-demo-20261005",
+      "source_sha": "19ed05a4f8a3e81dafadcc45f6fa0fcd3026632f",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-pages-policy-v13-demo-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-workspace-guide-phase1-20261006",
+      "source_sha": "17abdaf31dc44abdf8b3a2f91e8ec89cea5873f2",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-workspace-guide-phase1-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-workspace-phase4-20261006",
+      "source_sha": "988ce648d132913d40ed6f55d3ca4cc8a0e7661e",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-workspace-phase4-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/snapshot/pre-workspace-phase5-20261006",
+      "source_sha": "02e602351e4a12c2fffeac60a05fa597aad01ec0",
+      "target_ref": "refs/heads/imported/cwo/archive/snapshot/pre-workspace-phase5-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/v1.2-operational-map",
+      "source_sha": "3ace1d89999c437bca8df7878c87a69f1285797d",
+      "target_ref": "refs/heads/imported/cwo/archive/v1.2-operational-map",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/v1.2-project-data-integration",
+      "source_sha": "8c2e8031e133510e536314b5b6a1ec6cda79de4a",
+      "target_ref": "refs/heads/imported/cwo/archive/v1.2-project-data-integration",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/v1.2-site-operations-dashboard",
+      "source_sha": "8283cc32cad0ce0a172ad4c0a95853df042fe9d3",
+      "target_ref": "refs/heads/imported/cwo/archive/v1.2-site-operations-dashboard",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/archive/v1.3-construction-knowledge-kernel-demo",
+      "source_sha": "1f22bbfa4c1711857ac73d356fb7c2652ce5ff0f",
+      "target_ref": "refs/heads/imported/cwo/archive/v1.3-construction-knowledge-kernel-demo",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/contrib/PRJ-000029/cross-chat-contract-test-01",
+      "source_sha": "8c951b96eca170741e54acfc754a1f03e5aca21b",
+      "target_ref": "refs/heads/imported/cwo/contrib/PRJ-000029/cross-chat-contract-test-01",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/feature/a7-seq-000007-module-manifest",
+      "source_sha": "b5bc682d4a87d4b94c80ff04bf2ed502155bdaf4",
+      "target_ref": "refs/heads/imported/cwo/feature/a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/feature/daily-ops-current-work",
+      "source_sha": "5db971b290a7ce64ce9d39bc418d25ccad050f3b",
+      "target_ref": "refs/heads/imported/cwo/feature/daily-ops-current-work",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/fix/cwo-20261009-website-projection-readback",
+      "source_sha": "41681de57531ccb314afde5b5ab99adb2ad47794",
+      "target_ref": "refs/heads/imported/cwo/fix/cwo-20261009-website-projection-readback",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/main",
+      "source_sha": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+      "target_ref": "refs/heads/imported/cwo/main",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/release/v2.0.0",
+      "source_sha": "8f9cb1b7add3ba236771a2518a981dd6fd8cd3f7",
+      "target_ref": "refs/heads/imported/cwo/release/v2.0.0",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/post-a7-seq-000007-module-manifest",
+      "source_sha": "cf7fcad6bffe2d6d6c0c7cb412c53f2310c784e1",
+      "target_ref": "refs/heads/imported/cwo/snapshot/post-a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-a7-seq-000007-module-manifest",
+      "source_sha": "8f9cb1b7add3ba236771a2518a981dd6fd8cd3f7",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-a7-seq-000007-module-manifest",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-daily-ops-20261005",
+      "source_sha": "a50900291849309848099e0a2eec7ae7af14674d",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-daily-ops-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-daily-ops-20261006",
+      "source_sha": "10a1f7ac5bb762d1ba1f16eee15c7ddf20517e12",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-daily-ops-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-daily-ops-20261007",
+      "source_sha": "cf7fcad6bffe2d6d6c0c7cb412c53f2310c784e1",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-daily-ops-20261007",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-guide-phase2-20261006",
+      "source_sha": "2b0cfc5971997154f0932f38d0100fe873cf119c",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-guide-phase2-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-guide-phase3-20261006",
+      "source_sha": "d7294e62102944f9e75f417b4d70f42b411f21cc",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-guide-phase3-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-main-promotion-v2.0.0-20261006",
+      "source_sha": "9c51563e3494a0941e2268ff38033885d6c1c03a",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-main-promotion-v2.0.0-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-owner-workspace-howto-20261006",
+      "source_sha": "0ed5452772f35249ee0674ff58d481246722ce08",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-owner-workspace-howto-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-pages-policy-restore-archive-20261005",
+      "source_sha": "e290fe442b8dd59a2ac4eb484308aef451e7d2bc",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-pages-policy-restore-archive-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-pages-policy-v13-demo-20261005",
+      "source_sha": "19ed05a4f8a3e81dafadcc45f6fa0fcd3026632f",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-pages-policy-v13-demo-20261005",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-workspace-guide-phase1-20261006",
+      "source_sha": "17abdaf31dc44abdf8b3a2f91e8ec89cea5873f2",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-workspace-guide-phase1-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-workspace-phase4-20261006",
+      "source_sha": "988ce648d132913d40ed6f55d3ca4cc8a0e7661e",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-workspace-phase4-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/snapshot/pre-workspace-phase5-20261006",
+      "source_sha": "02e602351e4a12c2fffeac60a05fa597aad01ec0",
+      "target_ref": "refs/heads/imported/cwo/snapshot/pre-workspace-phase5-20261006",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/system/notification-center",
+      "source_sha": "0479027e4bbaed26249f512fe3e7ce6542473d39",
+      "target_ref": "refs/heads/imported/cwo/system/notification-center",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/v1.2-operational-map",
+      "source_sha": "3ace1d89999c437bca8df7878c87a69f1285797d",
+      "target_ref": "refs/heads/imported/cwo/v1.2-operational-map",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/v1.2-project-data-integration",
+      "source_sha": "8c2e8031e133510e536314b5b6a1ec6cda79de4a",
+      "target_ref": "refs/heads/imported/cwo/v1.2-project-data-integration",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/v1.2-site-operations-dashboard",
+      "source_sha": "8283cc32cad0ce0a172ad4c0a95853df042fe9d3",
+      "target_ref": "refs/heads/imported/cwo/v1.2-site-operations-dashboard",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/heads/v1.3-construction-knowledge-kernel-demo",
+      "source_sha": "1f22bbfa4c1711857ac73d356fb7c2652ce5ff0f",
+      "target_ref": "refs/heads/imported/cwo/v1.3-construction-knowledge-kernel-demo",
+      "transfer_status": "NOT_IMPORTED"
+    }
+  ],
+  "tags": [
+    {
+      "source_ref": "refs/tags/v1.1.0",
+      "source_object_sha": "9c51563e3494a0941e2268ff38033885d6c1c03a",
+      "source_object_type": "commit",
+      "target_ref": "refs/tags/imported-cwo/v1.1.0",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/tags/v1.2.0-alpha.1",
+      "source_object_sha": "8c2e8031e133510e536314b5b6a1ec6cda79de4a",
+      "source_object_type": "commit",
+      "target_ref": "refs/tags/imported-cwo/v1.2.0-alpha.1",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/tags/v2.1.0",
+      "source_object_sha": "aa393e0ad69c4d2db31d6282b93e47d9b4846b88",
+      "source_object_type": "tag",
+      "target_ref": "refs/tags/imported-cwo/v2.1.0",
+      "transfer_status": "NOT_IMPORTED"
+    },
+    {
+      "source_ref": "refs/tags/v2.2.0",
+      "source_object_sha": "6e5af8474b707b6172ae76a4ad2b0feb2a997b18",
+      "source_object_type": "tag",
+      "target_ref": "refs/tags/imported-cwo/v2.2.0",
+      "transfer_status": "NOT_IMPORTED"
+    }
+  ],
+  "security": {
+    "repository_visibility": "BOTH_PUBLIC",
+    "basic_patterns_scanned_during_copy": true,
+    "full_history_secret_scan": "NOT_COMPLETED",
+    "public_exposure_approval": "USER_APPROVED_PUBLIC_REPOSITORY__PRIVACY_QA_NOT_COMPLETE"
+  },
+  "external_providers": {
+    "issues": "NOT_MIGRATED",
+    "pull_requests": "NOT_MIGRATED",
+    "releases": "NOT_MIGRATED",
+    "actions_runs": "NOT_MIGRATED",
+    "secrets": "NOT_MIGRATED",
+    "permissions": "NOT_MIGRATED"
+  },
+  "actions": "DISABLED_ACCORDING_TO_USER_UI_SCREENSHOT__NOT_PROVIDER_ADMIN_VERIFIED",
+  "hold": [
+    "Full original source commit DAG and all branch/tag refs have not transferred",
+    "No independent full historical privacy audit",
+    "Source-owned governance paths in staged copy refer to original repository",
+    "No actions or Pages deployment activated",
+    "Do not trim or mutate either main branch"
+  ],
+  "next": "Run the guarded Git mirror script from a networked authenticated Git CLI after historical source audit; compare all imported refs and commit reachability; only then integrate into separate history-preserving staging branch.",
+  "validation": "GitHub recursive tree provider readback: 448 exact source SHA/mode/size matches; no source paths missing."
+}
