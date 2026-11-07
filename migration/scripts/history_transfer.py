@@ -70,7 +70,7 @@ def sanitized_push_error(proc, token):
  """Keep actionable Git transport rejection text without echoing credentials."""
  raw = proc.stderr.decode("utf-8","replace") if isinstance(proc.stderr, bytes) else (proc.stderr or "")
  if token: raw = raw.replace(token, "[REDACTED_TOKEN]")
- raw = re.sub(r"(?i)(authorization:\\s*basic)\\s+[^\\s]+", r"\\1 [REDACTED]", raw)
+ raw = re.sub(r"(?i)(authorization:\s*basic)\s+[^\s]+", r"\1 [REDACTED]", raw)
  raw = re.sub(r"(?:gh[pousr]_|github_pat_)[A-Za-z0-9_]{12,}", "[REDACTED_GITHUB_TOKEN]", raw)
  raw = re.sub(r"(?:xox[baprs]-)[A-Za-z0-9-]{12,}", "[REDACTED_SLACK_TOKEN]", raw)
  return " | ".join(raw.splitlines()).strip()[-1400:] or "no Git transport message provided"
