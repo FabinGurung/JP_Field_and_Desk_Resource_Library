@@ -7,14 +7,32 @@ DEST='https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library.git'
 PIN_SOURCE='4eb68c004fbe8d19b83bf3b17327c853debef58a'
 PIN_DEST='336a274c2660998041aad506a32b76d03e194e3f'
 WORKDIR='./A9_CWO_GIT_MIRROR_20261107.git'
-if [[ -e "$WORKDIR" ]]; then echo 'HOLD: local mirror path already exists; do not overwrite' >&2; exit 2; fi
-git clone --mirror "$SOURCE" "$WORKDIR"
+if [[ -e "$WORKDIR" ]]; then
+  if [[ "$(git -C "$WORKDIR" rev-parse --is-bare-repository 2>/dev/null || true)" != true ]]; then
+    echo 'HOLD: existing mirror path is not a Git bare repository' >&2
+    exit 2
+  fi
+  if [[ "$(git -C "$WORKDIR" remote get-url origin)" != "$SOURCE" ]]; then
+    echo 'HOLD: mirror origin does not match pinned source URL' >&2
+    exit 2
+  fi
+  git -C "$WORKDIR" fetch origin --tags
+else
+  git clone --mirror "$SOURCE" "$WORKDIR"
+fi
 ACTUAL_SOURCE="$(git -C "$WORKDIR" rev-parse refs/heads/main)"
 if [[ "$ACTUAL_SOURCE" != "$PIN_SOURCE" ]]; then echo 'HOLD: source main changed; re-audit before import' >&2; exit 3; fi
 COUNT_B="$(git -C "$WORKDIR" for-each-ref refs/heads --format='%(refname)' | wc -l | tr -d ' ')"
 COUNT_T="$(git -C "$WORKDIR" for-each-ref refs/tags --format='%(refname)' | wc -l | tr -d ' ')"
 if [[ "$COUNT_B" != 47 || "$COUNT_T" != 4 ]]; then echo 'HOLD: source branch/tag inventory changed' >&2; exit 4; fi
-git -C "$WORKDIR" remote add destination "$DEST"
+if git -C "$WORKDIR" remote | grep -qx destination; then
+  if [[ "$(git -C "$WORKDIR" remote get-url destination)" != "$DEST" ]]; then
+    echo 'HOLD: existing destination remote URL differs' >&2
+    exit 5
+  fi
+else
+  git -C "$WORKDIR" remote add destination "$DEST"
+fi
 ACTUAL_DEST="$(git -C "$WORKDIR" ls-remote destination refs/heads/main | awk '$2=="refs/heads/main"{print $1}')"
 if [[ "$ACTUAL_DEST" != "$PIN_DEST" ]]; then echo 'HOLD: destination main changed; re-audit before import' >&2; exit 5; fi
 if [[ -n "$(git -C "$WORKDIR" ls-remote destination 'refs/heads/imported/cwo/*' 'refs/tags/imported-cwo/*')" ]]; then echo 'HOLD: imported refs already exist; reconcile rather than overwrite' >&2; exit 6; fi
