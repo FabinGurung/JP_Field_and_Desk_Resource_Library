@@ -63,7 +63,10 @@
     "original_destination_initial_commit_reachable": "VERIFIED_BY_SCRIPT_ANCESTRY_CHECK_AND_PRE_SNAPSHOT",
     "source_main_workflows": "DEFAULT_BRANCH_PUSH_FILTERS_RESTRICTED_TO_MAIN_AND_ORIGINAL_FEATURE_BRANCH_FOR_INSPECTED_WORKFLOWS",
     "historical_branch_workflow_triggers": "NOT_EXHAUSTIVELY_VERIFIED",
-    "connected_github_plugin_workflow_dispatch": "UNAVAILABLE"
+    "connected_github_plugin_workflow_dispatch": "UNAVAILABLE",
+    "import_token_source": "GITHUB_TOKEN_FROM_GITHUB_ACTIONS_NOT_PAT_OR_SEPARATE_APP_TOKEN",
+    "import_push_trigger_behavior": "GITHUB_TOKEN_AUTHENTICATED_PUSH_EVENTS_DO_NOT_CREATE_NEW_WORKFLOW_RUNS_UNDER_CURRENT_GITHUB_POLICY",
+    "github_policy_reference": "https://docs.github.com/en/actions/concepts/security/github_token"
   },
   "next_action": {
     "action": "MANUAL_IMPORT_WORKFLOW_DISPATCH_ON_DESTINATION_MAIN",
@@ -75,14 +78,14 @@
     "run_not_triggered_in_this_record": true,
     "import_readback_required": true,
     "expected_success_status": "IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE",
-    "pre_import_gate": "Repeat live SHA and imported-namespace checks; review imported-branch workflow activation and privacy limitations."
+    "pre_import_gate": "Repeat live SHA and empty-namespace checks; verify workflow still authenticates import pushes with repository GITHUB_TOKEN, never PAT/alternate App token; acknowledge pattern-scan privacy limitations."
   },
   "status": "AUDIT_PASS__HISTORY_NOT_IMPORTED",
   "phase1_complete": false,
   "limitations": [
     "Historical privacy review is a narrow pattern-based scan, not comprehensive privacy or licensing approval.",
     "GitHub repository issues, pull-request objects, releases, Actions histories, rulesets, secrets, environments, LFS, submodules, and original Drive/Slack resources are separate migration obligations.",
-    "Source historical branches may contain older workflow triggers; imported-branch activation needs an explicit check.",
+    "Older imported-branch workflow trigger configurations were not exhaustively reviewed; import push should use the inspected GITHUB_TOKEN script to avoid automatic workflow runs. Later manual pushes and future changes require separate trigger QA.",
     "Do not update the pinned migration/staging branch or canonical manifest until post-import provider QA."
   ],
   "archive_pre": "archive/snapshot/000003_PRE_history_audit_closeout_20261107"
