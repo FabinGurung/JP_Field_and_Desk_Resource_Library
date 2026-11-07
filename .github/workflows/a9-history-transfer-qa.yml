@@ -1,0 +1,28 @@
+name: A9 / Resource Library - historical transfer safety tests
+on:
+  pull_request:
+    paths:
+      - 'migration/scripts/history_transfer.py'
+      - 'migration/scripts/test_history_transfer.py'
+      - '.github/workflows/a9-history-transfer-qa.yml'
+  push:
+    branches:
+      - 'fix/partial-historical-import-resume-20261107'
+    paths:
+      - 'migration/scripts/history_transfer.py'
+      - 'migration/scripts/test_history_transfer.py'
+      - '.github/workflows/a9-history-transfer-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  history-transfer-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Syntax validation
+        run: python3 -m py_compile migration/scripts/history_transfer.py migration/scripts/test_history_transfer.py
+      - name: Offline safety tests
+        run: python3 -m unittest discover -s migration/scripts -p 'test_history_transfer.py' -v
