@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "incident_id": "A9-RLIB-HISTORY-IMPORT-INCIDENT-000001",
+  "date_npt": "2026-11-07",
+  "source_repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+  "destination_repository": "FabinGurung/JP_Field_and_Desk_Resource_Library",
+  "failed_run": {
+    "run_id": 42378327434,
+    "url": "https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/runs/42378327434",
+    "event": "workflow_dispatch",
+    "workflow_branch": "main",
+    "workflow_commit": "96eb34e18655adac6217ea0e46e59f96c8998202",
+    "mode": "import",
+    "confirmation": "CORRECT_AS_VERIFIED_IN_LOGS",
+    "job_id": 128420451123,
+    "conclusion": "failure",
+    "failure_step": "Audit source history and optionally import namespaced refs",
+    "reported_error": "HOLD: Git push failed; review partial refs before retry",
+    "root_cause": "NOT_RECORDED_original_script_suppressed_git_push_stderr"
+  },
+  "artifact": {
+    "id": 13575998674,
+    "download_zip_sha256": "8abdfc2943d192d21aa15110c24400dc6d6019e9a6456be1899e3c9c458cdbb0",
+    "status": "HOLD",
+    "unique_blobs_checked": 1408,
+    "pattern_findings": 0
+  },
+  "post_failure_provider_readback": {
+    "destination_main": "96eb34e18655adac6217ea0e46e59f96c8998202",
+    "imported_branch_refs": 1,
+    "imported_tag_refs": 0,
+    "imported_exact_ref": "refs/heads/imported/cwo/main",
+    "imported_exact_sha": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "no_unverified_import_claim": true
+  },
+  "recovery_changes": {
+    "branch": "fix/partial-historical-import-resume-20261107",
+    "pre": "archive/snapshot/000004_PRE_partial_import_repair_20261107",
+    "paths": [
+      "migration/scripts/history_transfer.py",
+      "migration/scripts/test_history_transfer.py",
+      ".github/workflows/a9-history-transfer-qa.yml"
+    ],
+    "guards": [
+      "Source branch/tag exact SHA validation retained",
+      "Git fsck and historical pattern scan retained",
+      "Unknown imported refs rejected",
+      "Imported SHA mismatches rejected",
+      "Already-exact refs skipped without overwriting",
+      "Missing refs pushed individually with immediate provider readback",
+      "Git rejection stderr redacted and included in failure report",
+      "Workflow remains manual and requires explicit confirmation for import",
+      "No imported ref deletion or force push"
+    ],
+    "import_run_not_dispatched_by_assistant": true
+  },
+  "status": "RECOVERY_FIX_STAGED__IMPORT_HOLD",
+  "phase1_complete": false,
+  "note": "Pattern scan is not exhaustive privacy certification; release/provider migrations remain separate."
+}
