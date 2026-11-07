@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "A9-RLIB-MIG-000001-AUDIT-RUN-42370830801",
+  "record_role": "dated_provider_readback_evidence_not_live_authority",
+  "observation_date_npt": "2026-11-07",
+  "source_repo": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+  "destination_repo": "FabinGurung/JP_Field_and_Desk_Resource_Library",
+  "workflow": {
+    "url": "https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/runs/42370830801",
+    "run_id": 42370830801,
+    "event": "workflow_dispatch",
+    "mode": "audit",
+    "status": "completed",
+    "conclusion": "success",
+    "head_branch": "main",
+    "head_sha": "96eb34e18655adac6217ea0e46e59f96c8998202",
+    "actor": "FabinGurung",
+    "job_id": 128398425097,
+    "job_conclusion": "success",
+    "audit_step_conclusion": "success",
+    "dispatch_confirmation_used": false
+  },
+  "artifact": {
+    "id": 13573189437,
+    "name": "a9-history-import-result",
+    "url": "https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/runs/42370830801/artifacts/13573189437",
+    "sha256_zip": "7844a47f83dd953ce0a1212c627a4af1749d9d8a5af7e48ebf1b374293e6e65d",
+    "digest_verified_against_download": true,
+    "recorded_status": "AUDIT_PASS_NO_IMPORT",
+    "branch_count": 47,
+    "tag_count": 4,
+    "pattern_scan": {
+      "unique_blobs_checked": 1408,
+      "findings": 0,
+      "scope": "pattern-based only; no independent privacy certification"
+    }
+  },
+  "live_refs_readback": {
+    "source_main": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "source_main_tree": "801df26e061ef20f747f245ce62271e463b7056d",
+    "source_branches_matched_manifest": 47,
+    "source_tags_matched_manifest": 4,
+    "source_annotated_tag_objects": 2,
+    "source_pull_request_head_refs": 21,
+    "pull_request_head_ancestry_observation": "5 PR heads ancestors of source main, 4 identical to source branch tips, and 12 ancestors of source system/notification-center branch tip. PR metadata was NOT migrated.",
+    "source_notification_center_branch_tip": "0479027e4bbaed26249f512fe3e7ce6542473d39",
+    "destination_main": "96eb34e18655adac6217ea0e46e59f96c8998202",
+    "destination_initial_commit": "336a274c2660998041aad506a32b76d03e194e3f",
+    "file_only_snapshot": "187584b3a552aaa63a9e278448ae2969f329a067",
+    "stage_with_manifest": "018dd5903afcfad0e00a5cc37cefbbe2d399ea10",
+    "stage_is_two_commits_ahead_of_file_only_snapshot": true,
+    "imported_cwo_branch_refs_present": 0,
+    "imported_cwo_tag_refs_present": 0,
+    "stage_and_prior_snapshot_refs_preserved": true
+  },
+  "safeguards": {
+    "source_clone_and_git_fsck": "PASS_IN_EXECUTED_SCRIPT",
+    "scan_result": "ZERO_PATTERN_MATCH_FINDINGS_NOT_A_PRIVACY_CERTIFICATION",
+    "import_namespace_empty": "VERIFIED_BY_RUN_AND_LIVE_API_READBACK",
+    "imported_source_ref_names": "NOT_CREATED",
+    "histories_imported": false,
+    "source_and_destination_main_not_rewritten": true,
+    "original_destination_initial_commit_reachable": "VERIFIED_BY_SCRIPT_ANCESTRY_CHECK_AND_PRE_SNAPSHOT",
+    "source_main_workflows": "DEFAULT_BRANCH_PUSH_FILTERS_RESTRICTED_TO_MAIN_AND_ORIGINAL_FEATURE_BRANCH_FOR_INSPECTED_WORKFLOWS",
+    "historical_branch_workflow_triggers": "NOT_EXHAUSTIVELY_VERIFIED",
+    "connected_github_plugin_workflow_dispatch": "UNAVAILABLE"
+  },
+  "next_action": {
+    "action": "MANUAL_IMPORT_WORKFLOW_DISPATCH_ON_DESTINATION_MAIN",
+    "workflow_path": ".github/workflows/a9-history-transfer.yml",
+    "required_mode": "import",
+    "required_confirmation": "IMPORT_47_BRANCHES_4_TAGS",
+    "requires_new_owner_authorization": false,
+    "operator_ui_action_required": true,
+    "run_not_triggered_in_this_record": true,
+    "import_readback_required": true,
+    "expected_success_status": "IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE",
+    "pre_import_gate": "Repeat live SHA and imported-namespace checks; review imported-branch workflow activation and privacy limitations."
+  },
+  "status": "AUDIT_PASS__HISTORY_NOT_IMPORTED",
+  "phase1_complete": false,
+  "limitations": [
+    "Historical privacy review is a narrow pattern-based scan, not comprehensive privacy or licensing approval.",
+    "GitHub repository issues, pull-request objects, releases, Actions histories, rulesets, secrets, environments, LFS, submodules, and original Drive/Slack resources are separate migration obligations.",
+    "Source historical branches may contain older workflow triggers; imported-branch activation needs an explicit check.",
+    "Do not update the pinned migration/staging branch or canonical manifest until post-import provider QA."
+  ],
+  "archive_pre": "archive/snapshot/000003_PRE_history_audit_closeout_20261107"
+}
