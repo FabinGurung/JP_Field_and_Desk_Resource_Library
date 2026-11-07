@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f2f7f2">
+<meta name="description" content="Astam Village project overview, evidence status, due diligence visualizations and permission-controlled project document access — JP Enterprise.">
+<title>Astam Village | JP Enterprise — Project Desk</title>
+<link rel="stylesheet" href="../assets/css/jp-theme-tokens.css">
+<link rel="stylesheet" href="../assets/css/site-shell.css">
+<link rel="stylesheet" href="../assets/css/jp-botanical.css">
+<style>
+:root{--ink:#18382f;--green:#18583e;--forest:#265e45;--sea:#e7f1e8;--bg:#f4f7f2;--muted:#536c5b;--line:#d6e4d7;--warm:#faeed6;--amber:#aa7727;--paper:#fffefb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.52 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:var(--green)}a:focus-visible,button:focus-visible{outline:3px solid #e9b85b;outline-offset:3px}button{font:inherit}
+.wrap{width:min(1160px,100%);margin:auto;padding:0 22px 72px}
+.top{min-height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-weight:850;font-size:15px;text-decoration:none;color:var(--ink)}.brand b{color:var(--green)}
+nav{display:flex;gap:15px;align-items:center;flex-wrap:wrap}nav a{font-weight:750;font-size:12px;text-decoration:none;color:var(--green);padding:12px 1px}
+.hero{display:grid;grid-template-columns:1.08fr .92fr;min-height:385px;margin:28px 0 22px;border:1px solid #cedfce;border-radius:25px;overflow:hidden;background:linear-gradient(112deg,#e4f2e3 0%,#fffcf1 100%);box-shadow:0 14px 48px #38684c0b}
+.hero-copy{padding:clamp(25px,4vw,52px);display:flex;align-items:flex-start;justify-content:center;flex-direction:column}
+.kicker,.eyebrow{font-size:11px;font-weight:870;text-transform:uppercase;letter-spacing:.12em;color:#3c7a53}
+h1{font-size:clamp(35px,5.1vw,58px);line-height:1.09;letter-spacing:-.052em;margin:12px 0 12px;max-width:620px}h2{font-size:clamp(22px,3vw,29px);line-height:1.25;letter-spacing:-.025em;margin:0 0 8px}h3{font-size:16px;line-height:1.35;margin:5px 0 6px}
+p{margin:0 0 12px}.lede{font-size:15px;color:#4f6855;max-width:570px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin:5px 0 15px}.tag{font-weight:760;font-size:11px;padding:7px 11px;border-radius:30px;background:#ffffffdc;border:1px solid #cedeca;color:#45674d}.tag.hold{background:#fff0d2;border-color:#ecd3a1;color:#8c5d1d}
+.acts{display:flex;gap:8px;flex-wrap:wrap}.btn{background:var(--green);color:white;text-decoration:none;font-size:13px;font-weight:800;padding:11px 16px;min-height:45px;display:inline-flex;align-items:center;border-radius:11px}.btn.alt{color:var(--green);background:white;border:1px solid #bdd7c2}
+.art{position:relative;min-height:250px;overflow:hidden;background:linear-gradient(180deg,#e5f1ed,#c9e5d5 62%,#95bb96);display:flex;align-items:center;justify-content:center}.art svg{width:100%;height:100%;object-fit:cover}
+.art-note{position:absolute;bottom:17px;right:17px;background:#ffffffd9;color:#2b5e45;border:1px solid #dcebdd;border-radius:25px;padding:8px 12px;font-size:10px;font-weight:800;letter-spacing:.04em}
+.section{margin-top:31px}.section-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}.subtitle{color:var(--muted);font-size:13px;max-width:790px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.kpi,.panel,.file,.check,.observation{border:1px solid var(--line);background:var(--paper);border-radius:17px;box-shadow:0 8px 25px #1f4f3005}
+.kpi{padding:18px 20px}.kpi strong{display:block;font-size:30px;line-height:1.1;letter-spacing:-.035em;font-variant-numeric:tabular-nums}.kpi span{display:block;font-weight:750;font-size:12px;margin-top:8px}.kpi small{font-size:11px;color:var(--muted)}.kpi .muted{font-size:20px}
+.plot-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.panel{padding:23px}.panel h3{font-size:18px}.chart-list{margin-top:15px;display:grid;gap:14px}.chart-row{display:grid;grid-template-columns:110px 1fr 24px;gap:10px;align-items:center;font-size:12px}.chart-name{color:#43634f;font-weight:720}.chart-track{height:12px;border-radius:99px;background:#ecf0e9;overflow:hidden}.chart-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#81b38d,#24694a);min-width:3px}.chart-num{font-weight:780;text-align:right}
+.donut-wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:24px}.ring{--pct:0;display:grid;place-items:center;width:162px;height:162px;flex:none;position:relative;border-radius:50%;background:conic-gradient(#2c8554 calc(var(--pct)*1%),#e4e9dd 0)}.ring:before{content:"";position:absolute;inset:16px;background:#fffefb;border-radius:50%}.ring-text{position:relative;text-align:center}.ring-text b{display:block;font-size:30px;line-height:1.05}.ring-text small{font-size:11px;color:#58705d}.legend{display:grid;gap:10px;font-size:13px}.legend span{display:block}.swatch{display:inline-block;width:10px;height:10px;border-radius:4px;margin-right:9px}.legend .help{color:var(--muted);font-size:12px;max-width:220px}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.check{padding:17px 18px;border-left:4px solid #e3b665}.overline{font-size:10px;letter-spacing:.09em;color:#946923;text-transform:uppercase;font-weight:850}.check p{color:#56715b;font-size:12px;margin-bottom:0}.check h3{margin:6px 0}.state{display:inline-block;border-radius:20px;background:#fff3db;color:#94661e;font-size:10px;font-weight:800;padding:3px 8px;letter-spacing:.04em}
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.file{padding:18px;display:flex;min-height:185px;flex-direction:column;gap:5px}.file .glyph{width:44px;height:44px;display:grid;place-items:center;background:#e7f0e7;border:1px solid #d2e5d4;border-radius:12px;font-size:22px}.file p{font-size:12px;color:#698170;margin:0 0 14px}.file .open{margin-top:auto;align-self:flex-start;font-weight:800;font-size:12px;background:#f0f6ef;padding:9px 12px;border-radius:8px;text-decoration:none}.file small{font-size:10px;color:var(--muted)}
+.observations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.observation{padding:18px}.observation p{font-size:13px;color:#506b58}.observation .overline{color:#397752}
+.notice{padding:18px 21px;margin-top:22px;border:1px solid #e5d5b5;border-radius:14px;background:#fffaed;font-size:12px;color:#785d27}.notice ul{margin:8px 0 0;padding-left:20px}
+.empty{padding:20px;border:1px dashed #d6e2d5;border-radius:12px;background:#fff;font-size:14px;color:#536c5b}.loading{margin:20px 0}
+.foot{padding-top:22px;margin-top:36px;border-top:1px solid var(--line);font-size:11px;color:#627a66}.foot a{font-weight:750}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.art{height:240px}.kpis{grid-template-columns:repeat(2,1fr)}.docs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:660px){.wrap{padding:0 13px 55px}.top{padding:10px 0;min-height:65px}.hero{margin:17px 0 18px}.hero-copy{padding:24px 20px}.art{height:185px;min-height:185px}.plot-layout,.checks,.docs,.observations{grid-template-columns:1fr}.panel{padding:18px}.kpi{padding:15px}.chart-row{grid-template-columns:98px 1fr 20px}.donut-wrap{gap:18px}.ring{width:145px;height:145px}.ring:before{inset:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Responsive three-rail land acquisition workspace: use wide browser real estate. */
+body[data-jp-site="1"] > main.wrap{width:calc(100% - 20px);max-width:none;padding:0 clamp(12px,1.25vw,28px) 55px;margin:0 auto}
+body[data-jp-site="1"] .hero{margin:19px 0 18px;padding:0;border-radius:20px;min-height:310px}
+body[data-jp-site="1"] .hero h1{font-size:clamp(32px,3vw,57px)}
+.hero-copy{max-width:920px}
+.dashboard-layout{display:grid;grid-template-columns:minmax(190px,225px) minmax(0,1fr) minmax(215px,255px);gap:clamp(14px,1.4vw,25px);align-items:start}
+.dashboard-main{min-width:0}.dashboard-main .section:first-child{margin-top:7px}.dashboard-main .section{margin-top:27px}
+.left-rail,.right-rail{position:sticky;top:15px;max-height:calc(100dvh - 28px);overflow-y:auto;min-width:0;display:grid;gap:13px;scrollbar-width:thin}
+.rail-card{background:#fffefa;border:1px solid #d3e3d4;border-radius:15px;padding:16px;box-shadow:0 7px 18px #1a4a2e08}
+.rail-card h2{font-size:14px;margin:0 0 10px;letter-spacing:0;font-weight:800}
+.rail-card p{font-size:12px;color:#536d60}
+.rail-nav{display:grid;gap:4px}.rail-nav a{display:flex;gap:9px;align-items:center;min-height:39px;text-decoration:none;border-radius:8px;padding:8px;color:#28543d;font-size:12px;font-weight:700}
+.rail-nav a:hover,.rail-nav a:focus-visible{background:#e6f0e7}.rail-nav a span:first-child{width:20px;text-align:center}
+.rail-risk{font-size:12px;color:#576c5d;padding:8px 0;border-bottom:1px solid #e6eee6}
+.rail-risk:last-child{border:0}.rail-risk strong{display:block;color:#71501f;font-size:12px;margin-bottom:2px}
+.rail-mini-link{display:block;padding:9px 11px;background:#eaf3e9;border-radius:9px;font-size:12px;font-weight:800;margin-top:9px;text-decoration:none}
+.guide-stats{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0}.guide-stats span{padding:5px 10px;background:#eef4ec;border-radius:999px;font-size:12px;font-weight:750}
+.guide-filters{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:14px 0 13px}.guide-filters button{cursor:pointer;border:1px solid #c4d9cb;background:#fff;border-radius:9px;font-size:12px;font-weight:750;color:#2a6145;min-height:38px;padding:8px 12px}
+.guide-filters button[aria-pressed="true"]{background:#23634a;color:white;border-color:#23634a}
+.guide-filters input{flex:1 1 220px;min-width:160px;border:1px solid #c9d9cb;border-radius:9px;padding:10px 12px;font:inherit;min-height:40px}
+.guide-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.guide-item{min-width:0;border:1px solid #d8e6d9;background:#fffefb;border-radius:12px;padding:13px 15px}
+.guide-item summary{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;list-style:none;font-size:13px;font-weight:760;cursor:pointer;line-height:1.43}
+.guide-item summary::-webkit-details-marker{display:none}
+.guide-item .guide-id{display:block;color:#697e6e;font-size:10px;font-weight:750;margin-bottom:4px}
+.guide-priority{flex:none;border-radius:6px;padding:3px 6px;font-size:10px;font-weight:900;background:#fcebd7;color:#8e5522}
+.guide-item[data-priority="REVIEW"] .guide-priority{background:#e9f1e8;color:#3c7451}
+.guide-item[open]{border-color:#93b59c;box-shadow:0 6px 18px #2c69431a}
+.guide-detail{margin-top:10px;padding-top:10px;border-top:1px solid #e4ebe3;font-size:12px;color:#526c59}
+.guide-detail p{margin:0 0 7px}.guide-detail strong{color:#264f38}
+.guide-bottom{margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.guide-bottom .print-button{border:1px solid #2b6b50;background:#eaf4eb;color:#22593c;font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:800}
+.reference-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.reference-links a{display:inline-block;text-decoration:none;border:1px solid #d5e5d7;background:#fffefa;padding:7px 11px;border-radius:9px;font-size:11px;font-weight:700}
+.decision-banner{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:23px;border:1px solid #dfcfa9;background:linear-gradient(108deg,#fff6e4,#f9faed);border-radius:17px}
+.decision-banner h2{font-size:23px;margin:0 0 6px}.decision-banner p{max-width:750px;font-size:13px;color:#6a614c}
+.decision-flag{color:#8c5b1b;font-weight:900;font-size:13px;background:#fff1d5;padding:12px 15px;border-radius:11px}
+.footer-workspace{background:#e6f1e7;border:1px solid #d0dfd0;border-radius:16px;margin-top:19px;padding:21px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-workspace h2{font-size:16px;margin:0 0 6px}.footer-workspace p{font-size:12px;margin:0;color:#4d6b57}
+.footer-workspace a{display:inline-block;background:#1c6548;color:white;padding:11px 14px;border-radius:9px;text-decoration:none;font-size:12px;font-weight:800}
+@media(max-width:1300px){.dashboard-layout{grid-template-columns:minmax(175px,205px) minmax(0,1fr)}.right-rail{position:static;max-height:none;overflow:visible;grid-column:2;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr))}.right-rail .rail-card:last-child{grid-column:1/-1}}
+@media(max-width:950px){.dashboard-layout{grid-template-columns:minmax(0,1fr)}.left-rail{position:static;grid-column:1;max-height:none;overflow:visible}.left-rail .rail-card{padding:10px 14px}.rail-nav{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:7px}.rail-nav a{white-space:nowrap;flex:none;scroll-snap-align:start}.dashboard-main{grid-column:1}.right-rail{grid-column:1;grid-row:auto}.guide-items{grid-template-columns:1fr}}
+@media(max-width:620px){body[data-jp-site="1"] > main.wrap{padding-inline:12px}.hero-copy{padding:22px 17px}.right-rail{grid-template-columns:1fr}.right-rail .rail-card:last-child{grid-column:1}.decision-banner{grid-template-columns:1fr}.plot-layout{grid-template-columns:1fr}.guide-filters button{flex:1}.footer-workspace{display:block}.footer-workspace a{margin-top:12px}}
+@media print{body[data-jp-site="1"] > main.wrap{width:100%;max-width:none}.left-rail,.right-rail,.top nav,.guide-filters,.footer-workspace,.hero .art{display:none!important}.dashboard-layout{display:block}.guide-items{display:block}.guide-item{break-inside:avoid;margin-bottom:6px}.guide-item .guide-detail{display:block}.hero{min-height:0!important}.hero-copy{padding:12px!important}}
+</style></head>
+<body data-jp-site="1"><main class="wrap">
+<header class="top"><a class="brand" href="../">🏗️ <b>JP</b> Operations Hub</a><nav aria-label="Project navigation"><a href="#summary">Overview</a><a href="#analysis">Analysis</a><a href="#checks">Due diligence</a><a href="#documents">Files</a><a href="../resources/">All resources</a></nav></header>
+<section class="hero"><div class="hero-copy">
+<span class="kicker">JP Enterprise · Project desk</span>
+<h1 id="project-title">Astam Village</h1>
+<p class="lede" id="hero-description">Preliminary land feasibility, source-linked evidence and a structured decision review.</p>
+<div class="tags"><span class="tag">Astam area · Kaski</span><span class="tag hold">Purchase on hold</span><span class="tag" id="refresh-date">Reviewed 2026-11-05</span></div>
+<div class="acts"><a class="btn" href="#documents">Browse project files</a><a class="btn alt" href="#checks">Explore assessment</a></div>
+</div><div class="art" role="img" aria-label="Decorative stylized terraces and a mountain horizon; not a real site survey or property boundary.">
+<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d7ebed"/><stop offset="1" stop-color="#f5f5d8"/></linearGradient></defs>
+<rect width="600" height="380" fill="url(#sky)"/>
+<path d="M0 210 80 118 134 165 229 68 314 171 390 103 452 154 526 84 600 168 600 380H0Z" fill="#789d94"/>
+<path d="M0 241 80 166 162 224 263 133 337 225 457 164 534 205 600 161 600 380H0Z" fill="#5c8b7b"/>
+<path d="M0 270Q133 208 242 271T600 243V380H0Z" fill="#b5cd9d"/>
+<path d="M0 286Q135 249 251 293T600 270V380H0Z" fill="#9cbd81"/>
+<path d="M0 309Q144 271 259 318T600 300V380H0Z" fill="#81ac77"/>
+<path d="M0 331Q140 301 263 346T600 328V380H0Z" fill="#699a67"/>
+<path d="M0 353Q175 326 296 368T600 345V380H0Z" fill="#4d8657"/>
+<path d="M0 286Q133 249 251 293T600 270M0 309Q144 271 259 318T600 300M0 331Q140 301 263 346T600 328M0 353Q175 326 296 368T600 345" stroke="#ecedcd" stroke-width="4" fill="none" opacity=".72"/>
+<circle cx="492" cy="63" r="31" fill="#ffe5a2" opacity=".85"/>
+</svg><span class="art-note">CONCEPTUAL LANDSCAPE · NOT A SURVEY</span></div></section>
+<div class="dashboard-layout">
+<aside class="left-rail" aria-label="Project chapters"><div class="rail-card"><h2>Project navigation</h2><nav class="rail-nav" aria-label="Sections">
+<a href="#summary"><span>◈</span>Overview</a><a href="#analysis"><span>▤</span>Visual analysis</a>
+<a href="#buyer-guide"><span>☑</span>30-point buyer checklist</a><a href="#checks"><span>⚑</span>Ten decision gates</a>
+<a href="#observations-title"><span>⌁</span>Site observations</a><a href="#documents"><span>▣</span>Project documents</a>
+<a href="#decision"><span>◆</span>Purchase decision</a></nav></div>
+<div class="rail-card"><h2>Document workflow</h2><p>Google Drive controls access to original photos, map records, and property documents. This page displays only reviewed summaries.</p><a class="rail-mini-link" href="#documents">Open document cards ↗</a></div></aside>
+<div class="dashboard-main">
+<section id="summary" class="section" aria-labelledby="summary-title"><div class="section-heading"><div><span class="eyebrow">Evidence snapshot</span><h2 id="summary-title">At a glance</h2><p class="subtitle">Verified as records received or concerns raised, not as legal or engineering clearances.</p></div></div><div class="kpis" id="kpis" aria-live="polite"><p class="loading">Reading source-backed summary…</p></div></section>
+<section id="analysis" class="section" aria-labelledby="analysis-title"><div class="section-heading"><div><span class="eyebrow">Measured from review rows</span><h2 id="analysis-title">Feasibility visualizations</h2><p class="subtitle">These plots count review questions. They do not represent land area, construction cost, legal safety or probability of approval.</p></div></div><div class="plot-layout">
+<article class="panel"><h3>Review areas</h3><p class="subtitle">Number of unresolved checks by due-diligence domain</p><div class="chart-list" id="domain-chart" role="img" aria-label="Loading checks by domain"></div></article>
+<article class="panel"><h3>Decision-readiness coverage</h3><p class="subtitle">Evidence-backed approval of recorded checklist items</p><div class="donut-wrap"><div class="ring" id="ring" role="img" aria-label="Zero of ten checks verified"><div class="ring-text"><b id="ring-count">0 / 10</b><small>verified</small></div></div><div class="legend"><span><i class="swatch" style="background:#2c8554"></i>Verified with evidence</span><span><i class="swatch" style="background:#e4e9dd"></i>Pending / blocked</span><p class="help">Unverified does not automatically mean a site is unsuitable. It means evidence is still missing.</p></div></div></article>
+</div></section>
+<section id="buyer-guide" class="section" aria-labelledby="buyer-title">
+<div class="section-heading"><div><span class="eyebrow">Actionable acquisition review</span><h2 id="buyer-title">Land buyer's 30-point checklist</h2>
+<p class="subtitle">Thirty questions to investigate—not thirty approvals. Parent decision statuses remain authoritative in the separate editable project Sheet. Prioritize legal rights, access, water and slope before paying any token.</p></div></div>
+<div class="guide-stats"><span>30 buyer questions</span><span>20 potential hard stops</span><span>10 further-review questions</span><span>10 project decision gates</span></div>
+<div class="guide-filters" role="group" aria-label="Filter buying checklist">
+<button type="button" data-phase="ALL" aria-pressed="true">All</button>
+<button type="button" data-phase="BEFORE_DEPOSIT" aria-pressed="false">Before advance</button>
+<button type="button" data-phase="SITE_VISIT" aria-pressed="false">Site visits</button>
+<button type="button" data-phase="BEFORE_REGISTRATION" aria-pressed="false">Registration</button>
+<button type="button" data-priority="STOP" aria-pressed="false">Hard stops only</button>
+<input id="guide-search" type="search" aria-label="Search checklist questions" placeholder="Search title, water, road, slope…">
+</div>
+<div id="guide-list" class="guide-items" aria-live="polite"><p class="empty">Loading public buyer questions…</p></div>
+<div class="guide-bottom"><p class="subtitle" id="guide-counter">This guidance does not mark any verification complete.</p>
+<button type="button" id="guide-print" class="print-button">Print this checklist</button></div>
+<div id="guide-references" class="reference-links" aria-label="Official verification references"></div>
+</section>
+<section id="checks" class="section" aria-labelledby="checks-title"><div class="section-heading"><div><span class="eyebrow">Decision gates</span><h2 id="checks-title">What must be checked before buying?</h2><p class="subtitle">A documented checklist for the property investigation. Technical and legal sign-off are separate.</p></div></div><div id="checks-grid" class="checks"><p class="empty">Loading review checks…</p></div></section>
+<section class="section" aria-labelledby="observations-title"><div class="section-heading"><div><span class="eyebrow">Source interpretation</span><h2 id="observations-title">Site observations and open questions</h2></div></div><div class="observations" id="observations-grid"></div></section>
+<section id="documents" class="section" aria-labelledby="docs-title"><div class="section-heading"><div><span class="eyebrow">Project library</span><h2 id="docs-title">Browse the original project files</h2><p class="subtitle">The website organizes the materials. Files remain original and editable in Google Drive by authorized accounts. Selecting an item opens the controlled original; no public document bytes are reproduced here.</p></div></div><div id="files-grid" class="docs" aria-live="polite"></div></section>
+<aside class="notice" aria-labelledby="notice-title"><strong id="notice-title">Document permissions and engineering limitations</strong><ul id="notices"><li>Google Drive decides who can open each original; viewing this public page does not grant document access.</li><li>The project has not been certified for purchase, planning permission, construction, road access, utility connection or safe slope stability.</li></ul></aside>
+<section id="decision" class="section" aria-labelledby="decision-title"><div class="decision-banner"><div>
+<span class="eyebrow">Current preliminary acquisition decision</span><h2 id="decision-title">Do not commit to purchase yet</h2>
+<p>Keep the purchase on HOLD until independent title, field survey, road rights, dry-season water, land use, slope stability, electricity clearance and buildable-area checks are resolved. The plot's attractive view is not proof of feasibility.</p></div><div class="decision-flag">HOLD · 10 OPEN CHECKS</div></div></section>
+</div>
+<aside class="right-rail" aria-label="High-priority acquisition risks">
+<div class="rail-card"><h2>Priority risks · not cleared</h2>
+<div class="rail-risk"><strong>Ownership &amp; disputes</strong>Confirm current Shresta, seller authority, Rokka and Mo​hi records.</div>
+<div class="rail-risk"><strong>Road access</strong>A visible track is not the same as legally enforceable access.</div>
+<div class="rail-risk"><strong>Dry-season water</strong>Check supply when nearby properties experience shortages.</div>
+<div class="rail-risk"><strong>Slope &amp; drainage</strong>Get survey, geotechnics and realistic retaining costs.</div>
+<div class="rail-risk"><strong>Electric power corridor</strong>Ask NEA to identify voltage and legal setbacks; do not assume a generic 2 m distance.</div>
+<div class="rail-risk"><strong>Future mountain views</strong>Check adjoining buildable parcels before paying a view premium.</div>
+<a class="rail-mini-link" href="#buyer-guide">Inspect all 30 questions</a></div>
+<div class="rail-card"><h2>Who verifies what?</h2><p><b>Malpot:</b> title, restrictions, transfer.<br><b>Napi:</b> map, field book and boundaries.<br><b>Palika:</b> land use, road and building permit.<br><b>NEA:</b> electrical clearance.<br><b>Engineer:</b> slope, geotechnics and drainage.</p><a class="rail-mini-link" href="#guide-references">Official source references</a></div>
+</aside></div>
+<div class="footer-workspace"><div><h2>Next step: finish due diligence before paying</h2><p>Survey the property, obtain signed source evidence, and verify restrictions through the appropriate public offices. Current decision remains HOLD.</p></div><a href="#buyer-guide">Review buyer questions</a></div>
+<footer class="foot"><p>JP_Enterprise · Source-backed project desk · <span id="source-status">Reviewed static snapshot</span></p><p><a href="../">Operations Hub</a> · <a href="../resources/">Project Resources</a></p></footer>
+</main>
+<script>
+(async function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const mk=(tag,txt,cls)=>{const n=document.createElement(tag);if(txt!==undefined)n.textContent=String(txt);if(cls)n.className=cls;return n;};
+const add=(parent,el)=>{parent.appendChild(el);return el;};
+const clear=id=>{const e=$(id);e.replaceChildren();return e;};
+const categories={PHOTO:"🌿",DOCUMENT:"📜",MAP:"🗺️",SURVEY:"📐",FEASIBILITY:"📋",DESIGN:"🏠"};
+const validDrive=u=>/^https:\/\/drive\.google\.com\/(?:drive\/folders\/|file\/d\/)[A-Za-z0-9_-]+(?:\/view)?$/.test(u||"");
+try{
+const r=await fetch("../ops/data/land-feasibility/astam-village-public.v1.0.json",{cache:"no-store"});
+if(!r.ok)throw Error("Reviewed public source is not currently available");
+const d=await r.json();
+if(d.kind!=="PUBLIC_SAFE_FEASIBILITY_PROJECTION"||d.publication_scope!=="PUBLIC_SAFE_ONLY"||d.project?.exact_coordinates_published!==false||!Array.isArray(d.checks))throw Error("Review privacy contract is invalid");
+$("project-title").textContent=d.project.title;
+$("hero-description").textContent=d.project.use_concept+" · "+d.project.phase+".";
+$("refresh-date").textContent="Reviewed "+d.as_of;
+$("source-status").textContent=d.source_sync?.mode==="GOOGLE_SHEETS_ACTIONS_READ"?"Read from approved native Sheet in current GitHub Actions publication":"Reviewed snapshot; live refresh pending";
+const checks=d.checks;
+const verified=checks.filter(x=>x.status==="VERIFIED_WITH_EVIDENCE").length;
+const pending=checks.length-verified;
+const k=clear("kpis");
+const metrics=[
+[String(d.summary?.[0]?.value??8),"Original evidence items","Stored under Drive permissions"],
+[String(checks.length),"Due-diligence checks","Evidence-gated review"],
+[String(pending),"Still open","Not approvals or findings"],
+["Not verified","Land area","No reliable surveyed figure"]
+];
+for(const [val,label,note] of metrics){const a=add(k,mk("article",undefined,"kpi"));add(a,mk("strong",val,val==="Not verified"?"muted":""));add(a,mk("span",label));add(a,mk("small",note));}
+const domains={};for(const c of checks)domains[c.group]=(domains[c.group]||0)+1;
+const max=Math.max(1,...Object.values(domains));const chart=clear("domain-chart");const sorted=Object.entries(domains).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+for(const [name,count] of sorted){const row=add(chart,mk("div",undefined,"chart-row"));add(row,mk("span",name,"chart-name"));const bar=add(row,mk("div",undefined,"chart-track"));const fill=add(bar,mk("div",undefined,"chart-fill"));fill.style.width=(count/max*100)+"%";add(row,mk("span",count,"chart-num"));}
+chart.setAttribute("aria-label",sorted.map(([n,v])=>n+": "+v+" open checks").join("; "));
+$("ring-count").textContent=verified+" / "+checks.length;
+$("ring").style.setProperty("--pct",String(checks.length?verified/checks.length*100:0));
+$("ring").setAttribute("aria-label",verified+" of "+checks.length+" review checks have signed evidence");
+const grid=clear("checks-grid");
+for(const c of checks){const a=add(grid,mk("article",undefined,"check"));add(a,mk("span",c.group,"overline"));add(a,mk("h3",c.label));add(a,mk("span",c.status.replaceAll("_"," "),"state"));add(a,mk("p",c.evidence));}
+const observations=clear("observations-grid");
+for(const o of d.observations||[]){const a=add(observations,mk("article",undefined,"observation"));add(a,mk("span",o.kind.replaceAll("_"," "),"overline"));add(a,mk("h3",o.label));add(a,mk("p",o.detail));}
+const docs=clear("files-grid");
+for(const f of d.resources||[]){if(!validDrive(f.url))continue;const a=add(docs,mk("article",undefined,"file"));add(a,mk("div",categories[f.category]||"🗂️","glyph"));add(a,mk("h3",f.label));add(a,mk("p","Original source · Permission required"));const link=add(a,mk("a","Open protected original ↗","open"));link.href=f.url;link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label","Open "+f.label+" in Google Drive (access may require an invitation)");add(a,mk("small","Access is checked by the file owner, not by this website"));}
+const notices=clear("notices");for(const n of d.publication_caveats||[])add(notices,mk("li",n));
+const guideContainer=$("guide-list");
+try{
+ const guideFetch=await fetch("../ops/data/land-feasibility/astam-buyer-guide-public.v1.0.json",{cache:"no-store"});
+ if(!guideFetch.ok)throw Error("Reviewed buyer checklist unavailable");
+ const guide=await guideFetch.json();
+ if(guide.kind!=="PUBLIC_GENERAL_BUYER_GUIDE"||guide.items?.length!==30||guide.items.some(x=>x.publication_approved!=="YES"))throw Error("Buyer guide publication contract failed");
+ let phase="ALL",priority="ALL",query="";
+ const phaseButtons=Array.from(document.querySelectorAll("[data-phase]"));
+ const priorityButtons=Array.from(document.querySelectorAll("[data-priority]"));
+ const draw=()=>{
+  const items=guide.items.filter(item=>(phase==="ALL"||item.phase===phase)&&(priority==="ALL"||item.priority===priority)&&(!query||(item.question+" "+item.evidence_required+" "+item.verifying_authority+" "+item.stop_signal).toLowerCase().includes(query)));
+  guideContainer.replaceChildren();
+  for(const item of items){
+   const card=add(guideContainer,mk("details",undefined,"guide-item"));card.dataset.priority=item.priority;
+   const label=add(card,mk("summary"));
+   const heading=add(label,mk("span"));
+   add(heading,mk("span",item.item_id+" · "+item.parent_gate+" · "+(guide.phases[item.phase]||item.phase),"guide-id"));
+   add(heading,mk("span",item.question));
+   add(label,mk("span",item.priority==="STOP"?"HARD STOP":"REVIEW","guide-priority"));
+   const detail=add(card,mk("div",undefined,"guide-detail"));
+   for(const [title,value] of [["Proof to obtain",item.evidence_required],["Verify with",item.verifying_authority],["Warning sign",item.stop_signal]]){
+      const p=add(detail,mk("p"));add(p,mk("strong",title+": "));add(p,mk("span",value));
+   }
+  }
+  if(!items.length)add(guideContainer,mk("p","No questions match those filters.","empty"));
+  $("guide-counter").textContent=items.length+" of 30 guidance questions displayed · none is a formal purchase clearance.";
+ };
+ phaseButtons.forEach(b=>b.addEventListener("click",()=>{phase=b.dataset.phase;phaseButtons.forEach(q=>q.setAttribute("aria-pressed",String(q===b)));draw();}));
+ priorityButtons.forEach(b=>b.addEventListener("click",()=>{priority=priority===b.dataset.priority?"ALL":b.dataset.priority;priorityButtons.forEach(q=>q.setAttribute("aria-pressed",String(q.dataset.priority===priority)));draw();}));
+ $("guide-search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();draw();});
+ $("guide-print").addEventListener("click",()=>window.print());
+ const references=$("guide-references");
+ for(const x of guide.references||[]){
+  try{const u=new URL(x.url);if(u.protocol!=="https:"||!["merokitta.dos.gov.np","dos.gov.np","www.lawcommission.gov.np","repository.lawcommission.gov.np"].includes(u.hostname))continue;
+   const a=add(references,mk("a",x.label+" ↗"));a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";a.title=x.use;
+  }catch(_){}
+ }
+ draw();
+}catch(guideError){guideContainer.replaceChildren(mk("p","Buyer checklist could not be loaded; project decision gates and original documents remain available.","empty"));}
+
+}catch(e){$("kpis").replaceChildren(mk("p","The approved project dataset could not be loaded. Please use the project resources page or contact the project manager.","empty"));$("checks-grid").replaceChildren(mk("p",e.message,"empty"));$("files-grid").replaceChildren(mk("p","Original links are unavailable from this page right now.","empty"));}
+})();
+</script></body></html>
