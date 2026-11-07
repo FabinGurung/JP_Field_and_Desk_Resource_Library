@@ -39,6 +39,42 @@ def remote_map():
   if not ref.endswith("^{}"):out[ref]=sha
  return out
 
+def build_import_plan(manifest, branches, tags, existing):
+ """Validate the entire import namespace before producing missing-only refspecs."""
+ expected = {}
+ refspecs = {}
+ for r in manifest["branches"]:
+  src = r["source_ref"]
+  dst = r["target_ref"]
+  ensure(src.startswith("refs/heads/") and dst == "refs/heads/imported/cwo/" + src[len("refs/heads/"):], "unsafe branch mapping")
+  ensure(branches.get(src) == r["source_sha"], "source branch SHA changed")
+  ensure(dst not in expected, "duplicate target ref")
+  expected[dst] = branches[src]
+  refspecs[dst] = src + ":" + dst
+ for r in manifest["tags"]:
+  src = r["source_ref"]
+  dst = r["target_ref"]
+  ensure(src.startswith("refs/tags/") and dst == "refs/tags/imported-cwo/" + src[len("refs/tags/"):], "unsafe tag mapping")
+  ensure(tags.get(src) == r["source_object_sha"], "source tag object SHA changed")
+  ensure(dst not in expected, "duplicate target ref")
+  expected[dst] = tags[src]
+  refspecs[dst] = src + ":" + dst
+ ensure(len(expected) == 51 and len(refspecs) == 51, "unexpected manifest import cardinality")
+ unexpected = sorted(set(existing) - set(expected))
+ mismatched = sorted(ref for ref in existing if ref in expected and existing[ref] != expected[ref])
+ ensure(not unexpected, "unrecognized imported ref(s): " + ", ".join(unexpected[:5]))
+ ensure(not mismatched, "imported ref SHA mismatch: " + ", ".join(mismatched[:5]))
+ return expected, refspecs, sorted(set(expected) - set(existing))
+
+def sanitized_push_error(proc, token):
+ """Keep actionable Git transport rejection text without echoing credentials."""
+ raw = proc.stderr.decode("utf-8","replace") if isinstance(proc.stderr, bytes) else (proc.stderr or "")
+ if token: raw = raw.replace(token, "[REDACTED_TOKEN]")
+ raw = re.sub(r"(?i)(authorization:\\s*basic)\\s+[^\\s]+", r"\\1 [REDACTED]", raw)
+ raw = re.sub(r"(?:gh[pousr]_|github_pat_)[A-Za-z0-9_]{12,}", "[REDACTED_GITHUB_TOKEN]", raw)
+ raw = re.sub(r"(?:xox[baprs]-)[A-Za-z0-9-]{12,}", "[REDACTED_SLACK_TOKEN]", raw)
+ return " | ".join(raw.splitlines()).strip()[-1400:] or "no Git transport message provided"
+
 def scan():
  objectlines=run("git","rev-list","--objects","--all",cwd=MIRROR).splitlines()
  objects=sorted(set(line.split(" ",1)[0] for line in objectlines))
@@ -85,27 +121,44 @@ def main():
   report.update(branches=47,tags=4)
   report["scan"]=scan()
   ensure(not report["scan"]["findings"],"potential credentials in history; inspect sanitized audit")
-  ensure(not remote_map(),"import refs already exist, no overwrite permitted")
+  existing=remote_map()
+  expected, refspecs, missing=build_import_plan(manifest,branches,tags,existing)
+  report.update(
+   matched_existing_refs=len(existing),
+   missing_refs_before_run=len(missing),
+   refs_created_this_run=[],
+   import_namespace_validated=True,
+  )
   if mode=="audit":
-   report["status"]="AUDIT_PASS_NO_IMPORT"
+   report["status"]="AUDIT_PASS_PARTIAL_IMPORT_PRESENT__NO_WRITE" if existing else "AUDIT_PASS_NO_IMPORT"
    return 0
   token=os.environ.get("GITHUB_TOKEN","")
   ensure(bool(token),"write token unavailable")
   header="AUTHORIZATION: basic "+base64.b64encode(("x-access-token:"+token).encode()).decode()
-  refs=[k+":refs/heads/imported/cwo/"+k[len("refs/heads/"):] for k in sorted(branches)]
-  refs += [k+":refs/tags/imported-cwo/"+k[len("refs/tags/"):] for k in sorted(tags)]
-  cmd=["git","-c","http.https://github.com/.extraheader="+header,"push",DEST,*refs]
-  dry=subprocess.run(cmd[:4]+["--dry-run"]+cmd[4:],cwd=MIRROR,capture_output=True)
-  ensure(dry.returncode==0,"dry-run import refused by destination")
-  actual=subprocess.run(cmd,cwd=MIRROR,capture_output=True)
-  ensure(actual.returncode==0,"Git push failed; review partial refs before retry")
-  want={"refs/heads/imported/cwo/"+k[len("refs/heads/"):]:v for k,v in branches.items()}
-  want.update({"refs/tags/imported-cwo/"+k[len("refs/tags/"):]:v for k,v in tags.items()})
-  ensure(remote_map()==want,"provider readback mismatch after push")
+  # Single-ref pushes make each rejected ref identifiable. Already-correct refs are never overwritten.
+  for target in missing:
+   refspec=refspecs[target]
+   cmd=["git","-c","http.https://github.com/.extraheader="+header,"push",DEST,refspec]
+   dry=subprocess.run(cmd[:4]+["--dry-run"]+cmd[4:],cwd=MIRROR,capture_output=True)
+   ensure(dry.returncode==0, "dry-run rejected "+target+": "+sanitized_push_error(dry,token))
+   actual=subprocess.run(cmd,cwd=MIRROR,capture_output=True)
+   ensure(actual.returncode==0, "push rejected "+target+": "+sanitized_push_error(actual,token))
+   latest=remote_map()
+   ensure(latest.get(target)==expected[target], "provider readback mismatch for "+target)
+   ensure(not (set(latest)-set(expected)), "unexpected imported ref created")
+   report["refs_created_this_run"].append(target)
+  actual=remote_map()
+  ensure(actual==expected,"final provider ref readback mismatch")
   report["status"]="IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE"
   return 0
  except Exception as exc:
   report["status"]="HOLD";report["error"]=str(exc)
+  try:
+   observed=remote_map()
+   report["imported_refs_observed_after_failure"]=len(observed)
+   report["imported_ref_names_after_failure"]=sorted(observed)
+  except Exception:
+   report["imported_refs_observed_after_failure"]="UNKNOWN_PROVIDER_READBACK_FAILED"
   print("HOLD: "+str(exc),file=sys.stderr)
   return 1
  finally:
