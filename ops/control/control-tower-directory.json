@@ -1,0 +1,152 @@
+{
+  "schema_version": "0.1.0",
+  "created_date_npt": "2026-10-08",
+  "name": "A9-CWO · Communication & Web Operations",
+  "status": "SOURCE_LINK_INDEX_PILOT",
+  "freshness": "MANUAL_SNAPSHOT_NOT_LIVE_DRIVE_SYNC",
+  "authority": "Index only; original Drive Main/Local controls are not moved or replaced.",
+  "records": [
+    {
+      "id": "A9-CTRL-001",
+      "name": "Main Library",
+      "section": "Main catalogue",
+      "version": "Fabin_Gurung_Drive_Index",
+      "url": "https://docs.google.com/spreadsheets/d/18NE0GIbw0lDDlrIcflGS3_VccDZ2LZn1FoPbebSc71o/edit",
+      "group": "MAIN",
+      "note": "Documented entry point; Main ACK/cursors require live readback",
+      "source_modified_at": "2026-10-07T23:30:53.078Z"
+    },
+    {
+      "id": "A9-CTRL-002",
+      "name": "Active Control Map",
+      "section": "Global",
+      "version": "20261004 R06",
+      "url": "https://drive.google.com/file/d/10vbBnJ4IxiZTCwvQgxczGc3UJwvQtyAe/view",
+      "group": "CONTROL",
+      "note": "Current address-first pointers; not a global closeout",
+      "source_modified_at": "2026-10-04T03:30:17.255Z"
+    },
+    {
+      "id": "A9-CTRL-003",
+      "name": "Save Router",
+      "section": "Global",
+      "version": "v1.13",
+      "url": "https://docs.google.com/document/d/1fRmQCvFvyoSwI0y-wKbOFG-esrkG61Z0dmweGoehCUU/edit",
+      "group": "CONTROL",
+      "note": "Address-first Drive save routing",
+      "source_modified_at": "2026-10-04T02:54:58.529Z"
+    },
+    {
+      "id": "A9-CTRL-004",
+      "name": "AI Tool Tower",
+      "section": "Global",
+      "version": "v0.42",
+      "url": "https://docs.google.com/document/d/1ZMql2ac5G0nTx2vukE6ezlMh8vq0RXH_RREugshJCCA/edit",
+      "group": "CONTROL",
+      "note": "Tool capability routing",
+      "source_modified_at": "2026-10-04T02:54:56.748Z"
+    },
+    {
+      "id": "A9-CTRL-005",
+      "name": "ChatGPT Tower",
+      "section": "Global",
+      "version": "v0.2L",
+      "url": "https://docs.google.com/document/d/1R3Nw8Onp4A2xQ811Z7byb1Kw56uJS2JGsuiJNq2AKo8/edit",
+      "group": "CONTROL",
+      "note": "Chat/project and history routing",
+      "source_modified_at": "2026-10-04T02:42:42.574Z"
+    },
+    {
+      "id": "A9-CTRL-006",
+      "name": "Drive Library Governance",
+      "section": "Global",
+      "version": "v2.4",
+      "url": "https://docs.google.com/document/d/1fNY5HuvOE6ANjrnrZAYjdtMR-I3yPB4IWT2E31vi4Cg/edit",
+      "group": "CONTROL",
+      "note": "Local/Main governance and acknowledgement",
+      "source_modified_at": "2026-10-04T02:12:43.043Z"
+    },
+    {
+      "id": "A9-CTRL-007",
+      "name": "A9 Audit Trail",
+      "section": "Global",
+      "version": "v1.4",
+      "url": "https://docs.google.com/document/d/1xI7QTvYLojvJRJR6Duovc6UiiNPy1vmDuqLyjT0Duzk/edit",
+      "group": "CONTROL",
+      "note": "Provenance, reproduction and history",
+      "source_modified_at": "2026-10-02T01:51:55.515Z"
+    },
+    {
+      "id": "A9-CTRL-008",
+      "name": "Workspace Protocol",
+      "section": "Global",
+      "version": "v1.8",
+      "url": "https://docs.google.com/document/d/1ZGWdS--yS4TUccie2ypt3e6ovqaevbMJmmWvT5zCqss/edit",
+      "group": "CONTROL",
+      "note": "Durable workspace and incomplete-work rules",
+      "source_modified_at": "2026-10-04T03:19:33.655Z"
+    },
+    {
+      "id": "A9-CTRL-009",
+      "name": "Control Tower Inventory",
+      "section": "Main catalogue",
+      "version": "v2.0 inventory",
+      "url": "https://docs.google.com/spreadsheets/d/1hk79YGGwP1p7sdivCyvst6RKXtjPgWXmYEHl8RQKUxY/edit",
+      "group": "MAIN",
+      "note": "Derived directory; not live version proof",
+      "source_modified_at": "2026-10-04T11:45:01.992Z"
+    },
+    {
+      "id": "A9-CTRL-010",
+      "name": "Slack & Messaging Control",
+      "section": "Slack/Web",
+      "version": "v0.4",
+      "url": "https://docs.google.com/document/d/1lVyCr7lAwLrGfspKxOnPITS7XgFOQ_7uWufuy7t2vtY/edit",
+      "group": "SLACK",
+      "note": "Send permissions, field messaging",
+      "source_modified_at": "2026-10-02T13:09:49.612Z"
+    },
+    {
+      "id": "A9-CTRL-011",
+      "name": "Slack Recovery Archive",
+      "section": "Slack/Web",
+      "version": "v1.1 file label",
+      "url": "https://docs.google.com/document/d/1l7jiQsbGIKkpLyJGsFvzDcuBwkTWnxSMpUqlNQoTvFI/edit",
+      "group": "SLACK",
+      "note": "Raw JSONL archive control; last version needs header reconciliation",
+      "source_modified_at": "2026-10-02T01:20:26.670Z"
+    },
+    {
+      "id": "A9-CTRL-012",
+      "name": "Operations Daily Cycle",
+      "section": "GitHub",
+      "version": "v1.0",
+      "url": "https://github.com/FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub/blob/main/ops/control/daily-slack-web-cycle.json",
+      "group": "GITHUB",
+      "note": "GitHub derived machine data and Slack follow-up flow",
+      "source_modified_at": null
+    },
+    {
+      "id": "A9-CTRL-013",
+      "name": "Pinned storage-routing rule",
+      "section": "GitHub",
+      "version": "v1.0",
+      "url": "https://github.com/FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub/blob/main/ops/control/storage-routing-rules.json",
+      "group": "GITHUB",
+      "note": "Machine-readable pinned storage decisions and channel-agnostic daily procedure",
+      "source_modified_at": null
+    },
+    {
+      "id": "A9-CTRL-014",
+      "name": "Two-channel Discord collector",
+      "section": "Discord daily intake",
+      "version": "v1.0 · UNRUN",
+      "url": "https://github.com/FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub/blob/main/ops/discord/A9_CWO_DISCORD_TWO_CHANNEL_DAILY_COLLECTOR_v1.0.ipynb",
+      "group": "GITHUB",
+      "note": "Manual Colab run before communication/web cycle, restricted to two parent channels",
+      "source_modified_at": null
+    }
+  ],
+  "date_meaning": "Drive modifiedTime: source file modification timestamp, not a semantic revision diff or release acknowledgment.",
+  "previous_alias": "A9-SWO (historical Slack/Web-only label)"
+}
