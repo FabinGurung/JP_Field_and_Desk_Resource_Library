@@ -1,0 +1,44 @@
+name: A9 / Resource Library - manual historical Git transfer
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Audit first; import only after reviewing the audit"
+        type: choice
+        options: [audit, import]
+        default: audit
+        required: true
+      confirmation:
+        description: "For import enter IMPORT_47_BRANCHES_4_TAGS"
+        type: string
+        required: false
+        default: ""
+permissions:
+  contents: write
+concurrency:
+  group: a9-history-transfer
+  cancel-in-progress: false
+jobs:
+  guarded-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout existing destination main with history
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Audit source history and optionally import namespaced refs
+        env:
+          HISTORY_MODE: ${{ inputs.mode }}
+          IMPORT_CONFIRMATION: ${{ inputs.confirmation }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 migration/scripts/history_transfer.py
+      - name: Upload sanitized audit record
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: a9-history-import-result
+          path: migration/audit/history-import-run.json
+          if-no-files-found: warn
+          retention-days: 30
