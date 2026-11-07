@@ -1,0 +1,2694 @@
+{
+  "schema_version": "0.2.0",
+  "authority": {
+    "canonical_state": "ops/data/current-works.json",
+    "event_log": "ops/events/daily-ops-events.jsonl",
+    "relational_contract": "ops/schema/daily-ops-postgres.sql",
+    "projection_rule": "Google Sheets and web pages are downstream projections. They must not silently become upstream authority over this machine layer.",
+    "identity_rule": "Daily Ops project_id remains the stable operational identity; map_project_id is the normalized map foreign key and legacy_project_code must resolve to the same map record.",
+    "conflict_rule": "Contradictory provider evidence must remain explicitly unresolved until reconciled; never silently merge conflicting claims."
+  },
+  "projects": [
+    {
+      "project_id": "P001",
+      "map_project_id": "PRJ-000001",
+      "company_project_code": "REB-001",
+      "legacy_project_code": "P001",
+      "project_slug": "14_bishal_paija",
+      "display_name": "14 Bishal Paija",
+      "contractor": "Rohini Engineering and Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "UNSET",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P001-20261007-SITE-STATUS",
+            "activity": "9 Oct carry-forward: site condition, crack/anchorage engineering assessment, external plumbing routing, cleaning closure, and crew status; completion unverified.",
+            "location": "Project site",
+            "execution_status": "NEEDS_INPUT",
+            "readiness": {
+              "materials": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "overall": "UNSET"
+            },
+            "blocker": "No post-6-Oct provider closure was found; current construction execution remains unconfirmed.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791241850816709",
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791325023326849"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P001-20261001-JHALLER-FAB",
+            "work_id": null,
+            "status": "DONE",
+            "note": "Jhaller rebar fabrication was reported done on 1 Oct; field-reported completion only, separate technical acceptance not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1790901268148989",
+              "REB:Daily Progress:20261001|PRJ-000001|PROGRESS|01"
+            ],
+            "observed_at": "2026-10-01",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P001-20261002-EXECUTION-CONFIRM",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "Actual execution/status of the 2-Oct Arjun Gurung shuttering/RCC plan remains unconfirmed.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1790901268148989",
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1790988412592699"
+            ],
+            "observed_at": "2026-10-02T06:19:28+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P001-20261008-ANCHORAGE-CRACK-CONCERN",
+            "work_id": "WORK-P001-20261007-SITE-STATUS",
+            "status": "NEEDS_INPUT",
+            "blocker": "Management raised a visible crack/anchorage concern from imagery. Engineering diagnosis, location-specific assessment and remedial approval are not yet established.",
+            "responsible": "Responsible engineer / site team",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791374216966389"
+            ],
+            "observed_at": "2026-10-07T17:41:56+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P001-20261009-DISCORD-FOLLOWUP",
+            "work_id": "WORK-P001-20261007-SITE-STATUS",
+            "status": "NEEDS_INPUT",
+            "blocker": "External pipe-concealment/detail beyond structural grid remains a design query, not permission to extend walls or alter framing.",
+            "responsible": "Responsible engineer / project site lead",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1548906581121306635/1556465865401045012",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P001-20261002-01",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790901268.148989",
+            "evidence_type": "FIELD_PROGRESS_AND_WORK_PLAN_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1790901268148989",
+            "observed_at": "2026-10-02T06:19:28+05:45",
+            "note": "Three photos attached; jhaller completion separated from next-work plan.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1790901268148989"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988412.592699",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1790988412592699",
+            "observed_at": "2026-10-03T06:31:52+05:45",
+            "note": "Fresh top-level MT-015 tracker; no field reply yet.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1790988412592699"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261003-CLEANING-REQUEST",
+            "work_id": "WORK-P001-20261004-SITE-CLEANING",
+            "provider": "SLACK",
+            "provider_object_id": "1791032214.395669",
+            "evidence_type": "NEXT_DAY_SITE_HOUSEKEEPING_REQUEST",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1791032214395669",
+            "observed_at": "2026-10-03T18:41:54+05:45",
+            "note": "Community reminder requested site cleaning on the morning of 4 Oct before Dashain; completion not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791032214395669"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261004-TRACKER",
+            "work_id": "WORK-P001-20261004-SITE-CLEANING",
+            "provider": "SLACK",
+            "provider_object_id": "1791078203.482669",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1791078203482669",
+            "observed_at": "2026-10-04T07:28:23+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791078203482669"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261005-TRACKER",
+            "work_id": "WORK-P001-20261005-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791156075.880319",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1791156075880319",
+            "observed_at": "2026-10-05T05:06:15+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791156075880319"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261006-TRACKER",
+            "work_id": "WORK-P001-20261006-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791241850.816709",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1791241850816709",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791241850816709"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261007-TRACKER",
+            "work_id": "WORK-P001-20261007-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791325023326849",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJNGARW/p1791325023326849",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJNGARW/p1791325023326849"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P001-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P001-20261007-SITE-STATUS",
+            "provider": "DISCORD",
+            "provider_object_id": "1556465865401045012",
+            "evidence_type": "UNRESOLVED_PLUMBING_DESIGN_QUERY",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1548906581121306635/1556465865401045012",
+            "observed_at": "2026-10-09",
+            "note": "Field asked how to conceal plumbing pipes near walls outside structural grid; design/engineer disposition not established. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1548906581121306635/1556465865401045012",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P002",
+      "map_project_id": "PRJ-000002",
+      "company_project_code": "FBL-001",
+      "legacy_project_code": "P002",
+      "project_slug": "17_samir_man_ghubaju",
+      "display_name": "17 Samir Man Ghubaju",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "UNSET",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "UNRESOLVED",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "activity": "9 Oct carry-forward: beam shear reinforcement/shuttering progress, duct-lintel/door fit, brick bill and cement-allocation clarification; completion unverified.",
+            "location": "Project site / duct opening",
+            "execution_status": "NEEDS_INPUT",
+            "readiness": {
+              "materials": {
+                "status": "CONDITION",
+                "note": "25 PPC + 11 OPC were previously reported in stock; the separate 7-bag OPC/PPC usage statement remains allocation-ambiguous.",
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "UNRESOLVED"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "CONDITION",
+                "note": "Paras reported the lintel is to be made while constructing the duct. Door type/fit is still a coordination question.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C13SMN1QX/p1791264609130209",
+                  "https://jp09.slack.com/archives/C0C13SMN1QX/p1791265262397099"
+                ],
+                "observed_at": "2026-10-06T11:26:02+05:45",
+                "conflict_state": "NONE"
+              },
+              "overall": "UNSET"
+            },
+            "blocker": "Door type/fit is unresolved. Brick quantity/bill, disputed 3-Oct electrical-board attribution and the 7-bag OPC/PPC usage allocation also remain unresolved.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791264609130209",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791265262397099",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791325024943769"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "UNRESOLVED"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P002-20261002-PPC",
+            "work_id": null,
+            "material_name": "Cement PPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 32,
+            "unit": "bag",
+            "note": "Point-in-time stock; consumption not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935122674309",
+              "FBL:Material Stock:20261002|PRJ-000002|STOCK|0001"
+            ],
+            "observed_at": "2026-10-02T15:43:42+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P002-20261002-OPC",
+            "work_id": null,
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 18,
+            "unit": "bag",
+            "note": "Point-in-time stock; consumption not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935122674309",
+              "FBL:Material Stock:20261002|PRJ-000002|STOCK|0002"
+            ],
+            "observed_at": "2026-10-02T15:43:42+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P002-20261002-BRICK",
+            "work_id": null,
+            "material_name": "Bricks",
+            "material_state": "ARRIVED_QUANTITY_UNRESOLVED",
+            "quantity": null,
+            "unit": null,
+            "note": "Bricks were reported arrived; quantity was not stated.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935135936159",
+              "FBL:Daily Progress:20261002|PRJ-000002|PROGRESS|01"
+            ],
+            "observed_at": "2026-10-02T15:43:55+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P002-20261005-PPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement PPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 25,
+            "unit": "bag",
+            "note": "Point-in-time stock reported 5 Oct; no consumption inferred from stock differences.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791174870892309"
+            ],
+            "observed_at": "2026-10-05T10:19:30+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P002-20261005-OPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 11,
+            "unit": "bag",
+            "note": "Point-in-time stock reported 5 Oct; no consumption inferred from stock differences.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791174870892309"
+            ],
+            "observed_at": "2026-10-05T10:19:30+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P002-20261005-CEMENT-USAGE-AMBIG",
+            "work_id": null,
+            "material_name": "Cement OPC/PPC",
+            "material_state": "REPORTED_USAGE_ALLOCATION_UNRESOLVED",
+            "quantity": 7,
+            "unit": "bag",
+            "note": "Provider wrote '7 bags opc and PPC used till today'. Seven bags is preserved as stated, but whether it is combined total or per-type usage is unresolved; do not project to PPC/OPC usage tabs until clarified.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791175516166869"
+            ],
+            "observed_at": "2026-10-05T10:30:16+05:45",
+            "conflict_state": "UNRESOLVED"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P002-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "status": "ONGOING",
+            "note": "Beam shear reinforcement fabrication and shuttering were reported in progress during the 7-day Discord window, not completed.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502154332878016673/1556525226144043058",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P002-20261002-BRICK-QTY-BILL",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "Brick quantity and vendor/manual bill completion remain unresolved.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935135936159",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935177643509",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790988414335459"
+            ],
+            "observed_at": "2026-10-02T15:44:37+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P002-20261003-ELECTRICAL-WRONG-SITE",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "A 3-Oct electrical-board replacement/Rs 350 report was posted here, then management questioned whether it belongs to the wrong site. Do not admit it to P002 until project attribution is clarified.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791016274415849",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791019221924569"
+            ],
+            "observed_at": "2026-10-03T15:05:21+05:45",
+            "conflict_state": "UNRESOLVED"
+          },
+          {
+            "blocker_id": "BLK-P002-20261005-CEMENT-USAGE-SPLIT",
+            "work_id": "WORK-P002-20261006-SITE-STATUS",
+            "status": "NEEDS_INPUT",
+            "blocker": "Clarify whether '7 bags opc and PPC used till today' means 7 bags total combined or a per-type amount; do not allocate usage until clarified.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791175516166869"
+            ],
+            "observed_at": "2026-10-05T10:30:16+05:45",
+            "conflict_state": "UNRESOLVED"
+          }
+        ],
+        "lookahead": [
+          {
+            "lookahead_id": "LOOK-P002-20261006-DUCT-LINTEL",
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "target_date": null,
+            "sequence_order": null,
+            "activity": "Make lintel while constructing duct",
+            "condition": "Door/duct geometry and execution details still require site coordination.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791265262397099",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791264609130209"
+            ],
+            "conflict_state": "NONE"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P002-20261002-STOCK",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790935122.674309",
+            "evidence_type": "MATERIAL_STOCK_OBSERVATION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935122674309",
+            "observed_at": "2026-10-02T15:43:42+05:45",
+            "note": "32 PPC + 18 OPC bags.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935122674309"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261002-BRICK",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790935135.936159",
+            "evidence_type": "MATERIAL_ARRIVAL_QUANTITY_UNRESOLVED",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935135936159",
+            "observed_at": "2026-10-02T15:43:55+05:45",
+            "note": "Brick arrival; quantity unknown.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790935135936159"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988414.335459",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1790988414335459",
+            "observed_at": "2026-10-03T06:31:54+05:45",
+            "note": "Fresh top-level MT-015 tracker; no field reply yet.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1790988414335459"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261003-DISPUTED-ELECTRICAL",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791016274.415849",
+            "evidence_type": "DISPUTED_WRONG_SITE_ATTRIBUTION_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791016274415849",
+            "observed_at": "2026-10-03T14:16:14+05:45",
+            "note": "Electrical-board replacement report with four photos is disputed by a later management reply asking whether it is the wrong site; not promoted as P002 project truth.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791016274415849",
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791019221924569"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261004-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791078206.970149",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791078206970149",
+            "observed_at": "2026-10-04T07:28:26+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791078206970149"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261005-TRACKER",
+            "work_id": "WORK-P002-20261005-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791156077.713359",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791156077713359",
+            "observed_at": "2026-10-05T05:06:17+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791156077713359"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261005-STOCK",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791174870.892309",
+            "evidence_type": "MATERIAL_STOCK_OBSERVATION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791174870892309",
+            "observed_at": "2026-10-05T10:19:30+05:45",
+            "note": "25 PPC + 11 OPC bags reported in stock; stock only.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791174870892309"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261005-USAGE-AMBIG",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791175516.166869",
+            "evidence_type": "MATERIAL_USAGE_STATEMENT_ALLOCATION_UNRESOLVED",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791175516166869",
+            "observed_at": "2026-10-05T10:30:16+05:45",
+            "note": "'7 bags opc and PPC used till today' preserved without assigning PPC/OPC split.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791175516166869"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261006-TRACKER",
+            "work_id": "WORK-P002-20261006-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791241857.469549",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791241857469549",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791241857469549"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261006-DUCT-LINTEL",
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "provider": "SLACK",
+            "provider_object_id": "1791265262.397099",
+            "evidence_type": "FIELD_PLAN_WITH_IMAGE",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791265262397099",
+            "observed_at": "2026-10-06T11:26:02+05:45",
+            "note": "Paras reported lintel to be made while construction of duct; plan only, not completion.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791265262397099"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261007-TRACKER",
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "provider": "SLACK",
+            "provider_object_id": "1791325024943769",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SMN1QX/p1791325024943769",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SMN1QX/p1791325024943769"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P002-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P002-20261007-DUCT-LINTEL-DOOR",
+            "provider": "DISCORD",
+            "provider_object_id": "1556525226144043058",
+            "evidence_type": "FIELD_WORK_IN_PROGRESS_WITH_MEDIA",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1502154332878016673/1556525226144043058",
+            "observed_at": "2026-10-09",
+            "note": "5 Oct Discord site update states beam shear reinforcement making in progress; later shuttering updates; no completion or QA sign-off evidenced. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502154332878016673/1556525226144043058",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P003",
+      "map_project_id": "PRJ-000003",
+      "company_project_code": "FBL-002",
+      "legacy_project_code": "P003",
+      "project_slug": "13_hari_baral",
+      "display_name": "13 Hari Baral",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "READY_WITH_CONDITION",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "activity": "9 Oct carry-forward: remaining washroom false ceiling and electrical bulb openings; verify railing/carpentry and UPVC measurement follow-through.",
+            "location": "Project site",
+            "execution_status": "PARTIAL",
+            "readiness": {
+              "materials": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "CONDITION",
+                "note": "Final paint coat on false ceiling was reported complete, but electrical bulb openings were not performed and washroom false-ceiling work remains.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949",
+                  "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791285154551019"
+                ],
+                "observed_at": "2026-10-06T16:57:34+05:45",
+                "conflict_state": "NONE"
+              },
+              "overall": "READY_WITH_CONDITION"
+            },
+            "blocker": "Electrical bulb openings and washroom false-ceiling work remain. Railing/carpentry balance is not newly confirmed.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949",
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791285154551019",
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791325026262279"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P003-20261002-ACTIVE-TRADES",
+            "work_id": null,
+            "material_name": "Railing / carpentry / painting materials",
+            "material_state": "REPORTED_AVAILABLE",
+            "quantity": null,
+            "unit": null,
+            "note": "Paras reported materials available for the active trades.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779"
+            ],
+            "observed_at": "2026-10-02T12:17:04+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P003-20261002-RAILING",
+            "work_id": null,
+            "status": "ONGOING",
+            "note": "Compound metal railing work reported in progress; completion not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779",
+              "FBL:Daily Progress:20261002|PRJ-000003|PROGRESS|01"
+            ],
+            "observed_at": "2026-10-02T12:17:04+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P003-20261002-CARPENTRY",
+            "work_id": null,
+            "status": "ONGOING",
+            "note": "Carpentry work reported in progress; completion not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779",
+              "FBL:Daily Progress:20261002|PRJ-000003|PROGRESS|02"
+            ],
+            "observed_at": "2026-10-02T12:17:04+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P003-20261002-PAINTING",
+            "work_id": null,
+            "status": "ONGOING",
+            "note": "Painting work reported in progress; completion not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779",
+              "FBL:Daily Progress:20261002|PRJ-000003|PROGRESS|03"
+            ],
+            "observed_at": "2026-10-02T12:17:04+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P003-20261006-FALSE-CEILING-PAINT",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "status": "DONE",
+            "note": "Shiv reported the final coat of paint on the false ceiling completed. This does not imply completion of electrical bulb openings or all washroom false-ceiling work.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949"
+            ],
+            "observed_at": "2026-10-06T16:20:29+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P003-20261006-FALSE-CEILING-REMAINING",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "status": "NEEDS_INPUT",
+            "note": "Shiv reported electrical bulb openings were not performed and false-ceiling work remains in the washroom.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949",
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791285154551019"
+            ],
+            "observed_at": "2026-10-06T16:57:34+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P003-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "status": "ONGOING",
+            "note": "Painting and carpentry were reported ongoing and UPVC window measurements noted on 5 Oct; no completed UPVC installation evidenced.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1501506202809532456/1556556059706130492",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P003-20261002-01",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790922724.307779",
+            "evidence_type": "FIELD_PROGRESS_MULTI_TRADE",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779",
+            "observed_at": "2026-10-02T12:17:04+05:45",
+            "note": "Railing, carpentry and painting in progress; field reporter referenced Discord media.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790922724307779"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988426.153209",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790988426153209",
+            "observed_at": "2026-10-03T06:32:06+05:45",
+            "note": "Fresh top-level MT-015 tracker; no field reply yet.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1790988426153209"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261004-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791078210.177909",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791078210177909",
+            "observed_at": "2026-10-04T07:28:30+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791078210177909"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261005-TRACKER",
+            "work_id": "WORK-P003-20261005-TRADE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791156079.260189",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791156079260189",
+            "observed_at": "2026-10-05T05:06:19+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791156079260189"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261006-TRACKER",
+            "work_id": "WORK-P003-20261006-TRADE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791241860.709649",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791241860709649",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791241860709649"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261006-FALSE-CEILING",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "provider": "SLACK",
+            "provider_object_id": "1791282929.197949",
+            "evidence_type": "FIELD_PROGRESS_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949",
+            "observed_at": "2026-10-06T16:20:29+05:45",
+            "note": "Paint completion plus remaining electrical work reported with photos.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791282929197949",
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791285154551019"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261007-TRACKER",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "provider": "SLACK",
+            "provider_object_id": "1791325026262279",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791325026262279",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1NTR4CGL/p1791325026262279"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P003-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P003-20261007-FALSE-CEILING-ELECTRICAL",
+            "provider": "DISCORD",
+            "provider_object_id": "1556556059706130492",
+            "evidence_type": "FIELD_FINISHES_AND_UPVC_MEASUREMENT",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1501506202809532456/1556556059706130492",
+            "observed_at": "2026-10-09",
+            "note": "Discord 2–5 Oct messages document painting/carpentry/compound railing in progress and UPVC window measurement. Later Slack 6 Oct notes unfinished washroom ceiling and lamp openings. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1501506202809532456/1556556059706130492",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P004",
+      "map_project_id": "PRJ-000004",
+      "company_project_code": "FBL-003",
+      "legacy_project_code": "P004",
+      "project_slug": "16_yamuna_pun_adai",
+      "display_name": "16 Yamuna Pun Adai",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "HOLD",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P004-20261007-DEFECT-QUALITY",
+            "activity": "9 Oct maintenance HOLD: inspect parapet/railing cracking, embedded bamboo, waterproofing/leakage concerns; engineer to document remedial method and acceptance; no repair completion verified.",
+            "location": "Affected wall / waterproofing-parquet interface",
+            "execution_status": "NEEDS_INPUT",
+            "readiness": {
+              "materials": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "HOLD",
+                "note": "Management described bamboo scaffolding trapped through the wall/waterproofing sequence; Paras later identified bamboo and reported the owner said the work lacked quality. Exact leakage source and safe remediation remain unverified.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C13SSGULF/p1791269835356459",
+                  "https://jp09.slack.com/archives/C0C13SSGULF/p1791279431221439",
+                  "https://jp09.slack.com/archives/C0C13SSGULF/p1791286156526489"
+                ],
+                "observed_at": "2026-10-06T17:14:16+05:45",
+                "conflict_state": "NONE"
+              },
+              "overall": "HOLD"
+            },
+            "blocker": "Exact leakage source and repair closure remain unresolved. Embedded bamboo/organic material and the reported owner quality complaint require inspection; blank media posts are evidence only, not completion proof.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791269835356459",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791279431221439",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791286156526489",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791325027830919"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [],
+        "progress": [],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P004-LEAKAGE-SOURCE",
+            "work_id": "WORK-P004-20261004-LEAKAGE",
+            "status": "NEEDS_INPUT",
+            "blocker": "Top-water leakage source and repair closure remain unresolved; do not infer the source from symptoms.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1790687986476779",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1790988432056739"
+            ],
+            "observed_at": "2026-10-03T06:32:12+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P004-20261006-BAMBOO-QUALITY",
+            "work_id": "WORK-P004-20261007-DEFECT-QUALITY",
+            "status": "NEEDS_INPUT",
+            "blocker": "Management described bamboo scaffolding trapped in the waterproofed wall sequence; Paras identified bamboo and reported the owner said the work lacked quality. Inspect and determine remediation without inferring leakage causation from media alone.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791269835356459",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791279431221439",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791286156526489"
+            ],
+            "observed_at": "2026-10-06T17:14:16+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P004-20261003-TRACKER",
+            "work_id": "WORK-P004-20261003-LEAKAGE",
+            "provider": "SLACK",
+            "provider_object_id": "1790988432.056739",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1790988432056739",
+            "observed_at": "2026-10-03T06:32:12+05:45",
+            "note": "Fresh top-level maintenance readiness tracker; no field reply yet.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1790687986476779",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1790988432056739"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P004-20261004-TRACKER",
+            "work_id": "WORK-P004-20261004-LEAKAGE",
+            "provider": "SLACK",
+            "provider_object_id": "1791078213.733909",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1791078213733909",
+            "observed_at": "2026-10-04T07:28:33+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791078213733909"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P004-20261005-TRACKER",
+            "work_id": "WORK-P004-20261005-LEAKAGE",
+            "provider": "SLACK",
+            "provider_object_id": "1791156081.046899",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1791156081046899",
+            "observed_at": "2026-10-05T05:06:21+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791156081046899"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P004-20261006-TRACKER",
+            "work_id": "WORK-P004-20261006-LEAKAGE",
+            "provider": "SLACK",
+            "provider_object_id": "1791241864.002739",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1791241864002739",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791241864002739"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P004-20261006-DEFECT-BAMBOO",
+            "work_id": "WORK-P004-20261007-DEFECT-QUALITY",
+            "provider": "SLACK",
+            "provider_object_id": "1791269835.356459",
+            "evidence_type": "DEFECT_SEQUENCE_AND_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1791269835356459",
+            "observed_at": "2026-10-06T12:42:15+05:45",
+            "note": "Management supplied a construction-sequence explanation and media. Treated as reported causation/context, not independent engineering verification.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791269835356459",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791279431221439",
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791286156526489"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P004-20261007-TRACKER",
+            "work_id": "WORK-P004-20261007-DEFECT-QUALITY",
+            "provider": "SLACK",
+            "provider_object_id": "1791325027830919",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C13SSGULF/p1791325027830919",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C13SSGULF/p1791325027830919"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P005",
+      "map_project_id": "PRJ-000005",
+      "company_project_code": "FBL-004",
+      "legacy_project_code": "P005",
+      "project_slug": "30_sabitri_giri_dipti_giri",
+      "display_name": "30 Sabitri Giri / Dipti Giri",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "READY_WITH_CONDITION",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "activity": "9 Oct carry-forward: centring status, second-floor slab-material receipt/qty, crew and readiness; front design query requires responsible review before treating as approved.",
+            "location": "Second-floor slab",
+            "execution_status": "PLAN",
+            "readiness": {
+              "materials": {
+                "status": "CONDITION",
+                "note": "Shiv reported materials ordered for the 2nd-floor slab; exact items, quantities, supplier, delivery and site receipt are not established from the text evidence.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889"
+                ],
+                "observed_at": "2026-10-06T16:41:26+05:45",
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "overall": "READY_WITH_CONDITION"
+            },
+            "blocker": "Confirm ordered items/quantities, delivery/receipt and crew/current slab-stage readiness before treating the order as available material.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889",
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791325029512199"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P005-20261004-NAIL-SOURCE",
+            "work_id": null,
+            "material_name": "Nails",
+            "material_state": "SOURCE_SUGGESTED_NOT_OBTAINED",
+            "quantity": null,
+            "unit": null,
+            "note": "Management told Paras that nails can be obtained from Suvakamana. This does not prove procurement, arrival, stock or use.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791090485531549"
+            ],
+            "observed_at": "2026-10-04T10:53:05+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P005-20261006-SLAB-ORDER",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "material_name": "Second-floor slab materials",
+            "material_state": "ORDERED_QUANTITY_UNRESOLVED",
+            "quantity": null,
+            "unit": null,
+            "note": "Shiv reported materials ordered for the 2nd-floor slab. Order is not delivery or consumption; exact items and quantities are not admitted from the text-only fact.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889"
+            ],
+            "observed_at": "2026-10-06T16:41:26+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P005-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "status": "ONGOING",
+            "note": "Centring was reported ongoing 6 Oct; casting or engineer readiness was not reported.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1503183104397803570/1556982880108945518",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P005-20261006-SLAB-MATERIAL-ORDER",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "status": "NEEDS_INPUT",
+            "blocker": "Second-floor slab materials were reported ordered, but exact items/quantities and delivery/site receipt remain unconfirmed.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889"
+            ],
+            "observed_at": "2026-10-06T16:41:26+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P005-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988438.225789",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1790988438225789",
+            "observed_at": "2026-10-03T06:32:18+05:45",
+            "note": "Fresh top-level MT-015 tracker; no new provider-backed site closure before send.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1790988438225789"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261004-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791078217.087269",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791078217087269",
+            "observed_at": "2026-10-04T07:28:37+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791078217087269"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261005-TRACKER",
+            "work_id": "WORK-P005-20261005-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791156082.843019",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791156082843019",
+            "observed_at": "2026-10-05T05:06:22+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791156082843019"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261006-TRACKER",
+            "work_id": "WORK-P005-20261006-SITE-STATUS",
+            "provider": "SLACK",
+            "provider_object_id": "1791241867.439369",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791241867439369",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791241867439369"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261006-SLAB-ORDER",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "provider": "SLACK",
+            "provider_object_id": "1791284186.886889",
+            "evidence_type": "PROCUREMENT_ORDER_WITH_SCREENSHOT",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889",
+            "observed_at": "2026-10-06T16:41:26+05:45",
+            "note": "Material order reported; delivery and use not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791284186886889"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261007-TRACKER",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "provider": "SLACK",
+            "provider_object_id": "1791325029512199",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791325029512199",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2DJUS9EU/p1791325029512199"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P005-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P005-20261007-SLAB-MATERIALS",
+            "provider": "DISCORD",
+            "provider_object_id": "1556982880108945518",
+            "evidence_type": "CENTRING_WORK_AND_FRONT_DESIGN_QUERY",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1503183104397803570/1556982880108945518",
+            "observed_at": "2026-10-09",
+            "note": "6 Oct Discord update reports centring in progress; 8 Oct references front design without engineering acceptance. Slack reports second-floor slab materials ordered, with delivery unverified. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1503183104397803570/1556982880108945518",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P006",
+      "map_project_id": "PRJ-000006",
+      "company_project_code": "FBL-005",
+      "legacy_project_code": "P006",
+      "project_slug": "31_sharada_adhikari",
+      "display_name": "31 Sharada Adhikari",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "HOLD",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "activity": "9 Oct carry-forward: external plaster and kitchen plumbing site updates, pipe repair/kitchen-seepage checks, toilet door/UPVC correction, waterproofing and false-ceiling electrical decisions.",
+            "location": "Kitchen / doors and windows / toilet coordination",
+            "execution_status": "ONGOING",
+            "readiness": {
+              "materials": {
+                "status": "UNKNOWN",
+                "note": "Waterproofing arrival/items/quantity remain unconfirmed; a UPVC quotation was posted but acceptance/order is not established.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791298090988939"
+                ],
+                "observed_at": "2026-10-06T20:33:10+05:45",
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "HOLD",
+                "note": "Kitchen plumbing work was reported, but toilet door-height/plumber coordination and false-ceiling/electrical decisions remain unresolved for held work.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791284390179059"
+                ],
+                "observed_at": "2026-10-06T16:44:50+05:45",
+                "conflict_state": "NONE"
+              },
+              "overall": "HOLD"
+            },
+            "blocker": "Kitchen plumbing is reported ongoing. Toilet door-height/plumber coordination, waterproofing arrival and false-ceiling/electrical decisions remain open; UPVC quotation is not an accepted order.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791284390179059",
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791285457951009",
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791298090988939",
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791325031182949"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P006-20261001-PPC",
+            "work_id": null,
+            "material_name": "Cement PPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 28,
+            "unit": "bag",
+            "note": "Point-in-time stock reported 1 Oct; consumption not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790843148173069"
+            ],
+            "observed_at": "2026-10-01T14:10:48+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P006-20261001-WATERPROOFING",
+            "work_id": null,
+            "material_name": "Waterproofing materials",
+            "material_state": "PROCUREMENT_PICKUP_REPORTED_ARRIVAL_UNRESOLVED",
+            "quantity": null,
+            "unit": null,
+            "note": "Niraj and one worker were reported going to get waterproofing materials; arrival/items/quantity remain unresolved.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790843398592599"
+            ],
+            "observed_at": "2026-10-01T14:14:58+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P006-20261008-OPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 16,
+            "unit": "bag",
+            "note": "Field-reported point-in-time stock on 8 Oct; not a measured reconciliation. No delivery, purchase or consumption inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791440512724179"
+            ],
+            "observed_at": "2026-10-08T12:06:52+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P006-20261006-KITCHEN-PLUMBING",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "status": "ONGOING",
+            "note": "Shiv reported plumbing works on the kitchen with photos. Completion is not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791284390179059"
+            ],
+            "observed_at": "2026-10-06T16:44:50+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P006-20261004-UPVC-MEASURED",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "status": "DONE",
+            "note": "Shiv reported on 6 Oct that UPVC door/window measurements were taken on 4 Oct.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791285457951009"
+            ],
+            "observed_at": "2026-10-04",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P006-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "status": "ONGOING",
+            "note": "External plastering reported in progress on 8 Oct; kitchen plumbing and scaffolding reported 6 Oct. No QC acceptance or completion inferred.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1501419594361999410/1557630511252373564",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P006-WATERPROOFING-ARRIVAL",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "Waterproofing material arrival, exact items and quantity remain unconfirmed.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790843398592599",
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790988447873839"
+            ],
+            "observed_at": "2026-10-01T14:14:58+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P006-20261004-TOILET-DOOR-PLUMBER",
+            "work_id": "WORK-P006-20261004-TOILET-PLASTER",
+            "status": "HOLD",
+            "blocker": "Toilet door height is not fixed; plaster was postponed pending plumber coordination.",
+            "responsible": null,
+            "target_resolution_at": "2026-10-04",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791019309347959"
+            ],
+            "observed_at": "2026-10-03T15:06:49+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P006-20261003-FALSE-CEILING-DECISION",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "Electrical wiring/batta work is waiting on the client's false-ceiling decision; recorded electrician mistakes must be corrected before wiring resumes.",
+            "responsible": "Client decision + electrician follow-up",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791001469932479"
+            ],
+            "observed_at": "2026-10-03T10:09:29+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P006-20261009-DISCORD-FOLLOWUP",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "status": "NEEDS_INPUT",
+            "blocker": "Kitchen bottom-slab seepage was raised as a question in the Discord photo thread; responsible site inspection and leak/no-leak verification are still required.",
+            "responsible": "Responsible engineer / project site lead",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1501419594361999410/1557630511252373564",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [
+          {
+            "lookahead_id": "LOOK-P006-20261005-ELECTRICAL",
+            "work_id": null,
+            "target_date": "2026-10-05",
+            "sequence_order": 1,
+            "activity": "Electrician return / wiring and batta work",
+            "condition": "Client must first finalize false-ceiling decision; previously recorded electrician mistakes to be corrected before resumed wiring.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791001469932479"
+            ],
+            "conflict_state": "NONE"
+          },
+          {
+            "lookahead_id": "LOOK-P006-20261006-UPVC",
+            "work_id": null,
+            "target_date": "2026-10-06",
+            "sequence_order": 2,
+            "activity": "UPVC visit if possible",
+            "condition": "Management requested the UPVC team around Tuesday after plumbing/door-height coordination.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791019309347959"
+            ],
+            "conflict_state": "NONE"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P006-20261001-STOCK",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790843148.173069",
+            "evidence_type": "MATERIAL_STOCK_OBSERVATION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790843148173069",
+            "observed_at": "2026-10-01T14:10:48+05:45",
+            "note": "28 PPC bags reported in stock.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790843148173069"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988447.873839",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790988447873839",
+            "observed_at": "2026-10-03T06:32:27+05:45",
+            "note": "Fresh top-level MT-015 tracker; no later closure before send.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1790988447873839"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261003-PLASTER-PLUMBER",
+            "work_id": "WORK-P006-20261004-TOILET-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791019309.347959",
+            "evidence_type": "WORK_POSTPONED_PENDING_PRECONDITION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791019309347959",
+            "observed_at": "2026-10-03T15:06:49+05:45",
+            "note": "Toilet-room plaster postponed to 4 Oct because door height was not fixed and plumber coordination was pending; UPVC visit requested around Tuesday.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791019309347959"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261003-ELECTRICAL-DEPENDENCY",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791001469.932479",
+            "evidence_type": "CLIENT_DECISION_DEPENDENCY",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791001469932479",
+            "observed_at": "2026-10-03T10:09:29+05:45",
+            "note": "Electrical wiring/batta work waits on false-ceiling decision; previously recorded mistakes must be corrected first.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791001469932479"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261004-TRACKER",
+            "work_id": "WORK-P006-20261004-TOILET-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791078220.307139",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791078220307139",
+            "observed_at": "2026-10-04T07:28:40+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791078220307139"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261005-TRACKER",
+            "work_id": "WORK-P006-20261005-TOILET-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791156084.607249",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791156084607249",
+            "observed_at": "2026-10-05T05:06:24+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791156084607249"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261006-TRACKER",
+            "work_id": "WORK-P006-20261006-TOILET-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791241870.730979",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791241870730979",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791241870730979"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261006-UPVC-QUOTE",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "provider": "SLACK",
+            "provider_object_id": "1791298090.988939",
+            "evidence_type": "QUOTATION_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791298090988939",
+            "observed_at": "2026-10-06T20:33:10+05:45",
+            "note": "UPVC quotation image posted. Acceptance, order and payment are not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791298090988939"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261007-TRACKER",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "provider": "SLACK",
+            "provider_object_id": "1791325031182949",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791325031182949",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1H9Y96KG/p1791325031182949"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P006-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P006-20261007-PLUMBING-UPVC",
+            "provider": "DISCORD",
+            "provider_object_id": "1557630511252373564",
+            "evidence_type": "EXTERNAL_PLASTER_AND_QUALITY_QUERIES",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1501419594361999410/1557630511252373564",
+            "observed_at": "2026-10-09",
+            "note": "8 Oct Discord update reports external plastering; earlier kitchen plumbing/scaffolding. 5 Oct messages ask about kitchen bottom-slab seepage, pipe break/repair, waterproofing and tile/granite measurements; historical dated photo batches are not 5 Oct completion. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1501419594361999410/1557630511252373564",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P007",
+      "map_project_id": "PRJ-000007",
+      "company_project_code": "FBL-006",
+      "legacy_project_code": "P007",
+      "project_slug": "15_narayani_parajuli",
+      "display_name": "15 Narayani Parajuli",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "UNSET",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "UNRESOLVED",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "activity": "9 Oct carry-forward: stone masonry and footing/column stage; reconcile OPC usage (86 grid sum vs 78/101 statements) and obtain engineer decisions on shear key, CF1 and veranda/column details.",
+            "location": "Foundation / grids H1,H2,H3,H6,I2,I3,G1,G3,G6,D7,E7",
+            "execution_status": "NEEDS_INPUT",
+            "readiness": {
+              "materials": {
+                "status": "CONDITION",
+                "note": "Paras reported 101 OPC bags used for footing work and 9 OPC + 15 PPC bags in stock on 6 Oct. The total is supported; per-footing allocation remains unresolved. Stock is not consumption.",
+                "responsibility": null,
+                "source_refs": [
+                  "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+                  "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791261025376439",
+                  "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+                  "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262750222249",
+                  "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979"
+                ],
+                "observed_at": "2026-10-06T10:44:10+05:45",
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "UNKNOWN",
+                "note": "CF1/detail acceptance remains unresolved; responsible-engineer acceptance is not recorded.",
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "overall": "UNSET"
+            },
+            "blocker": "Grid list sums to 86 bags; later field reply says 78 footing bags out of 110 loaded and 32 for column-of-footing use, conflicting with prior 101-bag report. Need corrected confirmed allocation. Structural top-column/shear-key query, CF1/detail acceptance and plumber estimate remain open.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791261025376439",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262750222249",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791325032821449",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791356719272659",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791357548212629",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373760324279",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373944497509",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373984085579"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "UNRESOLVED"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P007-20261004-OPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 37,
+            "unit": "bag",
+            "note": "Point-in-time stock reported by field staff. Consumption, suitability and later balance are not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791100478324599"
+            ],
+            "observed_at": "2026-10-04T13:39:38+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P007-20261006-OPC-FOOTING-USAGE",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "material_name": "Cement OPC",
+            "material_state": "REPORTED_CONSUMPTION_CONFIRMED_TOTAL",
+            "quantity": 101,
+            "unit": "bag",
+            "note": "Historical 6-Oct field statement: 101 OPC bags for footing work. New 7-Oct claims include 78 footing bags and an 86-bag sum of the listed grid groups; all are retained as provider statements pending reconciliation. Do NOT post 101/78/86 as a reconciled total or daily cement usage.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262750222249",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791356719272659",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791357548212629"
+            ],
+            "observed_at": "2026-10-06T10:44:10+05:45",
+            "conflict_state": "UNRESOLVED"
+          },
+          {
+            "material_event_id": "MAT-P007-20261006-OPC-STOCK",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 9,
+            "unit": "bag",
+            "note": "Point-in-time stock reported by Paras on 6 Oct; stock is not consumption.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791261025376439"
+            ],
+            "observed_at": "2026-10-06T10:15:25+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P007-20261006-PPC-STOCK",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "material_name": "Cement PPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 15,
+            "unit": "bag",
+            "note": "Point-in-time stock reported by Paras on 6 Oct; stock is not consumption.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791261025376439"
+            ],
+            "observed_at": "2026-10-06T10:15:25+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P007-20261001-PCC-FOOTING",
+            "work_id": null,
+            "status": "DONE",
+            "note": "PCC on footing base reported done; separate engineering acceptance not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790857250675619",
+              "FBL:Daily Progress:20261001|PRJ-000007|PROGRESS|01"
+            ],
+            "observed_at": "2026-10-01T18:05:50+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P007-20261001-COLUMN-LAYOUT",
+            "work_id": null,
+            "status": "DONE",
+            "note": "Layout for column alignment reported done; separate engineering acceptance not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790857250675619",
+              "FBL:Daily Progress:20261001|PRJ-000007|PROGRESS|02"
+            ],
+            "observed_at": "2026-10-01T18:05:50+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P007-20261002-COLUMN-PLACEMENT",
+            "work_id": null,
+            "status": "ONGOING",
+            "note": "Placing columns on footing mesh reported in progress with four photos; completion not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790929628506269",
+              "FBL:Daily Progress:20261002|PRJ-000007|PROGRESS|01"
+            ],
+            "observed_at": "2026-10-02T14:12:08+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P007-20261006-FOOTING-OPC-TOTAL",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "status": "NEEDS_INPUT",
+            "note": "101 OPC bags were reported used for footing work at grids H1,H2,H3,H6,I2,I3,G1,G3,G6,D7,E7. Total usage is admitted; individual footing allocation is still requested.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979"
+            ],
+            "observed_at": "2026-10-06T10:44:10+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P007-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "status": "ONGOING",
+            "note": "Stone masonry was reported in progress on 8 Oct; earlier footing casting photographs do not certify engineer acceptance.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502155951711719475/1557696291457339402",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P007-20261003-CF1-DIMENSION-CHECK",
+            "work_id": null,
+            "status": "NEEDS_INPUT",
+            "blocker": "CF1 chair/stirrup dimension calculation was posted for discrepancy checking; no responsible-engineer acceptance is recorded. Do not treat the posted sizing as approved detailing.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790993758768049"
+            ],
+            "observed_at": "2026-10-03T08:00:58+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P007-20261006-OPC-PER-FOOTING-ALLOC",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "status": "NEEDS_INPUT",
+            "blocker": "Provider statements conflict: 6-Oct 101 OPC bags for footings; 7-Oct individual grid/group figures sum 86; 7-Oct second report says 78 footing bags of 110 loaded and 32 for column-of-footing use. Need corrected grid mapping (I3/H3 and I2/H2 remain grouped), stage split and consumption dates. Do not infer missing values.",
+            "responsible": "Paras / site engineer",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791356719272659",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791357548212629"
+            ],
+            "observed_at": "2026-10-06T20:31:22+05:45",
+            "conflict_state": "UNRESOLVED"
+          },
+          {
+            "blocker_id": "BLK-P007-20261008-STRUCTURAL-PLUMBING-REBAR-QUESTIONS",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "status": "NEEDS_INPUT",
+            "blocker": "Management queried missing top-column shear key, rebar lying on bare soil and a plumber/material estimate before plumbing work. These are requests/observations, not approved engineering solutions or completed work.",
+            "responsible": "Responsible structural engineer / site team",
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373760324279",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373944497509",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791373984085579"
+            ],
+            "observed_at": "2026-10-07T17:38:04+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P007-20261001-DONE",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790857250.675619",
+            "evidence_type": "FIELD_PROGRESS_COMPLETION_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790857250675619",
+            "observed_at": "2026-10-01T18:05:50+05:45",
+            "note": "Footing-base PCC and column-alignment layout reported done with media.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790857250675619"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261002-COLUMNS",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790929628.506269",
+            "evidence_type": "FIELD_PROGRESS_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790929628506269",
+            "observed_at": "2026-10-02T14:12:08+05:45",
+            "note": "Column placement on footing mesh in progress with four photos.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790929628506269"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261003-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790988455.011449",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790988455011449",
+            "observed_at": "2026-10-03T06:32:35+05:45",
+            "note": "Fresh top-level MT-015 tracker; no field reply yet.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790988455011449"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261003-CF1-DIMENSION-QUERY",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1790993758.768049",
+            "evidence_type": "DESIGN_COORDINATION_QUERY_NOT_APPROVAL",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790993758768049",
+            "observed_at": "2026-10-03T08:00:58+05:45",
+            "note": "Management posted a CF1 thickness/cover/chair/stirrup sizing calculation and requested discrepancy feedback; preserved as a query only, not engineering approval.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1790993758768049"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261004-TRACKER",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791078223.570109",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791078223570109",
+            "observed_at": "2026-10-04T07:28:43+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791078223570109"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261005-TRACKER",
+            "work_id": "WORK-P007-20261005-COLUMN-FOOTING",
+            "provider": "SLACK",
+            "provider_object_id": "1791156086.352619",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791156086352619",
+            "observed_at": "2026-10-05T05:06:26+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791156086352619"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261006-TRACKER",
+            "work_id": "WORK-P007-20261006-COLUMN-FOOTING",
+            "provider": "SLACK",
+            "provider_object_id": "1791241874.382869",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791241874382869",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791241874382869"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261006-CEMENT-FOOTING",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "provider": "SLACK",
+            "provider_object_id": "1791260991.997729",
+            "evidence_type": "CEMENT_USAGE_WITH_THREAD_CLARIFICATION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+            "observed_at": "2026-10-06T10:44:10+05:45",
+            "note": "101 OPC used total, grid set supplied, and 110 loaded stated; per-footing allocation still unresolved.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791260991997729",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791261025376439",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262726883179",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791262750222249",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791297982325979"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261007-TRACKER",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "provider": "SLACK",
+            "provider_object_id": "1791325032821449",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791325032821449",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791325032821449"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261007-OPC-GRID-DISCREPANCY",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "provider": "SLACK",
+            "provider_object_id": "1791356719.272659",
+            "evidence_type": "FIELD_REPORT_WITH_CONFLICTING_QUANTITY_FOLLOW_UP",
+            "evidence_url": "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791356719272659",
+            "observed_at": "2026-10-07T12:50:19+05:45",
+            "note": "Grid/group quantities sum 86; separate report says 78 and 32 from loaded 110; previous 101 remains unresolved.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791356719272659",
+              "https://jp09.slack.com/archives/C0C1M6AEL1X/p1791357548212629"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P007-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P007-20261007-FOOTING-CEMENT-ALLOC",
+            "provider": "DISCORD",
+            "provider_object_id": "1557696291457339402",
+            "evidence_type": "STONE_MASONRY_IN_PROGRESS_WITH_FOOTING_HISTORY",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1502155951711719475/1557696291457339402",
+            "observed_at": "2026-10-09",
+            "note": "8 Oct Discord reports stone masonry in progress; earlier footing casting and shuttering updates. Oct 7 conflicting cement grid totals remain unresolved, and Oct 8 veranda/wall-column discussions require designer/engineer disposition. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502155951711719475/1557696291457339402",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "project_id": "P020",
+      "map_project_id": "PRJ-000020",
+      "company_project_code": "FBL-019",
+      "legacy_project_code": "P020",
+      "project_slug": "kharika_paudel",
+      "display_name": "Kharika Paudel",
+      "contractor": "Fishtail Builders Pvt Ltd",
+      "daily_ops": {
+        "date": "2026-10-09",
+        "overall_readiness": "UNSET",
+        "readiness_summary": {
+          "ready": 0,
+          "total": 6
+        },
+        "conflict_state": "NONE",
+        "last_reconciled_at": "2026-10-09T09:50:00+05:45",
+        "source_cutoff": "2026-10-09T07:54:30+05:45",
+        "projection_status": {
+          "google_sheets": "CURRENT",
+          "website": "CURRENT",
+          "slack": "CURRENT"
+        },
+        "todays_work": [
+          {
+            "work_id": "WORK-P020-20261007-SLAB-PLASTER",
+            "activity": "9 Oct carry-forward: shuttering status, reinforcement/secondary-beam/cantilever and shaft checks, U/G tank-plaster planning, engineer approval of relevant details.",
+            "location": "Project site / slab, columns and underground water tank",
+            "execution_status": "NEEDS_INPUT",
+            "readiness": {
+              "materials": {
+                "status": "CONDITION",
+                "note": "2 PPC + 8 OPC bags were reported in stock on 5 Oct; stock only, no consumption inferred.",
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "manpower": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "ppe": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "work_briefing": {
+                "status": "CONDITION",
+                "note": "Prior curing/kopla/stirrup/cantilever/16 mm hook instructions remain without closure.",
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "tools": {
+                "status": "UNKNOWN",
+                "note": null,
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "preconditions": {
+                "status": "CONDITION",
+                "note": "Cantilever and beam-stirrup/BBS checks plus U/G tank plaster plan remain unresolved.",
+                "responsibility": null,
+                "source_refs": [],
+                "observed_at": null,
+                "conflict_state": "NONE"
+              },
+              "overall": "UNSET"
+            },
+            "blocker": "No post-6-Oct provider closure was found; current shuttering/slab manpower and prior technical-check completion remain unresolved.",
+            "responsible": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791241877726719",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791325034831649"
+            ],
+            "last_reconciled_at": "2026-10-07T03:49:00+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "materials": [
+          {
+            "material_event_id": "MAT-P020-20261002-NAILS-3IN",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "material_name": "3 in nails",
+            "material_state": "REQUIRED_AVAILABILITY_UNCONFIRMED",
+            "quantity": 10,
+            "unit": "kg",
+            "note": "Required for planned shuttering; arrival/stock not confirmed.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919"
+            ],
+            "observed_at": "2026-10-02T12:37:06+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261002-NAILS-25IN",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "material_name": "2.5 in nails",
+            "material_state": "REQUIRED_AVAILABILITY_UNCONFIRMED",
+            "quantity": 10,
+            "unit": "kg",
+            "note": "Required for planned shuttering; arrival/stock not confirmed.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919"
+            ],
+            "observed_at": "2026-10-02T12:37:06+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261002-NAILS-2IN",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "material_name": "2 in nails",
+            "material_state": "REQUIRED_AVAILABILITY_UNCONFIRMED",
+            "quantity": 10,
+            "unit": "kg",
+            "note": "Required for planned shuttering; arrival/stock not confirmed.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919"
+            ],
+            "observed_at": "2026-10-02T12:37:06+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261002-CUTTING",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "material_name": "Ply-cutting blades",
+            "material_state": "REQUIRED_AVAILABILITY_UNCONFIRMED",
+            "quantity": 4,
+            "unit": "piece",
+            "note": "Plus thread, 1.5 in dhalan kati and rebar-cutting blade packets; site availability not confirmed.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919"
+            ],
+            "observed_at": "2026-10-02T12:37:06+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261003-SHUTTERING-MATERIALS-GENERAL",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "material_name": "Shuttering materials",
+            "material_state": "PURCHASE_REPORTED_EXACT_SITE_INVENTORY_UNRESOLVED",
+            "quantity": null,
+            "unit": null,
+            "note": "Management reported shuttering materials bought at hand and asked staff to check the store room; exact item-by-item site inventory was not confirmed.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790994944419539"
+            ],
+            "observed_at": "2026-10-03T08:20:44+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261005-PPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement PPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 2,
+            "unit": "bag",
+            "note": "Point-in-time stock reported 5 Oct; no consumption inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184359717439"
+            ],
+            "observed_at": "2026-10-05T12:57:39+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "material_event_id": "MAT-P020-20261005-OPC-STOCK",
+            "work_id": null,
+            "material_name": "Cement OPC",
+            "material_state": "OBSERVED_STOCK",
+            "quantity": 8,
+            "unit": "bag",
+            "note": "Point-in-time stock reported 5 Oct; no consumption inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184359717439"
+            ],
+            "observed_at": "2026-10-05T12:57:39+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "progress": [
+          {
+            "progress_event_id": "PROG-P020-20261003-NAIL-REMOVAL",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "status": "ONGOING",
+            "note": "Nail removal from unloaded ply was reported as the current work on 3 Oct.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790999292980119"
+            ],
+            "observed_at": "2026-10-03T09:33:12+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P020-20261003-SHUTTERING-BLOCKED-ELECTRICAL",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "status": "BLOCKED_THEN_FAULT_REPORTED_SOLVED",
+            "note": "Shuttering team did not perform shuttering because an electric wire fault interrupted site power; Babu Ram later replaced the board and about 10 m of wire and the electrical problem was reported solved.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791013031297219"
+            ],
+            "observed_at": "2026-10-03T13:22:11+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "progress_event_id": "PROG-P020-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P020-20261007-SLAB-PLASTER",
+            "status": "ONGOING",
+            "note": "Shuttering was reported ongoing as recently as 8 Oct; no approval or completion demonstrated.",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502093475984965835/1557551951493726280",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ],
+            "observed_at": "2026-10-09",
+            "conflict_state": "NONE"
+          }
+        ],
+        "blockers": [
+          {
+            "blocker_id": "BLK-P020-20261004-RESTART-CONFIRMATION",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "status": "NEEDS_INPUT",
+            "blocker": "Electrical fault was reported solved, but today's shuttering-team restart/manpower, staircase-room brickwork, staircase rebar availability and exact slab target remain unresolved.",
+            "responsible": null,
+            "target_resolution_at": "2026-10-04",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791013031297219"
+            ],
+            "observed_at": "2026-10-03T13:22:11+05:45",
+            "conflict_state": "NONE"
+          },
+          {
+            "blocker_id": "BLK-P020-20261005-DESIGN-CHECKS",
+            "work_id": "WORK-P020-20261006-SLAB-PLASTER",
+            "status": "NEEDS_INPUT",
+            "blocker": "Cantilever confirmation and beam-stirrup/BBS checks were instructed; completion/engineering acceptance is not yet evidenced.",
+            "responsible": null,
+            "target_resolution_at": null,
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791159944934279",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791160021062969",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791160045204179"
+            ],
+            "observed_at": "2026-10-05T06:10:44+05:45",
+            "conflict_state": "NONE"
+          }
+        ],
+        "lookahead": [],
+        "evidence": [
+          {
+            "evidence_id": "EVID-P020-20261002-REQUIREMENTS",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "provider": "SLACK",
+            "provider_object_id": "1790923926.792919",
+            "evidence_type": "SHUTTERING_MATERIAL_REQUIREMENT",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919",
+            "observed_at": "2026-10-02T12:37:06+05:45",
+            "note": "Required shuttering consumables listed by field staff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790923926792919"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261003-TRACKER",
+            "work_id": "WORK-P020-20261003-SHUTTERING",
+            "provider": "SLACK",
+            "provider_object_id": "1790988463.809229",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790988463809229",
+            "observed_at": "2026-10-03T06:32:43+05:45",
+            "note": "Concise 3-Oct tracker; field reply still pending.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790988463809229"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261003-ELECTRICAL-FAULT-REPAIR",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "provider": "SLACK",
+            "provider_object_id": "1791013031.297219",
+            "evidence_type": "FIELD_BLOCKER_AND_REPAIR_WITH_MEDIA",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791013031297219",
+            "observed_at": "2026-10-03T13:22:11+05:45",
+            "note": "Two photos attached; field reporter said shuttering was not performed due to broken wire and that Babu Ram replaced the board and about 10 m wire, solving the electrical problem.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791013031297219"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261003-NAIL-REMOVAL",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "provider": "SLACK",
+            "provider_object_id": "1790999292.980119",
+            "evidence_type": "FIELD_PROGRESS_NOTE",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790999292980119",
+            "observed_at": "2026-10-03T09:33:12+05:45",
+            "note": "Current work reported as removing nails from unloaded ply.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1790999292980119"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261004-TRACKER",
+            "work_id": "WORK-P020-20261004-SHUTTERING-RESTART",
+            "provider": "SLACK",
+            "provider_object_id": "1791078226.968169",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791078226968169",
+            "observed_at": "2026-10-04T07:28:46+05:45",
+            "note": "Concise 4-Oct Daily Ops tracker sent and provider-read back; field reply pending at send cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791078226968169"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261005-TRACKER",
+            "work_id": "WORK-P020-20261005-SHUTTERING",
+            "provider": "SLACK",
+            "provider_object_id": "1791156088.117719",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791156088117719",
+            "observed_at": "2026-10-05T05:06:28+05:45",
+            "note": "Concise 5-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791156088117719"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261005-STOCK",
+            "work_id": null,
+            "provider": "SLACK",
+            "provider_object_id": "1791184359.717439",
+            "evidence_type": "MATERIAL_STOCK_OBSERVATION",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184359717439",
+            "observed_at": "2026-10-05T12:57:39+05:45",
+            "note": "2 PPC + 8 OPC bags reported in stock; stock only.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184359717439"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261005-INSTRUCTIONS",
+            "work_id": "WORK-P020-20261006-SLAB-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791159818.242419",
+            "evidence_type": "SITE_INSTRUCTIONS_AND_DESIGN_COORDINATION_REQUESTS",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791159818242419",
+            "observed_at": "2026-10-05T06:08:38+05:45",
+            "note": "Curing, column-end kopla, beam-stirrup/BBS, cantilever re-confirmation and 16 mm hook instructions were issued; completion/approval not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791159818242419",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791159842940499",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791159944934279",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791160021062969",
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791160045204179"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261005-UGT-PLASTER-PLAN",
+            "work_id": "WORK-P020-20261006-SLAB-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791184840.264729",
+            "evidence_type": "WORK_PLAN_REQUEST",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184840264729",
+            "observed_at": "2026-10-05T13:05:40+05:45",
+            "note": "Management requested a plan for plaster in the underground water tank; plan/execution not inferred.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791184840264729"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261006-TRACKER",
+            "work_id": "WORK-P020-20261006-SLAB-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791241877.726719",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791241877726719",
+            "observed_at": "2026-10-06T04:56:55+05:45",
+            "note": "Concise 6-Oct Daily Ops tracker sent as a new top-level message and provider-read back; field reply pending at readback cutoff.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791241877726719"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261007-TRACKER",
+            "work_id": "WORK-P020-20261007-SLAB-PLASTER",
+            "provider": "SLACK",
+            "provider_object_id": "1791325034831649",
+            "evidence_type": "DAILY_WORK_READINESS_TRACKER",
+            "evidence_url": "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791325034831649",
+            "observed_at": "2026-10-07T04:02:15+05:45",
+            "note": "Concise 7-Oct Daily Ops tracker sent as a new top-level message; field reply pending at send-time readback.",
+            "source_refs": [
+              "https://jp09.slack.com/archives/C0C2LFV6XLM/p1791325034831649"
+            ]
+          },
+          {
+            "evidence_id": "EVID-P020-20261009-DISCORD-WEEKLY",
+            "work_id": "WORK-P020-20261007-SLAB-PLASTER",
+            "provider": "DISCORD",
+            "provider_object_id": "1557551951493726280",
+            "evidence_type": "SHUTTERING_IN_PROGRESS_CURING_REQUEST",
+            "evidence_url": "https://discord.com/channels/682670494658330644/1502093475984965835/1557551951493726280",
+            "observed_at": "2026-10-09",
+            "note": "8 Oct Discord reports shuttering ongoing; Oct 5 curing reminder is a requested action, not proof of curing. Slack has unresolved cantilever, secondary beam, stirrup and west duct queries. Evidence from 7-day capture; original attachment certification remains PARTIAL (749 mismatches across entire scope).",
+            "source_refs": [
+              "https://discord.com/channels/682670494658330644/1502093475984965835/1557551951493726280",
+              "https://drive.google.com/file/d/1rOQO9Q7i8vZVeQAGOuZsj8OM3W4RXYA3/view"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
