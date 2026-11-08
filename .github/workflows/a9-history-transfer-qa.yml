@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'migration/scripts/history_transfer.py'
+      - '.github/workflows/a9-history-transfer.yml'
       - 'migration/scripts/test_history_transfer.py'
       - '.github/workflows/a9-history-transfer-qa.yml'
   push:
@@ -10,6 +11,7 @@ on:
       - 'fix/partial-historical-import-resume-20261107'
     paths:
       - 'migration/scripts/history_transfer.py'
+      - '.github/workflows/a9-history-transfer.yml'
       - 'migration/scripts/test_history_transfer.py'
       - '.github/workflows/a9-history-transfer-qa.yml'
 

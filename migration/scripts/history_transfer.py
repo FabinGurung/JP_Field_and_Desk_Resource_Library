@@ -75,6 +75,14 @@ def sanitized_push_error(proc, token):
  raw = re.sub(r"(?:xox[baprs]-)[A-Za-z0-9-]{12,}", "[REDACTED_SLACK_TOKEN]", raw)
  return " | ".join(raw.splitlines()).strip()[-1400:] or "no Git transport message provided"
 
+def import_credential(mode):
+ """Never fall back to the Actions GITHUB_TOKEN: it lacks GitHub Workflows writes."""
+ if mode!="import":return ""
+ token=os.getenv("HISTORY_WRITE_TOKEN","")
+ ensure(bool(token), "owner-only Actions secret A9_HISTORY_IMPORT_TOKEN is missing; no import attempted")
+ ensure(token != os.getenv("GITHUB_TOKEN", ""), "GITHUB_TOKEN cannot replace a Workflows-authorized import secret")
+ return token
+
 def scan():
  objectlines=run("git","rev-list","--objects","--all",cwd=MIRROR).splitlines()
  objects=sorted(set(line.split(" ",1)[0] for line in objectlines))
@@ -104,6 +112,9 @@ def main():
  try:
   ensure(mode in ("audit","import"),"invalid action")
   if mode=="import":ensure(os.getenv("IMPORT_CONFIRMATION")=="IMPORT_47_BRANCHES_4_TAGS","missing explicit import confirmation")
+  # Detect absent workflow-write credential before cloning/pushing; audit never needs it.
+  write_token=import_credential(mode)
+  report["import_credential_source"]="A9_HISTORY_IMPORT_TOKEN_secret" if mode=="import" else "NOT_USED_AUDIT"
   anc=subprocess.run(["git","merge-base","--is-ancestor",PIN_DST,"HEAD"],capture_output=True).returncode==0
   ensure(anc,"destination original commit no longer an ancestor")
   run("git","fetch","--no-tags","origin","refs/heads/migration/phase1_communication_source_20261107")
@@ -132,8 +143,8 @@ def main():
   if mode=="audit":
    report["status"]="AUDIT_PASS_PARTIAL_IMPORT_PRESENT__NO_WRITE" if existing else "AUDIT_PASS_NO_IMPORT"
    return 0
-  token=os.environ.get("GITHUB_TOKEN","")
-  ensure(bool(token),"write token unavailable")
+  token=write_token
+  ensure(bool(token),"Workflows-authorized import credential unavailable")
   header="AUTHORIZATION: basic "+base64.b64encode(("x-access-token:"+token).encode()).decode()
   # Single-ref pushes make each rejected ref identifiable. Already-correct refs are never overwritten.
   for target in missing:

@@ -14,25 +14,27 @@ on:
         required: false
         default: ""
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: a9-history-transfer
   cancel-in-progress: false
 jobs:
   guarded-history:
-    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
     timeout-minutes: 50
     steps:
       - name: Checkout existing destination main with history
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
-          persist-credentials: true
+          persist-credentials: false
       - name: Audit source history and optionally import namespaced refs
         env:
           HISTORY_MODE: ${{ inputs.mode }}
           IMPORT_CONFIRMATION: ${{ inputs.confirmation }}
           GITHUB_TOKEN: ${{ github.token }}
+          HISTORY_WRITE_TOKEN: ${{ inputs.mode == 'import' && secrets.A9_HISTORY_IMPORT_TOKEN || '' }}
         run: python3 migration/scripts/history_transfer.py
       - name: Upload sanitized audit record
         if: always()

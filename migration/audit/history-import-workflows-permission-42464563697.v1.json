@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "A9-RLIB-HISTORY-IMPORT-INCIDENT-000002",
+  "date_npt": "2026-11-08",
+  "source_repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+  "destination_repository": "FabinGurung/JP_Field_and_Desk_Resource_Library",
+  "failed_workflow": {
+    "run_id": 42464563697,
+    "head_sha": "87a5305306faf8a4ecffb0376eba363e86ff6dea",
+    "mode": "import",
+    "confirmation_valid": true,
+    "status": "HOLD",
+    "job_status": "failure",
+    "artifact_id": 13611207006,
+    "zip_sha256": "a8ec2c90a0cfecb566f15cdecb8e8255239e7152bbf0ce25089b5821efc3cb62",
+    "first_rejected_target_ref": "refs/heads/imported/cwo/archive/feature/a7-seq-000007-module-manifest",
+    "provider_rejection": "refusing to allow a GitHub App to create or update workflow `.github/workflows/daily-ops-branch-preview.yml` without `workflows` permission",
+    "matched_existing_refs": 1,
+    "missing_before_run": 50,
+    "refs_created_this_run": 0,
+    "branches_validated": 47,
+    "tags_validated": 4,
+    "unique_blobs_scanned": 1408,
+    "pattern_findings": 0
+  },
+  "post_failure_provider_readback": {
+    "imported_branch_refs": 1,
+    "imported_tag_refs": 0,
+    "imported_branch_name": "refs/heads/imported/cwo/main",
+    "imported_branch_sha": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "destination_main_sha": "87a5305306faf8a4ecffb0376eba363e86ff6dea"
+  },
+  "repair": {
+    "branch": "fix/history-import-workflows-permission-20261108",
+    "pre_snapshot_branch": "archive/snapshot/000005_PRE_workflows_credential_gate_20261108",
+    "credential_secret_name": "A9_HISTORY_IMPORT_TOKEN",
+    "contents_token_only_for_read": true,
+    "source_git_branches_untouched": true,
+    "source_staging_untouched": true,
+    "no_force_or_delete": true,
+    "import_requires_confirmation": true,
+    "scope": "dedicated owner Workflows+Contents scoped repository secret; workflow_dispatch on main only; no fallback to GITHUB_TOKEN",
+    "script_path": "migration/scripts/history_transfer.py",
+    "workflow_path": ".github/workflows/a9-history-transfer.yml",
+    "tests_path": "migration/scripts/test_history_transfer.py",
+    "runbook_path": "migration/audit/WORKFLOWS_PERMISSION_RECOVERY_20261108.md",
+    "new_import_not_dispatched": true
+  },
+  "risk_notes": [
+    "The pattern-based scan is not a legal/privacy clearance.",
+    "Elevated PAT pushes can trigger Actions on matching branches, unlike GITHUB_TOKEN; inspect historical workflow branch filters and avoid unreviewed branches.",
+    "Repository Secrets are owner-managed, not populated by ChatGPT.",
+    "GitHub PRs, issues, releases, environment variables, rulesets, Drive and Pages remain separate migration obligations."
+  ],
+  "status": "CREDENTIAL_PERMISSION_REPAIR_STAGED__WAITING_OWNER_SECRET",
+  "phase1_complete": false
+}
