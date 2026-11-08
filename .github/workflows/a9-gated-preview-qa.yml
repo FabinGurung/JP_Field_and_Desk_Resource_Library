@@ -1,0 +1,30 @@
+name: A9 / Resource Library - gated preview QA
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - 'migration/scripts/test_gated_resource_preview.py'
+      - '.github/workflows/a9-gated-preview-qa.yml'
+  push:
+    branches:
+      - 'feature/gated-resource-index-v0-20261108'
+    paths:
+      - 'site/**'
+      - 'migration/scripts/test_gated_resource_preview.py'
+      - '.github/workflows/a9-gated-preview-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  gated-preview-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Validate JS syntax
+        run: node --check site/app.js
+      - name: Validate Python syntax
+        run: python3 -m py_compile migration/scripts/test_gated_resource_preview.py
+      - name: Fail-closed admission, source and privacy tests
+        run: python3 -m unittest discover -s migration/scripts -p 'test_gated_resource_preview.py' -v

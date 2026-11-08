@@ -1,0 +1,108 @@
+{
+  "schema_version": "0.1.0",
+  "catalog_id": "A9-RLIB-PUBLIC-DISPLAY-DERIVED-V0",
+  "authority": "DERIVED_PUBLIC_PRESENTATION_ONLY__NEVER_SOURCE_OF_DOCUMENT_TRUTH",
+  "as_of_npt": "2026-11-08",
+  "status": "PREVIEW_NOT_PUBLISHED__PUBLIC_ADMISSION_GATE_UNRESOLVED",
+  "public_admission_required": true,
+  "original_files_authority": "GOOGLE_DRIVE_RESTRICTED_ORIGINALS",
+  "relationship_authority": "A7_STABLE_IDS_AND_SUBJECT_OWNER_SHEETS",
+  "private_and_unreviewed_excluded": true,
+  "requested_sections": [
+    {
+      "id": "field",
+      "title": "Field Resources",
+      "description": "Site references, drawings access, inspection checklists and workmanship guidance",
+      "admitted_resources": 0
+    },
+    {
+      "id": "desk",
+      "title": "Desk Resources",
+      "description": "Construction templates, agreements, specifications and technical reference navigation",
+      "admitted_resources": 0
+    },
+    {
+      "id": "projects",
+      "title": "Project Documents",
+      "description": "Reviewed, versioned project-specific public navigation—never automatic private Drive publishing",
+      "admitted_resources": 0
+    }
+  ],
+  "resources": [],
+  "projects": [],
+  "source_lineage": {
+    "original_communication_repo": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+    "pinned_source_main": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "original_source_main_resource_page": {
+      "path": "resources/index.html",
+      "git_blob_sha": "340b06cc5ce601749eca8af3769e34e5cff7a776"
+    },
+    "original_source_main_project_documents_page": {
+      "path": "resources/project-documents.html",
+      "git_blob_sha": "a65e269d264984b2f69be6e9368fc59d8d84b861"
+    },
+    "working_branch": "feature/daily-ops-current-work",
+    "working_branch_tip_at_audit": "5db971b290a7ce64ce9d39bc418d25ccad050f3b",
+    "existing_source_catalog": {
+      "path": "ops/data/resource-catalog-normalized.v0.1.json",
+      "git_blob_sha": "00b2d16b005e430d4797d8cd27bf27ec655686ea",
+      "historical_indexed_files": 46,
+      "current_individual_approval_not_claimed": true
+    },
+    "reviewed_dispositions": {
+      "path": "ops/data/resource-review-dispositions-public.v1.0.json",
+      "git_blob_sha": "06eeca901adf0cfe17971f0db7052466bcb350fb",
+      "engineer_approvals_not_inferred": true
+    },
+    "field_category_sources": {
+      "path": "ops/data/a9-field-source-catalog-public.v1.0.json",
+      "git_blob_sha": "fb73abcb1f233a8671c3fb74e4e09a9ea8b630e9"
+    },
+    "public_files_allowlist": {
+      "path": "ops/control/pages-public-file-allowlist.v1.json",
+      "git_blob_sha": "54658dda69fe05531ea00b9631340d27e23c431a",
+      "require_explicit_admission": true
+    },
+    "display_and_admission_policy": {
+      "path": "ops/control/resource-display-and-admission.v0.1.json",
+      "git_blob_sha": "08f83fdff2f63387a76ccbc9ec5ae370f018b832"
+    },
+    "original_workflow_contract": {
+      "path": "ops/control/REQ07_RESOURCE_LIBRARY_WORKFLOW.md",
+      "git_blob_sha": "694ebbfa9b6d90ce1cdf8c72b347f1bf34483564"
+    }
+  },
+  "privacy_holds": [
+    {
+      "issue_ref": "https://github.com/FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub/issues/8",
+      "canonical_project_id": "PRJ-000029",
+      "status": "PRIVATE_IS_PUBLIC_FALSE__NEW_PUBLIC_CATALOG_ADMISSION_HOLD",
+      "retired_alias": "PRJ-000030",
+      "retired_alias_is_not_new_project": true,
+      "copy_private_contracts_drawings_drive_links": false
+    }
+  ],
+  "publication_requirements": {
+    "source_file_id_and_revision_readback": true,
+    "current_subject_owner_publication_flag": true,
+    "current_drive_permission_gate": true,
+    "permission_scope_review": true,
+    "engineering_approval_is_separate": true,
+    "audit_and_reviewed_pull_request": true,
+    "desktop_mobile_keyboard_qa": true
+  },
+  "deployment": {
+    "github_pages_enabled": false,
+    "publish_requested": false,
+    "website_route": null
+  },
+  "safeguards": [
+    "NO_GDRIVE_IDS_IN_PUBLIC_PREVIEW",
+    "NO_SECRETS",
+    "NO_PRIVATE_CLIENT_ITEMS",
+    "NO_DUPLICATE_CANONICAL_DOC_STORE",
+    "NO_SOURCE_SITE_REWRITE",
+    "NO_FORCE_PUSH",
+    "NO_HISTORY_REWRITE"
+  ]
+}
