@@ -529,7 +529,31 @@
         "path": "migration/provider-snapshots/20261108/source-actions-runs-1501-1915.jsonl",
         "rows": 415
       }
-    ]
+    ],
+    "summary": {
+      "range_latest_created_utc": "2026-11-08T06:03:30Z",
+      "range_earliest_created_utc": "2026-07-25T16:51:50Z",
+      "all_recorded_status_completed": 1915,
+      "conclusions": {
+        "success": 1423,
+        "cancelled": 282,
+        "failure": 204,
+        "skipped": 6
+      },
+      "events": {
+        "push": 1814,
+        "schedule": 32,
+        "pull_request": 28,
+        "workflow_run": 23,
+        "dynamic": 17,
+        "workflow_dispatch": 1
+      },
+      "index_integrity": {
+        "unique_run_ids": 1915,
+        "strict_descending_run_ids": true,
+        "four_segments_provider_readback": true
+      }
+    }
   },
   "additional_provider_gates": {
     "release_asset_files": "NONE_ATTACHED_TO_FOUR_RECORDED_RELEASES",
@@ -550,5 +574,51 @@
     "no_provider_replay": true,
     "no_private_files_copied": true,
     "new_library_pages_not_enabled": true
+  },
+  "reconciliation": {
+    "source_issue_number_set": [
+      8,
+      23,
+      24,
+      25
+    ],
+    "source_pr_number_set": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "source_release_tags": [
+      "v1.1.0",
+      "v1.2.0-alpha.1",
+      "v2.1.0",
+      "v2.2.0"
+    ],
+    "source_pr_head_commit_reachability": {
+      "checked": 21,
+      "reachable": 21,
+      "missing": 0,
+      "provider_live_readback": true
+    },
+    "open_source_issues": 4,
+    "source_pull_requests_merged": 20,
+    "source_pull_requests_closed_unmerged": 1
   }
 }
