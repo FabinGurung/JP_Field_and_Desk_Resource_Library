@@ -3,6 +3,7 @@
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
 import unittest
 
 SCRIPT = Path(__file__).with_name("history_transfer.py")
@@ -88,6 +89,24 @@ class ImportPlanTests(unittest.TestCase):
         manifest["branches"][1]["target_ref"] = manifest["branches"][0]["target_ref"]
         with self.assertRaises(RuntimeError):
             MODULE.build_import_plan(manifest, branches, tags, {})
+
+    def test_audit_does_not_need_import_credential(self):
+        with patch.dict("os.environ", {"HISTORY_WRITE_TOKEN": "", "GITHUB_TOKEN": "actions-token"}):
+            self.assertEqual(MODULE.import_credential("audit"), "")
+
+    def test_import_requires_owner_secret(self):
+        with patch.dict("os.environ", {"HISTORY_WRITE_TOKEN": "", "GITHUB_TOKEN": "actions-token"}):
+            with self.assertRaisesRegex(RuntimeError, "A9_HISTORY_IMPORT_TOKEN"):
+                MODULE.import_credential("import")
+
+    def test_import_refuses_same_github_token(self):
+        with patch.dict("os.environ", {"HISTORY_WRITE_TOKEN": "actions-token", "GITHUB_TOKEN": "actions-token"}):
+            with self.assertRaisesRegex(RuntimeError, "GITHUB_TOKEN cannot replace"):
+                MODULE.import_credential("import")
+
+    def test_import_accepts_distinct_workflow_secret(self):
+        with patch.dict("os.environ", {"HISTORY_WRITE_TOKEN": "separately-authorized-token", "GITHUB_TOKEN": "actions-token"}):
+            self.assertEqual(MODULE.import_credential("import"), "separately-authorized-token")
 
     def test_redact_credentials_keep_push_error(self):
         message = b"remote: authorization: basic abcdef \nremote: refused test ref ghp_ABCDEFGHIJKLMNOPQRSTUVWXYZ123456\n"
