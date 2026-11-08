@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <title>Field & Desk Resource Library — governed preview</title>
+  <meta name="description" content="Unpublished A9 Resource Library prototype with reviewed-document admission controls.">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand" aria-label="A9 Resource Library">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <div><strong>Field & Desk</strong><span>Resource Library · A9</span></div>
+      </div>
+      <nav aria-label="Primary navigation">
+        <a href="#field">Field</a>
+        <a href="#desk">Desk</a>
+        <a href="#projects">Projects</a>
+        <a href="#governance">Source & QA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">A7 / A9 · GOVERNED CONSTRUCTION KNOWLEDGE</p>
+        <h1 id="hero-title">Find what you need. Preserve where it came from.</h1>
+        <p class="lede">A single gateway for field references, desk resources, and reviewed project documents—without creating competing originals or publishing unapproved files.</p>
+        <div class="hero-actions"><a class="primary-link" href="#browse">Explore categories</a><a class="secondary-link" href="#governance">How source approval works</a></div>
+      </div>
+      <aside class="hero-panel" aria-label="Publication status">
+        <p class="panel-label">PUBLICATION STATUS</p>
+        <p class="panel-title">Preview only</p>
+        <p>This page is not a live client document portal. Every project record remains unadmitted until approved through its current source authority.</p>
+        <dl><div><dt>Source originals</dt><dd>Google Drive</dd></div><div><dt>Stable identities</dt><dd>A7 / owner registers</dd></div><div><dt>Public listings</dt><dd>Reviewed individually</dd></div></dl>
+      </aside>
+    </section>
+
+    <section id="browse" class="content-section" aria-labelledby="browse-heading">
+      <div class="section-heading"><div><p class="eyebrow">DIRECTORIES</p><h2 id="browse-heading">Browse the library</h2></div><span class="edition">v0.1 · Unpublished</span></div>
+      <div class="category-grid">
+        <article id="field" class="category-card">
+          <span class="category-index">01 / FIELD</span><h3>Field Resources</h3>
+          <p>Site execution references, drawing access, checklists, and inspection records.</p>
+          <span class="category-state">Awaiting reviewed admission</span>
+        </article>
+        <article id="desk" class="category-card">
+          <span class="category-index">02 / DESK</span><h3>Desk Resources</h3>
+          <p>Templates, agreements, material standards, calculation references, and working documents.</p>
+          <span class="category-state">Awaiting reviewed admission</span>
+        </article>
+        <article id="projects" class="category-card">
+          <span class="category-index">03 / PROJECTS</span><h3>Project Documents</h3>
+          <p>Version-aware project registers and authorized links to original documents.</p>
+          <span class="category-state">Private items never auto-published</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section search-section" aria-labelledby="search-heading">
+      <div class="section-heading"><div><p class="eyebrow">SOURCE-LED INDEX</p><h2 id="search-heading">Find reviewed entries</h2></div></div>
+      <div class="search-controls">
+        <div class="search-field"><label for="catalog-search">Search by a published name or reference</label><input id="catalog-search" type="search" placeholder="Search the public catalogue…" autocomplete="off"></div>
+        <div class="category-filters" role="group" aria-label="Resource type">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="field" aria-pressed="false">Field</button>
+          <button type="button" data-filter="desk" aria-pressed="false">Desk</button>
+          <button type="button" data-filter="projects" aria-pressed="false">Projects</button>
+        </div>
+      </div>
+      <p class="catalog-count" id="catalog-count" aria-live="polite">No entries admitted to this preview.</p>
+      <div id="catalog-results" class="catalog-results" aria-live="polite">
+        <div class="empty-state">
+          <h3>No client records published in this preview</h3>
+          <p>Public availability requires current project permissions, verified source IDs, and a reviewed publication decision. Historical URLs are not approval to expose restricted files.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" class="content-section governance-section" aria-labelledby="governance-heading">
+      <p class="eyebrow">HOW THIS LIBRARY IS GOVERNED</p><h2 id="governance-heading">One source of truth for every document.</h2>
+      <div class="governance-grid">
+        <div><strong>01 · Original files</strong><p>Google Drive retains original bytes, revisions and sharing permissions.</p></div>
+        <div><strong>02 · Relationships</strong><p>Stable project and document identifiers follow A7/A9 source-owner registers.</p></div>
+        <div><strong>03 · Presentation</strong><p>GitHub displays only explicitly reviewed resource links and derived metadata.</p></div>
+        <div><strong>04 · Verification</strong><p>Publication eligibility, client permissions and engineering approvals are independent gates.</p></div>
+      </div>
+      <p class="source-caption">The existing Communication & Web repository and client routes are preserved. This preview makes no claim of project-document approval or a new published Pages deployment.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Field & Desk Resource Library · A9</span><span>Governed preview · 2026-11-08 · No private document links</span></footer>
+  <noscript><p class="noscript-note">JavaScript is disabled. The preview and source-authority information remain available, but catalogue searching is unavailable.</p></noscript>
+</body>
+</html>
