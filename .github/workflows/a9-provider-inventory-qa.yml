@@ -1,0 +1,30 @@
+name: A9 / Resource Library - provider preservation QA
+on:
+  pull_request:
+    paths:
+      - 'migration/provider-snapshots/**'
+      - 'migration/scripts/test_provider_snapshot.py'
+      - 'migration/audit/phase1-source-snapshot.v1.json'
+      - 'migration/audit/README.md'
+      - '.github/workflows/a9-provider-inventory-qa.yml'
+  push:
+    branches:
+      - 'governance/phase2-provider-inventory-20261108'
+    paths:
+      - 'migration/provider-snapshots/**'
+      - 'migration/scripts/test_provider_snapshot.py'
+      - '.github/workflows/a9-provider-inventory-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provider-snapshot-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Validate Python syntax
+        run: python3 -m py_compile migration/scripts/test_provider_snapshot.py
+      - name: Validate source-provider metadata without network or credentials
+        run: python3 -m unittest discover -s migration/scripts -p 'test_provider_snapshot.py' -v

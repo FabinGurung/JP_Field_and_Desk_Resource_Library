@@ -29,3 +29,11 @@
 6. Owner must revoke the temporary fine-grained PAT and delete repository secret `A9_HISTORY_IMPORT_TOKEN` after confirmed import QA. Never publish or copy secret values.
 
 **NEXT:** close out owner credential cleanup, independently inventory provider metadata, design governed Resource Library website and preserve existing PRJ-000029 client URLs. No more history import runs are needed.
+
+## Phase 2 — dated provider-source inventory (2026-11-08)
+
+[Source provider preservation index](../provider-snapshots/20261108/README.md) now captures immutable source IDs and links for **4 standalone Issues, 21 pull requests (20 merged), 4 releases with no attached assets, and 1,915 unique historical Actions runs**. All 21 source PR head commit objects were independently checked as reachable in the destination's imported original Git graph. Four dated Actions-run JSONL segments include original run links, workflow identifiers, head SHAs, status, outcome and timestamps; no historical executions, discussions or release objects were recreated.
+
+The canonical [Phase 1 migration manifest](phase1-source-snapshot.v1.json) retains the same `A9-RLIB-MIG-000001` identity and now references the Phase 2 snapshot. The original source Communication & Web repository remains the provider authority. **Source Issue #8** explicitly holds `PRJ-000029 / REB-002` public resource-catalog admission and the underlying private register has `is_public=FALSE`; therefore the new public Resource Library must not automatically republish Basanti contract, drawing or private Google Drive evidence. Source Issues #23, #24 and #25 likewise remain live operational holds.
+
+Owner specifically elected to keep the existing PAT and Actions secret for other purposes; **no credential changes were made**. Detailed provider settings, reviews/comments content, Actions logs, Drive permissions, GitHub Pages routing and client public-admission checks remain open. Never delete, trim or redirect the source in response to a metadata snapshot.

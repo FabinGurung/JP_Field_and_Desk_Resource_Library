@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "audit_id": "A9-RLIB-MIG-000001",
   "date_npt": "2026-11-07",
-  "status": "HISTORICAL_GIT_GRAPH_IMPORTED_VERIFIED__PROVIDER_PARITY_HOLD",
+  "status": "HISTORICAL_GIT_GRAPH_IMPORTED_VERIFIED__PROVIDER_METADATA_INDEXED__CLIENT_PUBLICATION_HOLD",
   "source": {
     "repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
     "repository_id": "1312147922",
@@ -414,31 +414,36 @@
     "pattern_scan_not_privacy_certification": true
   },
   "external_providers": {
-    "issues": "NOT_MIGRATED",
-    "pull_requests": "NOT_MIGRATED",
-    "releases": "NOT_MIGRATED",
-    "actions_runs": "NOT_MIGRATED",
+    "issues": "INDEXED_4_PUBLIC_SOURCE_ISSUE_POINTERS__NO_PROVIDER_OBJECT_RECREATION",
+    "pull_requests": "INDEXED_21_PUBLIC_SOURCE_PR_POINTERS__NO_PROVIDER_OBJECT_RECREATION",
+    "releases": "INDEXED_4_RELEASE_POINTERS__NO_PROVIDER_OBJECT_RECREATION",
+    "actions_runs": "INDEXED_1915_RUN_METADATA_URLS__NO_EXECUTION_HISTORY_REPLAY",
     "secrets": "NOT_MIGRATED",
     "permissions": "NOT_MIGRATED",
     "branch_protection_rulesets": "NOT_MIGRATED",
-    "release_assets": "NOT_MIGRATED",
-    "pages_configuration": "NOT_MIGRATED",
-    "environments": "NOT_MIGRATED",
+    "release_assets": "ZERO_ATTACHED_AS_OF_20261108",
+    "pages_configuration": "SOURCE_ENABLED__DESTINATION_NOT_YET_ENABLED__DETAIL_SETTINGS_HOLD",
+    "environments": "UNVERIFIED",
     "lfs_and_submodules": "NOT_YET_RECONCILED",
     "google_drive_file_ids": "NOT_YET_RECONCILED",
-    "slack_references": "NOT_YET_RECONCILED"
+    "slack_references": "NOT_YET_RECONCILED",
+    "issue_pr_comments_reviews": "SOURCE_ONLY__NOT_MIGRATED",
+    "action_secret_values": "EXCLUDED_FOR_SECURITY__OWNER_RETAINS",
+    "drive_permissions": "UNVERIFIED_SOURCE_AUTHORITY_RETAINED"
   },
   "actions": "ENABLED__MANUAL_IMPORT_RUN_VERIFIED__HISTORICAL_WORKFLOW_RUNS_NOT_MIGRATED",
   "hold": [
     "Git commit graph and 47 branches/4 tags have transferred; provider-managed Issues/PRs/releases/Actions runs/rulesets/settings/secrets/Pages have NOT migrated",
     "Historical privacy result is only a pattern-based scan; no comprehensive privacy/security certification",
-    "Credential cleanup: owner must revoke dedicated temporary fine-grained PAT and delete repository Actions secret A9_HISTORY_IMPORT_TOKEN after verification",
     "Source and destination historical workflow action safety must remain controlled",
     "Drive and Slack original resources/permissions are NOT part of Git import",
     "Do not trim the Communication repository or enable Resource Library Pages until further provider and client-route QA",
-    "Do not modify A7 canonical identities without separate governed authorization"
+    "Do not modify A7 canonical identities without separate governed authorization",
+    "Owner elected to retain existing PAT and repository Actions secret for separate work; no credential changes made in Phase 2.",
+    "Source Issue #8: PRJ-000029 / REB-002 has is_public=FALSE; no new public publication without a separately reviewed current authorization.",
+    "Provider URLs indexed only: source remains the authority for 4 issues, 21 PR discussions, 4 releases and 1,915 Actions runs; do not silently replay them."
   ],
-  "next": "Inventory GitHub provider resources and external Drive/Slack link authority; design independent Resource Library web/Pages migration; verify legacy client routes, then assess governed trimming. Do not rerun history import or force-push.",
+  "next": "Phase 2 provider pointers indexed under same live ID. Next: build a permission-gated Resource Library catalogue preview and source-driven client navigation, while preserving Communication & Web and Drive authority; no publication until reviewed.",
   "validation": "2026-11-08: artifact run 42467944701 status IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE; independent destination/source GitHub ref comparisons 47/47 branches and 4/4 tags exact, zero unknown; annotated tag object SHAs retained; working branch present; 4 representative commit trees and parents verified; original destination commit ancestor of destination main; pinned 448-file snapshot retained without mutation.",
   "original_snapshot_status": "SOURCE_FILE_SNAPSHOT_VERIFIED__HISTORY_NOT_MIGRATED",
   "last_reconciled_npt": "2026-11-08",
@@ -482,5 +487,27 @@
     "remaining_scope": "GitHub provider metadata and external Drive/Slack/Pages QA separately outstanding"
   },
   "phase1_code_history_preservation": "VERIFIED",
-  "overall_migration_complete": false
+  "overall_migration_complete": false,
+  "phase2_provider_inventory": {
+    "snapshot_id": "A9-RLIB-PROVIDER-20261108-0001",
+    "as_of_npt": "2026-11-08",
+    "metadata_path": "migration/provider-snapshots/20261108/source-provider-metadata.v1.json",
+    "readme_path": "migration/provider-snapshots/20261108/README.md",
+    "unique_actions_run_count": 1915,
+    "source_issues": 4,
+    "source_pull_requests": 21,
+    "source_releases": 4,
+    "source_release_assets": 0,
+    "source_pr_head_git_commits_verified_reachable": 21,
+    "source_provider_objects_recreated": false,
+    "actions_run_jobs_logs_artifacts_migrated": false,
+    "public_gateway_enabled": false,
+    "source_old_pages_preserved": true,
+    "client_privacy_hold": "PRJ-000029_REB-002_SOURCE_ISSUE_8__PUBLIC_ADMISSION_HOLD",
+    "permissions_settings_complete": false,
+    "owner_pat_management": "NO_ACTION__USER_RETAINS_FOR_OTHER_PURPOSES",
+    "archive_pre": "archive/snapshot/000007_PRE_provider_resource_inventory_20261108",
+    "qa_workflow": ".github/workflows/a9-provider-inventory-qa.yml",
+    "next": "Develop gated Resource Library catalogue and client document navigation; preserve original source URLs and Google Drive authority."
+  }
 }
