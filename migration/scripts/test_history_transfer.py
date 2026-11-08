@@ -90,6 +90,14 @@ class ImportPlanTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             MODULE.build_import_plan(manifest, branches, tags, {})
 
+    def test_workflow_uses_main_only_and_owner_secret(self):
+        workflow = (SCRIPT.parents[2] / ".github/workflows/a9-history-transfer.yml").read_text(encoding="utf-8")
+        self.assertIn("if: github.ref == 'refs/heads/main'", workflow)
+        self.assertIn("secrets.A9_HISTORY_IMPORT_TOKEN", workflow)
+        self.assertIn("contents: read", workflow)
+        self.assertNotIn("contents: write", workflow)
+        self.assertIn("persist-credentials: false", workflow)
+
     def test_audit_does_not_need_import_credential(self):
         with patch.dict("os.environ", {"HISTORY_WRITE_TOKEN": "", "GITHUB_TOKEN": "actions-token"}):
             self.assertEqual(MODULE.import_credential("audit"), "")
