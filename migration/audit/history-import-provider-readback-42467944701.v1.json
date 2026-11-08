@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "A9-RLIB-MIG-000001",
+  "receipt_id": "A9-RLIB-MIG-000001-POST-HISTORY-20261108",
+  "record_type": "historical_git_import_provider_qa_receipt",
+  "observed_on_npt": "2026-11-08",
+  "source": {
+    "repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
+    "main": "4eb68c004fbe8d19b83bf3b17327c853debef58a",
+    "tree": "801df26e061ef20f747f245ce62271e463b7056d",
+    "branch_count": 47,
+    "tag_count": 4,
+    "working_branch": "feature/daily-ops-current-work",
+    "working_branch_sha": "5db971b290a7ce64ce9d39bc418d25ccad050f3b"
+  },
+  "destination": {
+    "repository": "FabinGurung/JP_Field_and_Desk_Resource_Library",
+    "original_initial_commit": "336a274c2660998041aad506a32b76d03e194e3f",
+    "main_sha_at_import": "f7e9d438d2e8aac003143a44c3a6c53d74bb3305",
+    "staging_branch": "migration/phase1_communication_source_20261107",
+    "staging_sha": "018dd5903afcfad0e00a5cc37cefbbe2d399ea10",
+    "staging_is_frozen": true,
+    "original_readme_archive": "99_VERSION_ARCHIVE/migration/000001_PRE_DESTINATION_README.md",
+    "file_snapshot_sha": "187584b3a552aaa63a9e278448ae2969f329a067",
+    "snapshot_448_source_file_sha_mode_size_verified": true
+  },
+  "workflow": {
+    "run_id": 42467944701,
+    "run_url": "https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/runs/42467944701",
+    "source_commit": "f7e9d438d2e8aac003143a44c3a6c53d74bb3305",
+    "mode": "import",
+    "status": "IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE",
+    "conclusion": "success",
+    "artifact_id": 13612640868,
+    "zip_sha256": "5790cbc1d6c9364834df469e900769d1b530d7d26faa40bf5c9ddb6d2b79c42b",
+    "json_sha256": "01ecccb837c5e7c95cac11c4ba26ac5085d46e658009219a0faedfb3c28ba5be",
+    "matched_existing_refs": 1,
+    "refs_created_this_run": 50,
+    "unique_blobs_pattern_scanned": 1408,
+    "scan_findings": 0,
+    "git_fsck_full_passed": true
+  },
+  "independent_provider_checks": {
+    "branches_actual": 47,
+    "branches_expected": 47,
+    "tags_actual": 4,
+    "tags_expected": 4,
+    "source_branches_SHA_differences": 0,
+    "source_tags_SHA_differences": 0,
+    "destination_branch_SHA_differences": 0,
+    "destination_tag_SHA_differences": 0,
+    "unknown_import_refs": 0,
+    "annotated_tag_objects_preserved": 2,
+    "source_working_branch_verified": true,
+    "representative_commit_tree_and_parent_pair_checks": 4,
+    "representative_commit_tree_and_parent_mismatches": 0,
+    "original_destination_initial_commit_ancestral_to_main": true,
+    "source_main_unchanged": true,
+    "stage_sha_unchanged": true,
+    "imported_actions_workflows_not_in_main": true
+  },
+  "archive": {
+    "pre_snapshot": "archive/snapshot/000006_PRE_history_import_closeout_20261108",
+    "pre_sha": "f7e9d438d2e8aac003143a44c3a6c53d74bb3305",
+    "post_snapshot": "archive/snapshot/000006_POST_history_import_closeout_20261108",
+    "post_sha": "PENDING_POST_MERGE_READBACK"
+  },
+  "scope_boundary": {
+    "git_history_transfer": "PASS",
+    "git_provider_metadata": "NOT_MIGRATED",
+    "historical_privacy_certification": "NOT_CLAIMED_PATTERN_SCAN_ONLY",
+    "github_pages_resource_library": "NOT_PUBLISHED",
+    "google_drive_originals": "UNTOUCHED",
+    "old_communication_website": "NOT_INTENTIONALLY_CHANGED",
+    "a7_authorities": "UNCHANGED",
+    "temporary_credential_revoke_and_delete": "OWNER_ACTION_REQUIRED"
+  },
+  "status": "GIT_HISTORY_PRESERVATION_VERIFIED__DOWNSTREAM_PROVIDER_AND_WEBSITE_HOLD",
+  "phase1_code_history_complete": true,
+  "overall_migration_complete": false,
+  "next": "Revoke temporary PAT/remove Actions secret; separately inventory GitHub provider objects; retain old Pages client routes; implement new Resource Library via governed versions, CI and deployment."
+}
