@@ -18,7 +18,7 @@ async function qa() {
     await page.locator(".project-card").first().click();
     assert.equal(await page.locator(".resource-line").count(),1);
     await page.locator(".resource-line").first().click();
-    assert.match(await page.locator("#record-detail").innerText(),/Source register/);
+    assert.match(await page.locator("#record-detail").innerText(),/SOURCE REGISTER/i);
     assert.equal(await page.locator("#record-detail .source-button").count(),1);
     assert.ok((await page.url()).includes("project=PRJ-000001"));
     await page.locator("#breadcrumbs button").first().click();
