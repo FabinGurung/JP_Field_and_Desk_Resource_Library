@@ -1,15 +1,22 @@
-# JP Field & Desk Resource Library
+# A9 · Field & Desk Operations Library
 
-The public catalogue for Field resources, Desk resources and project document registers. The Project Resources workbook owns the catalogue and packet data. Google Drive controls access to the original documents.
+**Human-facing name:** Field & Desk Operations Library. The GitHub repository slug remains unchanged to preserve existing browser links, workflows, and A7 identity.
 
-- [Open the live Library](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/)
-- [Open the publishing workflow](https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/workflows/resource-library-pages.yml)
-- [Read the source, edit and publication guide](site/README.md)
-- [Open the separate Operations site](https://fabingurung.github.io/JP_Communication-Command-Centre-and-Resource-Hub/)
+[Company-first Pages directory](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/) · [Source custody](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/operations.html) · [How to edit](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/editing.html)
 
-## Operations & custody
+## Purpose
+A reviewed public-safe directory arranged by **Company → Project → Resource category → Original Drive record**. The existing Project Resources LIVE workbook owns catalogue rows. GitHub owns the grouping generator, source-consistency checks, site UI, tests, release notes, and publication pipeline. The original Google Drive files and their permissions remain authoritative.
 
-- [Open Operations & Source Custody](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/operations.html)
-- [Source ownership and publication contract](docs/operations/source-ownership.md)
+**Not live:** Worker-level payroll, attendance, advances and private Money & Goods. They retain their original restricted authorities. The resource custody page is a dated static classification, not a worker dataset.
 
-The new operations view is a **public-safe dated classification**, not live private payroll integration. Original Fishtail wage, attendance, worker Money & Goods and version histories remain in Drive. No independently authenticated payroll read from this repository is claimed.
+## Operate and verify
+- [Pages source map and version-control contract](docs/governance/PAGES_SOURCE_MATRIX.md)
+- [Original owner workbook](https://docs.google.com/spreadsheets/d/1e019Jac4lDveZ2glXMph4RLHivqPFEachbcNi-R1DZk/edit)
+- [Google Sheets to Pages publisher workflow](.github/workflows/resource-library-pages.yml)
+- [Releases and rollback points](https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/releases)
+- [Existing project PDF viewer](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/resources/project-documents.html)
+
+Preserve original names, archival history and ID lineage. A7 cross-system memory and authority live in the A7 semantic registry, not as a duplicate source copy here.
+
+## Prior release
+The former v1.1.0 source and original history remain in Git. Earlier handover text can be found in the prior commit rather than a separate cloned website.

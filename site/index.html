@@ -1,106 +1,43 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Field & Desk Resource Library</title>
-  <meta name="description" content="Search reviewed field, desk and project resources.">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div class="brand" aria-label="A9 Resource Library">
-        <span class="brand-mark" aria-hidden="true">R</span>
-        <div><strong>Field & Desk</strong><span>Resource Library · A9</span></div>
-      </div>
-      <nav aria-label="Primary navigation">
-        <a href="#field">Field</a>
-        <a href="#desk">Desk</a>
-        <a href="#projects">Projects</a>
-        <a href="#governance">Source & QA</a><a href="./operations.html">Operations & Custody</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <p class="eyebrow">A7 / A9 · GOVERNED CONSTRUCTION KNOWLEDGE</p>
-        <h1 id="hero-title">Field &amp; Desk Resource Library</h1>
-        <p class="lede">Find reviewed site drawings, technical references and project documents; inspect how operational sources are governed.</p>
-        <div class="hero-actions"><a class="primary-link" href="#browse">Explore categories</a><a class="secondary-link" href="#governance">How source approval works</a></div>
-      </div>
-      <aside class="hero-panel" aria-label="Publication status">
-        <p class="panel-label">PUBLICATION STATUS</p>
-        <p class="panel-title">Source and access</p>
-        <p>Reviewed document listings refresh from the Project Resources workbook. Drive controls originals. Private payroll and attendance are not synchronized here.</p>
-        <dl><div><dt>Source originals</dt><dd>Google Drive</dd></div><div><dt>Stable identities</dt><dd>A7 / owner registers</dd></div><div><dt>Public listings</dt><dd>Reviewed individually</dd></div></dl>
-      </aside>
-    </section>
-
-    <section id="browse" class="content-section" aria-labelledby="browse-heading">
-      <div class="section-heading"><div><p class="eyebrow">DIRECTORIES</p><h2 id="browse-heading">Browse the library</h2></div><span class="edition">Sheets catalogue</span></div>
-      <div class="category-grid">
-        <article id="field" class="category-card">
-          <span class="category-index">01 / FIELD</span><h3>Field Resources</h3>
-          <p>Site execution references, drawing access, checklists, and inspection records.</p>
-          <span class="category-state">Browse resources</span>
-        </article>
-        <article id="desk" class="category-card">
-          <span class="category-index">02 / DESK</span><h3>Desk Resources</h3>
-          <p>Templates, agreements, material standards, calculation references, and working documents.</p>
-          <span class="category-state">Browse resources</span>
-        </article>
-        <article id="projects" class="category-card">
-          <span class="category-index">03 / PROJECTS</span><h3>Project Documents</h3>
-          <p>Version-aware project registers and authorized links to original documents.</p>
-          <span class="category-state">Open project document registers</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section search-section" aria-labelledby="search-heading">
-      <div class="section-heading"><div><p class="eyebrow">SOURCE-LED INDEX</p><h2 id="search-heading">Find reviewed entries</h2></div></div>
-      <div class="search-controls">
-        <div class="search-field"><label for="catalog-search">Search by a published name or reference</label><input id="catalog-search" type="search" placeholder="Search the public catalogue…" autocomplete="off"></div>
-        <div class="search-field"><label for="sort-order">Sort by</label><select id="sort-order"><option value="priority">Document priority</option><option value="title">Title A–Z</option><option value="project">Project A–Z</option></select></div>
-        <div class="category-filters" role="group" aria-label="Resource type">
-          <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="field" aria-pressed="false">Field</button>
-          <button type="button" data-filter="desk" aria-pressed="false">Desk</button>
-          <button type="button" data-filter="projects" aria-pressed="false">Projects</button>
-        </div>
-      </div>
-      <p class="catalog-count" id="catalog-count" aria-live="polite">Loading the published catalogue…</p>
-      <div id="catalog-results" class="catalog-results" aria-live="polite">
-        <div class="empty-state">
-          <h3>Loading the catalogue</h3>
-          <p>The catalogue lists reviewed links.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="governance" class="content-section governance-section" aria-labelledby="governance-heading">
-      <p class="eyebrow">HOW THIS LIBRARY IS GOVERNED</p><h2 id="governance-heading">One source of truth for every document.</h2>
-      <div class="governance-grid">
-        <div><strong>01 · Original files</strong><p>Google Drive retains original bytes, revisions and sharing permissions.</p></div>
-        <div><strong>02 · Relationships</strong><p>Stable project and document identifiers follow A7/A9 source-owner registers.</p></div>
-        <div><strong>03 · Presentation</strong><p>GitHub displays only explicitly reviewed resource links and derived metadata.</p></div>
-        <div><strong>04 · Verification</strong><p>Publication eligibility, client permissions and engineering approvals are independent gates.</p></div>
-      </div>
-      <p class="source-caption">Project Map, Notification Center and Progress Report are available in the <a href="https://fabingurung.github.io/JP_Communication-Command-Centre-and-Resource-Hub/">Communication &amp; Web hub</a>.</p>
-    </section>
-    <section class="content-section" aria-labelledby="operations-heading">
-      <div class="section-heading"><div><p class="eyebrow">OPERATIONAL AUTHORITY</p><h2 id="operations-heading">Separate the source from the report.</h2></div></div>
-      <p>Review workforce, payment, field resource and desk reference ownership without exposing employee records.</p>
-      <p><a class="primary-link" href="./operations.html" style="display:inline-block;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700">Open Operations &amp; Source Custody</a></p>
-    </section>
-  </main>
-  <footer class="site-footer"><span>Field & Desk Resource Library · A9</span><span>Original files served by Google Drive</span></footer>
-  <noscript><p class="noscript-note">JavaScript is disabled. The preview and source-authority information remain available, but catalogue searching is unavailable.</p></noscript>
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="description" content="A9 company-first directory of reviewed field and desk resources, project files, source custody and editing instructions.">
+<title>A9 · Field &amp; Desk Operations Library</title><link rel="stylesheet" href="./styles.css"><script defer src="./app.js"></script>
+</head><body>
+<a class="skip" href="#main">Skip to library</a>
+<header class="north" id="north"><a class="brand" href="./" aria-label="A9 Field and Desk Operations Library">
+  <span class="brand-icon" aria-hidden="true">A9</span><span><strong>Field &amp; Desk</strong><small>Operations Library</small></span>
+</a><nav aria-label="Global navigation"><a aria-current="page" href="./">Directory</a><a href="./operations.html">Source custody</a><a href="./editing.html">How to edit</a></nav></header>
+<div class="layout">
+<aside class="west" id="west" aria-label="Company navigation">
+  <p class="eyebrow">WEST · ORGANIZATIONS</p><h2>Companies</h2>
+  <div id="company-nav" class="company-nav"><p class="soft">Loading organizations…</p></div>
+  <div class="west-foot"><strong>Find by source owner</strong><p>Company names are taken from reviewed project registers. An unassigned project remains flagged rather than guessed.</p>
+  <a href="./operations.html">Other operational sources</a></div>
+</aside>
+<main id="main" class="centre">
+  <section class="intro"><div><p class="eyebrow">CENTRE · COMPANY → PROJECT → RESOURCE</p>
+    <h1>Find the right project file, without the folder maze.</h1>
+    <p>Select a company, open its project, and browse drawings, models, reports, calculations and original source folders.</p>
+  </div><div class="intro-metrics"><span><strong id="metric-companies">—</strong><small>Company groups</small></span><span><strong id="metric-projects">—</strong><small>Projects</small></span><span><strong id="metric-records">—</strong><small>Resource references</small></span></div></section>
+  <div class="toolbar"><label for="library-search">Search this directory</label><div class="search-line">
+    <input id="library-search" type="search" placeholder="Company, project, file or discipline…" autocomplete="off">
+    <button type="button" id="clear-search">Clear</button>
+  </div><p id="site-status" class="status-line" role="status" aria-live="polite">Reading the published index…</p></div>
+  <div id="breadcrumbs" class="breadcrumbs" aria-label="Current location"></div>
+  <div id="workspace" class="workspace"><p class="empty">Loading reviewed resource directories…</p></div>
+  <section class="source-note"><p class="eyebrow">VERIFY BEFORE USING</p>
+    <h2>Published listing ≠ approved drawing or unrestricted file.</h2>
+    <p>Google Drive continues to enforce permissions on each original. A source readback row is owner-maintained evidence, not a fresh independent Drive metadata read. Engineering acceptance, signatures and issued revisions must be checked at the original source.</p>
+  </section>
+</main>
+<aside class="east" id="east" aria-label="Selected resource details">
+  <p class="eyebrow">EAST · RECORD PROVENANCE</p><h2>Source details</h2>
+  <div id="record-detail"><p class="soft">Choose a resource to see its document type, origin, recorded access status, source check date and original Drive link.</p></div>
+  <div class="east-footer"><strong>Where do edits happen?</strong><p>The live register owns display names and publication flags. The original document itself must be edited in its existing Google Drive location.</p><a href="./editing.html">Open editing guide</a></div>
+</aside>
+</div>
+<footer class="south" id="south"><div><p class="eyebrow">SOUTH · PROVENANCE / HISTORY</p><strong>A7 source discipline</strong><p>Drive preserves originals · GitHub versions the publisher · Actions tests and publishes · Pages is the public-safe window, never the source of truth.</p></div>
+<div class="foot-links"><a href="./editing.html">Sources &amp; edits</a><a href="https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/workflows/resource-library-pages.yml">Build history</a><a href="https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/releases">Releases</a><a href="https://fabingurung.github.io/JP_A7_System_Registry_and_Knowledge_Graph/memory-wall.html#platform-role-board">A7 memory wall</a></div></footer>
+<noscript><p class="empty">JavaScript is needed for the searchable company directory. See the editing guide for the authoritative register.</p></noscript>
+</body></html>

@@ -1,25 +1,23 @@
-name: Resource Library from Google Sheets
+name: A9 Field & Desk — Company Directory Publisher
 on:
   pull_request:
     paths:
       - 'site/**'
-      - 'docs/releases/v1.1.0.md'
-      - 'scripts/publish_library.py'
-      - 'scripts/sheets_read.py'
-      - 'scripts/test_library_publication.py'
-      - 'scripts/test_source_custody.py'
+      - 'scripts/**'
+      - 'docs/releases/v1.2.0.md'
+      - 'docs/governance/**'
       - 'docs/operations/**'
+      - 'README.md'
       - '.github/workflows/resource-library-pages.yml'
   push:
     branches: [main]
     paths:
       - 'site/**'
-      - 'docs/releases/v1.1.0.md'
-      - 'scripts/publish_library.py'
-      - 'scripts/sheets_read.py'
-      - 'scripts/test_library_publication.py'
-      - 'scripts/test_source_custody.py'
+      - 'scripts/**'
+      - 'docs/releases/v1.2.0.md'
+      - 'docs/governance/**'
       - 'docs/operations/**'
+      - 'README.md'
       - '.github/workflows/resource-library-pages.yml'
   schedule:
     - cron: '37 * * * *'
@@ -32,9 +30,8 @@ on:
 
 permissions:
   contents: read
-
 concurrency:
-  group: library-sheets-pages-${{ github.ref }}
+  group: a9-field-desk-pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -47,12 +44,54 @@ jobs:
           persist-credentials: false
       - run: node --check site/app.js
       - run: node --check site/operations.js
-      - run: python -m unittest discover -s scripts -p 'test_source_custody.py' -v
-      - run: python -m unittest discover -s scripts -p 'test_library_publication.py' -v
+      - run: node --check scripts/browser_qa.cjs
+      - run: python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Validate synthetic public artifact
+        run: |
+          python scripts/build_browser_fixture.py _preview
+          python scripts/validate_public_artifact.py --site _preview
+
+  browser-qa:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Render synthetic, no-credentials browser site
+        run: python scripts/build_browser_fixture.py _preview
+      - name: Chromium desktop and mobile navigation / links / overflow QA
+        run: |
+          set -euo pipefail
+          python -m http.server 8765 --directory _preview >/tmp/fielddesk-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:8765/catalog.json -o /dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/browser_qa.cjs
 
   project:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && (github.event_name == 'workflow_dispatch' || vars.JP_GOOGLE_WORKLOAD_IDENTITY_PROVIDER != '')
-    needs: test
+    if: >-
+      always() &&
+      github.ref == 'refs/heads/main' &&
+      github.event_name != 'pull_request' &&
+      needs.test.result == 'success' &&
+      (needs['browser-qa'].result == 'success' || (github.event_name == 'schedule' && needs['browser-qa'].result == 'skipped')) &&
+      (github.event_name == 'workflow_dispatch' || vars.JP_GOOGLE_WORKLOAD_IDENTITY_PROVIDER != '')
+    needs: [test, browser-qa]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -62,13 +101,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Check Google configuration
+      - name: Check existing Google WIF variables
         env:
           WIF_PROVIDER: ${{ vars.JP_GOOGLE_WORKLOAD_IDENTITY_PROVIDER }}
           SERVICE_ACCOUNT: ${{ vars.JP_GOOGLE_SERVICE_ACCOUNT }}
         run: |
           if [ -z "$WIF_PROVIDER" ] || [ -z "$SERVICE_ACCOUNT" ]; then
-            echo "::error::Configure the repository's Google Workload Identity provider and service account variables."
+            echo "::error::Existing Google WIF provider and service-account variables are required."
             exit 1
           fi
       - uses: google-github-actions/auth@v3
@@ -80,16 +119,18 @@ jobs:
           access_token_scopes: https://www.googleapis.com/auth/spreadsheets.readonly
           create_credentials_file: false
           export_environment_variables: false
-      - name: Read Sheets and build public files
+      - name: Read authoritative Google Sheet and build reviewed directory
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: python scripts/publish_library.py --output _site
+      - name: Check published counts, origins, URLs, exclusions and access notes
+        run: python scripts/validate_public_artifact.py --site _site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
   deploy:
-    if: (github.event_name != 'workflow_dispatch' || inputs.publish)
+    if: github.event_name != 'workflow_dispatch' || inputs.publish
     needs: project
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -109,7 +150,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: deploy
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 6
     permissions:
       contents: write
     steps:
@@ -117,25 +158,25 @@ jobs:
         with:
           fetch-depth: 2
           persist-credentials: false
-      - name: Verify and publish the cutover milestone
+      - name: Verify actual Pages code and publish v1.2.0
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/v1.1.0.md'
-          tag='v1.1.0'
+          notes='docs/releases/v1.2.0.md'
+          tag='v1.2.0'
           if git diff --quiet HEAD^ HEAD -- "$notes"; then
             exit 0
           fi
           pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
-          curl -fsS --retry 4 --retry-delay 3 --retry-all-errors "$pages/app.js?release=$GITHUB_SHA" | cmp - 'site/app.js'
-          curl -fsS --retry 4 --retry-delay 3 --retry-all-errors "$pages/operations.html?release=$GITHUB_SHA" | cmp - 'site/operations.html'
-          refs="$(git ls-remote origin "refs/tags/$tag" "refs/tags/$tag^{}")"
-          if [ -n "$refs" ]; then
-            test "$(printf '%s\n' "$refs" | tail -n 1 | cut -f1)" = "$GITHUB_SHA"
+          for file in index.html app.js editing.html; do
+            curl -fsS --retry 5 --retry-delay 3 --retry-all-errors "$pages/$file?release=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 5 --retry-delay 3 --retry-all-errors "$pages/catalog.json?release=$GITHUB_SHA" > /tmp/catalog-live.json
+          python -c 'import json; j=json.load(open("/tmp/catalog-live.json")); assert j["schema_version"]=="2.0.0" and len(j["companies"])>=1 and j["source_manifest"]["private_payroll_connected"] is False'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            exit 0
           fi
-          if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --title 'Field & Desk Operations Resource Library v1.1.0' --notes-file "$notes"
-          fi
+          gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title 'A9 Field & Desk Operations Library v1.2.0 — Company-first Directory' --notes-file "$notes"
