@@ -15,3 +15,9 @@ This repository owns Field Resources, Desk Resources and the A/B/C client docume
 3. Run [Resource Library from Google Sheets](https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/actions/workflows/resource-library-pages.yml) on main with **publish** selected. Check the catalogue and the `PRJ-000029` portal on the returned Pages URL. Check both languages and access as a permitted client. Scheduled refreshes run hourly once enabled.
 
 The original Basanti public landing page listed six PDFs for review. Its corresponding six links are re-used; Drive enforces the same named-user access. The worksheet authorization publishes the listing and has no effect on contract execution, material acceptance or drawing approval.
+
+## Operations ownership (v1.1.0)
+
+The [Operations & Source Custody](operations.html) page reads a static, privacy-reviewed [public snapshot](source-custody.json). It separates original wage authority, M01–M03 locked analytic baselines, worker Money & Goods rollout, historical conversions and field/desk intake. No worker-specific records are served. See [source ownership policy](../docs/operations/source-ownership.md).
+
+The publisher's Drive identity/readback test checks owner-entered rows in the existing Project Resources workbook. It **does not** perform a fresh authenticated Drive metadata query for every document original. Readback timestamps older than 30 days now prevent publication; private payroll source-specific WIF access remains unverified and disabled.

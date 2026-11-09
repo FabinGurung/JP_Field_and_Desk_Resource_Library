@@ -40,6 +40,10 @@ class LibraryPublicationTest(unittest.TestCase):
             packet = json.loads((out / "document-packets.json").read_text())
             self.assertEqual(packet["documents"][0]["access"], "DRIVE_PERMISSION_REQUIRED")
             self.assertFalse((out / "catalog/public-index.v0.1.json").exists())
+            self.assertTrue((out / "operations.html").exists())
+            self.assertTrue((out / "source-custody.json").exists())
+            with self.assertRaisesRegex(ValueError, "Stale Drive owner readback"):
+                build(tables, out, "2026-12-20T12:00:00+05:45")
             tables["packets"][1][6] = "changed_file_id_123456"
             with self.assertRaisesRegex(ValueError, "matching Drive readback"):
                 build(tables, out, "test")
