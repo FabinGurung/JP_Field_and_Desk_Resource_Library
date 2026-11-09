@@ -20,7 +20,7 @@ function render() {
   if (sort.value !== "priority") {
     displayed.sort((a, b) => a[sort.value].localeCompare(b[sort.value]));
   }
-  byId("catalog-count").textContent = displayed.length + " records" +
+  byId("catalog-count").textContent = displayed.length + (displayed.length === 1 ? " record" : " records") +
     (refreshed ? " · Sheets readback " + refreshed : "");
   const cards = displayed.map(entry => {
     const card = node("article", "", "result-card");
