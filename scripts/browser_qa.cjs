@@ -31,7 +31,7 @@ async function qa() {
     assert.match(await page.locator("main").innerText(),/project_resources/);
     assert.equal(await page.locator("a[href*='gid=8000011']").count() > 0,true);
     await page.goto(ROOT + "/operations.html", {waitUntil:"domcontentloaded"});
-    await page.locator("#source-results .source-card").first().waitFor();
+    await page.locator("#sources .record").first().waitFor();
 
     const mobile = await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
     mobile.on("pageerror", error => errors.push(error.message));
