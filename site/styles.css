@@ -94,3 +94,5 @@ h3 {font-size:1.26rem;line-height:1.2;letter-spacing:-.02em;margin:12px 0}
   .site-footer {padding:24px 18px}
 }
 @media(prefers-reduced-motion:reduce) {html {scroll-behavior:auto}.hero-actions a {transition:none}}
+
+.search-field select{width:100%;padding:13px 16px;border:1px solid #b7c8bc;border-radius:10px;font:inherit;color:var(--ink);background:#fff}
