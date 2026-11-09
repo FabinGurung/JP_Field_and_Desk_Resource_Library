@@ -3,19 +3,23 @@ on:
   pull_request:
     paths:
       - 'site/**'
-      - 'docs/releases/v1.0.0.md'
+      - 'docs/releases/v1.1.0.md'
       - 'scripts/publish_library.py'
       - 'scripts/sheets_read.py'
       - 'scripts/test_library_publication.py'
+      - 'scripts/test_source_custody.py'
+      - 'docs/operations/**'
       - '.github/workflows/resource-library-pages.yml'
   push:
     branches: [main]
     paths:
       - 'site/**'
-      - 'docs/releases/v1.0.0.md'
+      - 'docs/releases/v1.1.0.md'
       - 'scripts/publish_library.py'
       - 'scripts/sheets_read.py'
       - 'scripts/test_library_publication.py'
+      - 'scripts/test_source_custody.py'
+      - 'docs/operations/**'
       - '.github/workflows/resource-library-pages.yml'
   schedule:
     - cron: '37 * * * *'
@@ -42,6 +46,8 @@ jobs:
         with:
           persist-credentials: false
       - run: node --check site/app.js
+      - run: node --check site/operations.js
+      - run: python -m unittest discover -s scripts -p 'test_source_custody.py' -v
       - run: python -m unittest discover -s scripts -p 'test_library_publication.py' -v
 
   project:
@@ -117,18 +123,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/v1.0.0.md'
-          tag='v1.0.0'
+          notes='docs/releases/v1.1.0.md'
+          tag='v1.1.0'
           if git diff --quiet HEAD^ HEAD -- "$notes"; then
             exit 0
           fi
           pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
           curl -fsS --retry 4 --retry-delay 3 --retry-all-errors "$pages/app.js?release=$GITHUB_SHA" | cmp - 'site/app.js'
+          curl -fsS --retry 4 --retry-delay 3 --retry-all-errors "$pages/operations.html?release=$GITHUB_SHA" | cmp - 'site/operations.html'
           refs="$(git ls-remote origin "refs/tags/$tag" "refs/tags/$tag^{}")"
           if [ -n "$refs" ]; then
             test "$(printf '%s\n' "$refs" | tail -n 1 | cut -f1)" = "$GITHUB_SHA"
           fi
           if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --title 'Field and Desk Resource Library v1.0.0' --notes-file "$notes"
+              --title 'Field & Desk Operations Resource Library v1.1.0' --notes-file "$notes"
           fi

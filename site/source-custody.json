@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.1.0",
+  "as_of_npt": "2026-11-09",
+  "scope": "PUBLIC_SAFE_SOURCE_CUSTODY",
+  "live_worker_sync": false,
+  "authenticated_private_payroll_reads": false,
+  "description": "Ownership classifications only. Not a live payroll, attendance or worker payments feed.",
+  "subjects": [
+    {
+      "id": "documents",
+      "group": "desk",
+      "name": "Reviewed field & desk documents",
+      "status": "PUBLISHED_CATALOGUE",
+      "authority": "Project Resources existing live workbook",
+      "custody": "Edited in the existing Google Sheet; original files and permissions remain in Drive.",
+      "integration": "Approved source-readback rows publish the document index; the external source file metadata is not independently re-fetched in this workflow.",
+      "limit": "A public link does not certify drawing approval or give access to a restricted original."
+    },
+    {
+      "id": "payroll",
+      "group": "labour",
+      "name": "Fishtail manpower, wages & attendance",
+      "status": "RESTRICTED_NOT_CONNECTED",
+      "authority": "Immutable original Wage List 11 workbook; independently scoped M01, M02 and M03 locked baselines",
+      "custody": "Retain permanent original identities and M01/M02/M03 evidence, rules and manifests.",
+      "integration": "No live, authenticated GitHub Actions read of this private source has been established.",
+      "limit": "Locked analytical reports are not live operational payroll records."
+    },
+    {
+      "id": "worker-ledgers",
+      "group": "labour",
+      "name": "Worker Money & Goods",
+      "status": "ROLLOUT_UNVERIFIED",
+      "authority": "Existing per-worker Google Sheets with separate prototype and historical backups",
+      "custody": "Preserve original IDs, workbook tabs, sharing and transaction history. Never mirror as editable payroll.",
+      "integration": "Private, per-source permission and reconciliation needed before any aggregate use.",
+      "limit": "The source authority register says the 21-worker operational rollout is not verified as final."
+    },
+    {
+      "id": "conversions",
+      "group": "labour",
+      "name": "Wage List 11 cleaning & conversion",
+      "status": "DERIVED_REFERENCE",
+      "authority": "Original Fishtail Wage List 11 remains governing source; conversions are historic derivatives.",
+      "custody": "Keep clean attendance, work, wage and payment conversions with their preparation history.",
+      "integration": "Quality review and historical lineage only.",
+      "limit": "A cleaned conversion does not replace the original or establish current worker attendance."
+    },
+    {
+      "id": "tools",
+      "group": "field",
+      "name": "Tools, equipment & material registers",
+      "status": "INTAKE_PENDING",
+      "authority": "To be confirmed by each approved field and project owner",
+      "custody": "Stable resource/project IDs, observed quantity, revision, custodian, location and approval.",
+      "integration": "Send only approved non-personal aggregates into scheduling and estimation.",
+      "limit": "No verified live field inventory or tool assignment source is connected."
+    },
+    {
+      "id": "procedures",
+      "group": "desk",
+      "name": "Site forms, evidence, checklists & manuals",
+      "status": "INTAKE_PENDING",
+      "authority": "Original issued site/desk reference and captured evidence",
+      "custody": "Track issue/revision date, owner, source and approval separately.",
+      "integration": "Publish only permitted references and links; original record stays with its issuer.",
+      "limit": "A file link is not proof of signed inspection or completed work."
+    }
+  ],
+  "consumers": [
+    {
+      "system": "Cost Estimation",
+      "policy": "Validated aggregate labour costs and materials; never source employee attendance or individual advances."
+    },
+    {
+      "system": "Scheduling and Resources",
+      "policy": "Approved workforce capacity and productivity inputs, dated and source-attributed."
+    },
+    {
+      "system": "Communication, Map and Progress",
+      "policy": "Approved project/day progress and resource summaries, not worker payment ledgers."
+    }
+  ]
+}

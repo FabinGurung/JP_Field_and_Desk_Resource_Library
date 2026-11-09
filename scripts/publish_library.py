@@ -4,6 +4,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from datetime import date, datetime
 from urllib.parse import urlsplit
 
 from sheets_read import ROOT, load_tables, records
@@ -15,10 +16,11 @@ SOURCES = {
 }
 ACCESS_MODES = {"PUBLIC_LINK", "DRIVE_PERMISSION_REQUIRED"}
 ADMISSION = {"LEGACY_PUBLIC_ROUTE", "OWNER_REVIEWED_PUBLIC_LINK"}
-SITE_FILES = ("index.html", "app.js", "styles.css", "resources/project-documents.html")
+SITE_FILES = ("index.html", "app.js", "styles.css", "resources/project-documents.html",
+              "operations.html", "operations.css", "operations.js", "source-custody.json")
 
 
-def checked_source(row, key, receipt):
+def checked_source(row, key, receipt, publication_day=None):
     file_id = row["drive_file_id"] if key == "document_id" else row["source_drive_file_id"]
     if not re.fullmatch(r"[A-Za-z0-9_-]{15,100}", file_id):
         raise ValueError("Invalid Drive file ID")
@@ -28,10 +30,22 @@ def checked_source(row, key, receipt):
     if (source["access_mode"] not in ACCESS_MODES or source["admission_basis"] not in ADMISSION
             or not source["modified_at"] or not source["checked_on"]):
         raise ValueError("Incomplete Drive readback")
+    # The owner-entered receipt is not a fresh authenticated Drive file read.
+    try:
+        observed = date.fromisoformat(str(source["checked_on"])[:10])
+        datetime.fromisoformat(str(source["modified_at"]).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        raise ValueError("Malformed Drive source readback timestamp") from None
+    if publication_day is not None and not (0 <= (publication_day - observed).days <= 30):
+        raise ValueError("Stale Drive owner readback; review required")
     return source
 
 
 def build(tables, out, received_at):
+    try:
+        publication_day = datetime.fromisoformat(received_at).date()
+    except (TypeError, ValueError):
+        publication_day = None
     receipts = {r["record_id"]: r for r in records(tables["readback"], "record_id",
         "drive_file_id", "mime_type", "modified_at", "access_mode", "checked_on", "admission_basis")}
     resources = []
@@ -42,7 +56,7 @@ def build(tables, out, received_at):
                        "display_name", "category", "format", "sort_priority", "approval_status"):
         if row["publish"].upper() != "TRUE":
             continue
-        s = checked_source(row, "resource_id", receipts)
+        s = checked_source(row, "resource_id", receipts, publication_day)
         file_id = s["drive_file_id"]
         parsed = urlsplit(row["source_url"])
         folder = s["mime_type"] == "application/vnd.google-apps.folder"
@@ -60,7 +74,7 @@ def build(tables, out, received_at):
                        "role", "language", "title", "version", "pages", "approval"):
         if row["publish"].upper() != "TRUE":
             continue
-        s = checked_source(row, "document_id", receipts)
+        s = checked_source(row, "document_id", receipts, publication_day)
         pid = row["project_id"]
         if (not re.fullmatch(r"PRJ-[0-9]{6}", pid) or row["role"] not in {"A", "B", "C"}
                 or row["language"] not in {"en", "ne", "source"} or s["mime_type"] != "application/pdf"
