@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "audit_id": "A9-RLIB-MIG-000001",
   "date_npt": "2026-11-07",
-  "status": "HISTORICAL_GIT_GRAPH_IMPORTED_VERIFIED__PROVIDER_METADATA_INDEXED__CLIENT_PUBLICATION_HOLD",
+  "status": "HISTORICAL_GIT_GRAPH_IMPORTED_VERIFIED__PROVIDER_METADATA_INDEXED__SHEETS_CUTOVER_READY",
   "source": {
     "repository": "FabinGurung/JP_Communication-Command-Centre-and-Resource-Hub",
     "repository_id": "1312147922",
@@ -440,10 +440,10 @@
     "Do not trim the Communication repository or enable Resource Library Pages until further provider and client-route QA",
     "Do not modify A7 canonical identities without separate governed authorization",
     "Owner elected to retain existing PAT and repository Actions secret for separate work; no credential changes made in Phase 2.",
-    "Source Issue #8: PRJ-000029 / REB-002 has is_public=FALSE; no new public publication without a separately reviewed current authorization.",
-    "Provider URLs indexed only: source remains the authority for 4 issues, 21 PR discussions, 4 releases and 1,915 Actions runs; do not silently replay them."
+    "Provider URLs indexed only: source remains the authority for 4 issues, 21 PR discussions, 4 releases and 1,915 Actions runs; do not silently replay them.",
+    "Basanti public listing was authorized and read back on 2026-11-09. Its existing document links retain named-user access. Verify the first authenticated Resource Library Pages deployment before switching the old client route."
   ],
-  "next": "Phase 2 provider pointers indexed under same live ID. Next: build a permission-gated Resource Library catalogue preview and source-driven client navigation, while preserving Communication & Web and Drive authority; no publication until reviewed.",
+  "next": "Verify the independent Resource Library and Operations Pages deployments. Cut over old resource routes after the new library is verified.",
   "validation": "2026-11-08: artifact run 42467944701 status IMPORTED_47_BRANCHES_4_TAGS__NO_MAIN_CHANGE; independent destination/source GitHub ref comparisons 47/47 branches and 4/4 tags exact, zero unknown; annotated tag object SHAs retained; working branch present; 4 representative commit trees and parents verified; original destination commit ancestor of destination main; pinned 448-file snapshot retained without mutation.",
   "original_snapshot_status": "SOURCE_FILE_SNAPSHOT_VERIFIED__HISTORY_NOT_MIGRATED",
   "last_reconciled_npt": "2026-11-08",
@@ -509,5 +509,14 @@
     "archive_pre": "archive/snapshot/000007_PRE_provider_resource_inventory_20261108",
     "qa_workflow": ".github/workflows/a9-provider-inventory-qa.yml",
     "next": "Develop gated Resource Library catalogue and client document navigation; preserve original source URLs and Google Drive authority."
+  },
+  "phase3_publication": {
+    "authorization_date_npt": "2026-11-09",
+    "basanti_project_id": "PRJ-000029",
+    "basanti_listing": "SOURCE_SHEETS_PUBLIC",
+    "legacy_client_links": 6,
+    "catalogue_source_rows": 46,
+    "original_drive_access_unchanged": true,
+    "deployment_status": "AWAITING_FIRST_AUTHENTICATED_PAGES_DEPLOY"
   }
 }
