@@ -6,6 +6,7 @@ on:
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
       - 'docs/releases/v1.3.2.md'
+      - 'docs/releases/v1.4.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -17,6 +18,7 @@ on:
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
       - 'docs/releases/v1.3.2.md'
+      - 'docs/releases/v1.4.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -182,4 +184,47 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library v1.3.2 — Publication Status QA' --notes-file "$notes"
+          fi
+
+  release-astam-v1-4:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify Astam Library ownership and tag v1.4.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.4.0.md'
+          tag='v1.4.0'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            echo "No new Astam ownership milestone in this push"
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in feasibility/index.html feasibility/buyer-guide/index.html \
+            feasibility/buyer-guide/guide.json \
+            ops/data/land-feasibility/astam-village-public.v1.0.json \
+            ops/data/land-feasibility/astam-buyer-guide-public.v1.0.json \
+            assets/css/jp-theme-tokens.css assets/css/site-shell.css \
+            assets/css/jp-botanical.css; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?commit=$GITHUB_SHA" \
+              | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/catalog.json?commit=$GITHUB_SHA" \
+            | python -c 'import json,sys; x=json.load(sys.stdin); assert x["schema_version"]=="2.0.0" and x["source_manifest"]["private_payroll_connected"] is False'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library Astam Resources v1.4.0' --notes-file "$notes"
           fi
