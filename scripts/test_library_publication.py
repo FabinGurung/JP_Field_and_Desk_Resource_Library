@@ -41,6 +41,11 @@ class LibraryPublicationTest(unittest.TestCase):
             self.assertEqual(packet["documents"][0]["access"], "DRIVE_PERMISSION_REQUIRED")
             self.assertFalse((out / "catalog/public-index.v0.1.json").exists())
             self.assertTrue((out / "operations.html").exists())
+            packet_page = (out / "resources/project-documents.html").read_text()
+            self.assertIn('href="https://fabingurung.github.io/jp-site-operations/"', packet_page)
+            self.assertNotIn("https://fabingurung.github.io/JP_Communication-Command-Centre-and-Resource-Hub/", packet_page)
+            self.assertIn("https://fabingurung.github.io/jp-a7-system-registry/memory-wall.html",
+                          (out / "index.html").read_text())
             self.assertTrue((out / "source-custody.json").exists())
             with self.assertRaisesRegex(ValueError, "Stale Drive owner readback"):
                 build(tables, out, "2026-12-20T12:00:00+05:45")
