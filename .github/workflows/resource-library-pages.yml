@@ -5,6 +5,7 @@ on:
       - 'site/**'
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
+      - 'docs/releases/v1.3.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -15,6 +16,7 @@ on:
       - 'site/**'
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
+      - 'docs/releases/v1.3.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -158,25 +160,26 @@ jobs:
         with:
           fetch-depth: 2
           persist-credentials: false
-      - name: Verify actual Pages code and publish v1.3.0
+      - name: Verify canonical Pages links and publish v1.3.1
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/v1.3.0.md'
-          tag='v1.3.0'
+          notes='docs/releases/v1.3.1.md'
+          tag='v1.3.1'
           if git diff --quiet HEAD^ HEAD -- "$notes"; then
             exit 0
           fi
           pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
-          for file in index.html app.js editing.html; do
+          for file in index.html app.js editing.html operations.html resources/project-documents.html; do
             curl -fsS --retry 5 --retry-delay 3 --retry-all-errors "$pages/$file?release=$GITHUB_SHA" | cmp - "site/$file"
           done
           curl -fsS --retry 5 --retry-delay 3 --retry-all-errors "$pages/catalog.json?release=$GITHUB_SHA" > /tmp/catalog-live.json
           python -c 'import json; j=json.load(open("/tmp/catalog-live.json")); assert j["schema_version"]=="2.0.0" and len(j["companies"])>=1 and j["source_manifest"]["private_payroll_connected"] is False'
           if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            exit 0
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.3.1 — Canonical Pages Links' --notes-file "$notes"
           fi
-          gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title 'A9 Field & Desk Operations Library v1.3.0 — Source-Backed Filters' --notes-file "$notes"

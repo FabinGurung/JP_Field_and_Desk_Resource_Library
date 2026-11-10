@@ -74,7 +74,7 @@ GitHub PR / push / hourly schedule / manual
   │    ├─ build source grouping, output counts and public-safe metadata
   │    └─ validate output artifact and upload to Pages
   ├─ deploy: GitHub Pages, main branch only
-  └─ release-cutover: exact served-body check, schema/count check, v1.3.0 release
+  └─ release-cutover: exact served-body check, schema/count check, release after deployment
 ```
 
 An owner-edited Sheet updates the next successful scheduled/manually initiated published projection; it does **not** require a Git commit for each row. Conversely, frontend, schemas, validation and workflow changes require a reviewed Git commit. Do not edit `catalog.json` or `document-packets.json` by hand: they are derived.

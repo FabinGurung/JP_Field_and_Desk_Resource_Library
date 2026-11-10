@@ -1,8 +1,8 @@
 # A9 · Field & Desk Operations Library
 
-**Human-facing name:** Field & Desk Operations Library. The GitHub repository slug remains unchanged to preserve existing browser links, workflows, and A7 identity.
+**Human-facing name:** Field & Desk Operations Library. The live GitHub Pages site uses the `jp-field-desk-library` repository slug.
 
-[Company-first Pages directory](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/) · [Source custody](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/operations.html) · [How to edit](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/editing.html)
+[Company-first Pages directory](https://fabingurung.github.io/jp-field-desk-library/) · [Source custody](https://fabingurung.github.io/jp-field-desk-library/operations.html) · [How to edit](https://fabingurung.github.io/jp-field-desk-library/editing.html)
 
 ## Purpose
 A reviewed public-safe directory arranged by **Company → Project → Resource category → Original Drive record**. The existing Project Resources LIVE workbook owns catalogue rows. GitHub owns the grouping generator, source-consistency checks, site UI, tests, release notes, and publication pipeline. The original Google Drive files and their permissions remain authoritative.
@@ -13,8 +13,8 @@ A reviewed public-safe directory arranged by **Company → Project → Resource 
 - [Pages source map and version-control contract](docs/governance/PAGES_SOURCE_MATRIX.md)
 - [Original owner workbook](https://docs.google.com/spreadsheets/d/1e019Jac4lDveZ2glXMph4RLHivqPFEachbcNi-R1DZk/edit)
 - [Google Sheets to Pages publisher workflow](.github/workflows/resource-library-pages.yml)
-- [Releases and rollback points](https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/releases)
-- [Existing project PDF viewer](https://fabingurung.github.io/JP_Field_and_Desk_Resource_Library/resources/project-documents.html)
+- [Releases and rollback points](https://github.com/FabinGurung/jp-field-desk-library/releases)
+- [Existing project PDF viewer](https://fabingurung.github.io/jp-field-desk-library/resources/project-documents.html)
 
 Preserve original names, archival history and ID lineage. A7 cross-system memory and authority live in the A7 semantic registry, not as a duplicate source copy here.
 

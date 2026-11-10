@@ -6,6 +6,6 @@ All values for `catalog.json` and `document-packets.json` are **derived by GitHu
 
 Project packet-only records without an explicit Company field are shown in **Company confirmation required**. They are not reassigned by `REB` code heuristics; the source owner must approve and add the Company value.
 
-See [source matrix](../docs/governance/PAGES_SOURCE_MATRIX.md), [original publication/policy history](https://github.com/FabinGurung/JP_Field_and_Desk_Resource_Library/releases/tag/v1.1.0), and [current Pages Actions](../.github/workflows/resource-library-pages.yml). The Basanti A/B/C project-document portal retains its preexisting path and Google Drive original links.
+See [source matrix](../docs/governance/PAGES_SOURCE_MATRIX.md), [original publication/policy history](https://github.com/FabinGurung/jp-field-desk-library/releases/tag/v1.1.0), and [current Pages Actions](../.github/workflows/resource-library-pages.yml). The Basanti A/B/C project-document portal retains its preexisting path and Google Drive original links.
 
 The publisher includes only explicit site assets; `site/catalog/public-index.v0.1.json` is a historical **unpublished** preview and must not be used as current source data. Source-file and payroll contents remain outside the public Pages artifact.
