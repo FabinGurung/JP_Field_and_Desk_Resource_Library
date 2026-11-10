@@ -23,4 +23,8 @@ The former v1.1.0 source and original history remain in Git. Earlier handover te
 
 ## v1.3.0 — source-backed filters and native source reconciliation
 
-The LIVE owner workbook now includes a source-verified Company column in its six original project packet rows. Its obsolete publishing instructions were corrected with V000004 native PRE/POST archives, while the same permanent workbook ID is retained. The website filters use original Discipline, Format, Revision Note and Approval Status fields. Project-level publication/privacy approval for PRJ-000029 remains a separate HOLD.
+The LIVE owner workbook now includes a source-verified Company column in its six original project packet rows. Its obsolete publishing instructions were corrected with V000004 native PRE/POST archives, while the same permanent workbook ID is retained. The website filters use original Discipline, Format, Revision Note and Approval Status fields. Historical at the time: the mismatch was subsequently resolved; both current project registers now report PRJ-000029 `is_public=TRUE`.
+
+## v1.3.2 — Publication and rename status QA
+
+This repository is now `FabinGurung/jp-field-desk-library` (unchanged GitHub provider ID 1448289662). Live CONTINENT_01 Project Identity and Projects & Locations now both have `PRJ-000029.is_public=TRUE`; all six original Basanti packet rows already have `Publish=TRUE`. No source flags or file permissions were modified. Public project listing is distinct from contract signature, construction issue approval, and private Drive access.
