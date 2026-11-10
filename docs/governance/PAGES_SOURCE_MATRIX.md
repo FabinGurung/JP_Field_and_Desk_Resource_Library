@@ -1,6 +1,6 @@
 # A9 Field & Desk — Pages, Sheets and original-Drive source map
 
-**Observed source state:** 9 November 2026. **Owning Git repository:** `FabinGurung/JP_Field_and_Desk_Resource_Library`, provider repository ID `1448289662`. **PRE-main:** `9aa0969cfcc6d341962129f6789eab5b76ec0b7e`.
+**Observed source state:** 9 November 2026. **Owning Git repository:** `FabinGurung/jp-field-desk-library`, provider repository ID `1448289662`. **PRE-main:** `9aa0969cfcc6d341962129f6789eab5b76ec0b7e`.
 
 ## Public information architecture
 
@@ -44,13 +44,18 @@ Each published resource row contains a `Source Drive File ID` and Drive `Source 
 
 The separate Fishtail payroll/attendance root, Worker Money & Goods collection, and Wage List 11 conversion collection are **not** read by this Actions job; their original private live authority and native IDs remain in Drive. Locked M01–M03 analytical baselines are not live payroll. Worker rollout M04 is not verified final. No private worker IDs or payment rows are copied into the public catalogue.
 
-## Company reconciliation on 10 November 2026
+## PRJ-000029 — current publication status, checked 10 November 2026
 
-Verified original LIVE CONTINENT_01 Project Identity assigns **PRJ-000029 / REB-002** to **ORG-000002 — Rohini Engineering and Builders Pvt Ltd**, independently of its company-code prefix. Source documentation also records the project as **is_public=FALSE**. Identity verification is not permission to disclose more documents.
+The original project identity is **PRJ-000029 / REB-002 → ORG-000002**, Rohini Engineering and Builders Pvt Ltd. The permanent Resource Library owner workbook contains the verified Company on all six original A/B/C packet rows; those source IDs and approval notes were preserved.
 
-The permanent Project Resources workbook gained a single `Company` column on the existing `client_document_packets` tab. All six existing entries were assigned Rohini in place; document IDs, Drive links, review notes and Publish flags were preserved. The website should now have **two company groups, nine projects, 46 resources and six packet references**. The old "Company confirmation required" fallback remains in the generator for future missing data.
+**Current live readbacks (supersede the archived 23 October read-first warning):**
+- `CONTINENT_01__PROJECT_IDENTITY__v0.1`, `AI_Project_Identity!O30`: `is_public=TRUE`.
+- `Projects and Locations — v1.3`, `projects!AA30`: `is_public=TRUE`.
+- `Project Resources — LIVE — V000002`, `client_document_packets!N2:N7`: all six `Publish=TRUE`.
 
-Existing private project packet links are pre-existing and enforced by Google Drive permissions. The mismatch between earlier public-listing source flags and project-level `is_public=FALSE` remains a publication-scope HOLD: obtain a separate source-owner determination before further disclosure. Do not add private project geolocation, amounts or originals to public Git.
+The previous project-level publication HOLD is resolved for **public listing**, not for contract execution, signed drawing approval, private cost details or unrestricted access to Drive originals. These are independently governed. The retired alias `PRJ-000030` stays `FALSE`. The prior user-verified read-first document remains immutable historical evidence.
+
+No Google Sheet edit was required or made to apply the requested TRUE flag. The authoritative values were already TRUE at this live QA pass.
 
 ## Filters grounded in the live workbook
 

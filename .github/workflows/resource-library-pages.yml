@@ -5,7 +5,7 @@ on:
       - 'site/**'
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
-      - 'docs/releases/v1.3.1.md'
+      - 'docs/releases/v1.3.2.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -16,7 +16,7 @@ on:
       - 'site/**'
       - 'scripts/**'
       - 'docs/releases/v1.3.0.md'
-      - 'docs/releases/v1.3.1.md'
+      - 'docs/releases/v1.3.2.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -160,14 +160,14 @@ jobs:
         with:
           fetch-depth: 2
           persist-credentials: false
-      - name: Verify canonical Pages links and publish v1.3.1
+      - name: Verify canonical Pages links and publish v1.3.2
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/v1.3.1.md'
-          tag='v1.3.1'
+          notes='docs/releases/v1.3.2.md'
+          tag='v1.3.2'
           if git diff --quiet HEAD^ HEAD -- "$notes"; then
             exit 0
           fi
@@ -181,5 +181,5 @@ jobs:
             test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --title 'Field & Desk Library v1.3.1 — Canonical Pages Links' --notes-file "$notes"
+              --title 'Field & Desk Library v1.3.2 — Publication Status QA' --notes-file "$notes"
           fi
