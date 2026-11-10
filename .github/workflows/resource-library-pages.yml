@@ -1,10 +1,10 @@
-name: A9 Field & Desk — Company Directory Publisher
+name: A9 Field & Desk — Source-Backed Directory Publisher
 on:
   pull_request:
     paths:
       - 'site/**'
       - 'scripts/**'
-      - 'docs/releases/v1.2.0.md'
+      - 'docs/releases/v1.3.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -14,7 +14,7 @@ on:
     paths:
       - 'site/**'
       - 'scripts/**'
-      - 'docs/releases/v1.2.0.md'
+      - 'docs/releases/v1.3.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -158,14 +158,14 @@ jobs:
         with:
           fetch-depth: 2
           persist-credentials: false
-      - name: Verify actual Pages code and publish v1.2.0
+      - name: Verify actual Pages code and publish v1.3.0
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/v1.2.0.md'
-          tag='v1.2.0'
+          notes='docs/releases/v1.3.0.md'
+          tag='v1.3.0'
           if git diff --quiet HEAD^ HEAD -- "$notes"; then
             exit 0
           fi
@@ -179,4 +179,4 @@ jobs:
             exit 0
           fi
           gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title 'A9 Field & Desk Operations Library v1.2.0 — Company-first Directory' --notes-file "$notes"
+            --title 'A9 Field & Desk Operations Library v1.3.0 — Source-Backed Filters' --notes-file "$notes"

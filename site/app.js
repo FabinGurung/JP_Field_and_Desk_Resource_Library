@@ -9,7 +9,7 @@
   };
   const text = (parent, tag, value, cls) => { const child = make(tag, value, cls); parent.append(child); return child; };
   const safeDrive = url => /^https:\/\/drive\.google\.com\/(?:file\/d\/[A-Za-z0-9_-]+\/view|drive\/folders\/[A-Za-z0-9_-]+)$/.test(url || "");
-  const state = { data: null, company: "", project: "", selected: "", query: "" };
+  const state = { data: null, company: "", project: "", selected: "", query: "", facets: {}, facetsProject: "" };
   const params = new URLSearchParams(location.search);
   state.company = params.get("company") || "";
   state.project = params.get("project") || "";
@@ -26,6 +26,8 @@
     state.project = project;
     state.selected = "";
     state.query = "";
+    state.facets = {};
+    state.facetsProject = "";
     $("library-search").value = "";
     syncURL();
     render();
@@ -43,7 +45,9 @@
       ["Project", r.project + " · " + r.project_id],
       ["Resource group", (state.data.groups.find(g => g.key === r.group) || {}).label || r.group],
       ["Document slot", r.document_slot || "Not classified"],
+      ["Discipline (source register)", r.discipline || "Not classified"],
       ["Format", r.format],
+      ["Revision / issue note (not an approval)", r.revision_note || "Revision not established"],
       ["Owner's approval note", r.approval || "Unverified"],
       ["Source access", r.access === "PUBLIC_LINK" ? "Reviewed link · original access still enforced by Drive" : "Google Drive permission required"],
       ["Source register", r.origin_tab + " + " + r.readback_tab],
@@ -95,6 +99,45 @@
   const matches = (...values) => values.some(value => String(value || "").toLocaleLowerCase().includes(state.query));
   const orderedProjects = company => state.data.projects.filter(p => p.company_key === company);
   const groupLabel = group => state.data.groups.find(g => g.key === group)?.label || group;
+  const filterFields = [
+    ["discipline", "Discipline"],
+    ["format", "Format"],
+    ["revision_note", "Revision note"],
+    ["approval", "Approval"]
+  ];
+  const humanLabel = (field, value) => {
+    if (field === "revision_note") {
+      const labels = {
+        REQUIRES_DISCIPLINE_AND_REVISION_CLASSIFICATION: "Classification and revision need review",
+        NOT_VERIFIED_AS_APPROVED_CONSTRUCTION_DRAWING: "Drawing approval / revision not verified",
+        "Issue/revision not independently certified": "Issue / revision not certified"
+      };
+      return labels[value] || value;
+    }
+    if (field === "approval" && value === "UNVERIFIED_AS_CURRENT_ISSUE") return "Current issue not verified";
+    return value;
+  };
+  const facetsMatch = resource => filterFields.every(([field]) =>
+    !state.facets[field] || state.facets[field] === (resource[field] || ""));
+  function populateFacets(project) {
+    for (const [field] of filterFields) {
+      const select = $("facet-" + (field === "revision_note" ? "revision" : field));
+      const options = [...new Set(state.data.resources
+        .filter(r => r.project_id === project)
+        .map(r => r[field] || "")
+        .filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+      select.replaceChildren();
+      const initial = make("option", "All " + (field === "revision_note" ? "revision notes" : field === "approval" ? "issue statuses" : field === "format" ? "formats" : "disciplines"));
+      initial.value = "";
+      select.append(initial);
+      for (const option of options) {
+        const o = make("option", humanLabel(field, option));
+        o.value = option;
+        select.append(o);
+      }
+      select.value = state.facets[field] || "";
+    }
+  }
 
   function introCards() {
     const root = $("workspace"); root.replaceChildren();
@@ -167,7 +210,7 @@
     let displayed = 0;
     for (const group of state.data.groups) {
       const records = state.data.resources.filter(r => r.project_id === p.project_id && r.group === group.key &&
-        matches(r.title, r.document_slot, r.format, r.id, r.approval, group.label));
+        facetsMatch(r) && matches(r.title, r.document_slot, r.format, r.discipline, r.revision_note, r.id, r.approval, group.label));
       const packets = group.key === "project-packets" && p.document_count &&
         matches("", "agreements", "documents", "materials", "project packets", group.label, p.name);
       if (!records.length && !packets) continue;
@@ -198,6 +241,11 @@
       details.append(body);
       stack.append(details);
     }
+    const visible = state.data.resources.filter(r => r.project_id === p.project_id && facetsMatch(r) &&
+      matches(r.title, r.document_slot, r.format, r.discipline, r.revision_note, r.id, r.approval,
+        groupLabel(r.group))).length;
+    $("facet-count").textContent = visible + " of " + p.resource_count +
+      " resource links match · Packet documents have a separate A/B/C review";
     root.append(displayed ? stack : text(make("div"), "p", "No resources match this search in the selected project.", "empty"));
   }
   function render() {
@@ -211,6 +259,13 @@
     }
     const current = state.data.projects.find(p => p.project_id === state.project);
     if (!current || current.company_key !== state.company) state.project = "";
+    const showingProject = Boolean(state.project);
+    $("facet-panel").hidden = !showingProject;
+    if (showingProject && state.facetsProject !== state.project) {
+      state.facets = {};
+      state.facetsProject = state.project;
+      populateFacets(state.project);
+    }
     syncURL(); nav(); crumbs();
     if (!state.company) introCards();
     else if (!state.project) companyProjects();
@@ -226,6 +281,18 @@
   });
   $("clear-search").addEventListener("click", () => {
     $("library-search").value = ""; state.query = ""; render(); $("library-search").focus();
+  });
+  for (const [field] of filterFields) {
+    const select = $("facet-" + (field === "revision_note" ? "revision" : field));
+    select.addEventListener("change", () => {
+      state.facets[field] = select.value;
+      render();
+    });
+  }
+  $("clear-facets").addEventListener("click", () => {
+    state.facets = {};
+    if (state.project) populateFacets(state.project);
+    render();
   });
   fetch("./catalog.json", {cache:"no-store"}).then(response => {
     if (!response.ok) throw Error("Unable to load catalog.json");
