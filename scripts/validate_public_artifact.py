@@ -65,6 +65,24 @@ def validate(directory):
                  "resources/project-documents.html"):
         if not (directory / path).is_file():
             raise ValueError("Missing public route/asset: " + path)
+    # Astam's previously public-safe client resources live with the Library.
+    astam_routes = (
+        "feasibility/index.html", "feasibility/buyer-guide/index.html",
+        "feasibility/buyer-guide/guide.json",
+        "ops/data/land-feasibility/astam-village-public.v1.0.json",
+        "ops/data/land-feasibility/astam-buyer-guide-public.v1.0.json",
+        "assets/css/jp-theme-tokens.css", "assets/css/site-shell.css",
+        "assets/css/jp-botanical.css", "assets/botanical/garden-left.svg",
+        "assets/botanical/garden-right.svg", "assets/botanical/corner-sprig.svg",
+        "assets/botanical/empty-garden.svg", "assets/botanical/tree-silhouette.svg",
+    )
+    for path in astam_routes:
+        if not (directory / path).is_file():
+            raise ValueError("Missing migrated Astam route/asset: " + path)
+    overview = json.loads((directory / "ops/data/land-feasibility/astam-village-public.v1.0.json").read_text())
+    guide = json.loads((directory / "feasibility/buyer-guide/guide.json").read_text())
+    if overview["project"].get("legal_status") != "UNVERIFIED" or not guide.get("public_scope") == "EDUCATIONAL_PUBLIC_SAFE":
+        raise ValueError("Astam feasibility and buyer guide qualification drift")
     return {"companies": len(companies), "projects": len(projects),
             "resources": len(catalog["resources"]), "packet_files": len(packets["documents"])}
 
