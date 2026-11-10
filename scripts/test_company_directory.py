@@ -107,7 +107,7 @@ class CompanyDirectoryTest(unittest.TestCase):
             page = (ROOT / "site" / name).read_text()
             self.assertNotIn("github.com/FabinGurung/JP_Field_and_Desk_Resource_Library", page)
             self.assertNotIn("fabingurung.github.io/JP_Field_and_Desk_Resource_Library/", page)
-        self.assertIn("fabingurung.github.io/jp-field-desk-library/", html)
+        self.assertIn("github.com/FabinGurung/jp-field-desk-library", html)
         self.assertIn('id="facet-discipline"', html)
         self.assertIn('id="facet-revision"', html)
         self.assertIn('id="facet-approval"', html)
