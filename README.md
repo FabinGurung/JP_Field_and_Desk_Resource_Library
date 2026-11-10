@@ -20,3 +20,7 @@ Preserve original names, archival history and ID lineage. A7 cross-system memory
 
 ## Prior release
 The former v1.1.0 source and original history remain in Git. Earlier handover text can be found in the prior commit rather than a separate cloned website.
+
+## v1.3.0 — source-backed filters and native source reconciliation
+
+The LIVE owner workbook now includes a source-verified Company column in its six original project packet rows. Its obsolete publishing instructions were corrected with V000004 native PRE/POST archives, while the same permanent workbook ID is retained. The website filters use original Discipline, Format, Revision Note and Approval Status fields. Project-level publication/privacy approval for PRJ-000029 remains a separate HOLD.

@@ -39,7 +39,7 @@ def validate(directory):
         p = projects[r["project_id"]]
         if p["company_key"] != r["company_key"] or p["company"] != r["company"]:
             raise ValueError("Resource company/project inconsistency")
-        if not r.get("readback_checked_on") or r["origin_tab"] != "project_resources":
+        if not r.get("readback_checked_on") or r["origin_tab"] != "project_resources" or not r.get("discipline") or not r.get("revision_note"):
             raise ValueError("Unproven published row")
         resource_counts[r["project_id"]] += 1
     for d in packets["documents"]:

@@ -23,7 +23,18 @@
   <div class="toolbar"><label for="library-search">Search this directory</label><div class="search-line">
     <input id="library-search" type="search" placeholder="Company, project, file or discipline…" autocomplete="off">
     <button type="button" id="clear-search">Clear</button>
-  </div><p id="site-status" class="status-line" role="status" aria-live="polite">Reading the published index…</p></div>
+  </div>
+  <div id="facet-panel" class="facet-panel" hidden aria-label="Project resource filters">
+    <div class="facet-title"><strong>Refine resources</strong><span>Exact labels from the original register · all unverified status stays visible</span></div>
+    <div class="facet-grid">
+      <label for="facet-discipline">Discipline<select id="facet-discipline"><option value="">All disciplines</option></select></label>
+      <label for="facet-format">File format<select id="facet-format"><option value="">All formats</option></select></label>
+      <label for="facet-revision">Revision note<select id="facet-revision"><option value="">All revision notes</option></select></label>
+      <label for="facet-approval">Issue / approval<select id="facet-approval"><option value="">All issue statuses</option></select></label>
+    </div>
+    <div class="facet-bottom"><span id="facet-count" role="status" aria-live="polite"></span><button type="button" id="clear-facets">Reset filters</button></div>
+  </div>
+  <p id="site-status" class="status-line" role="status" aria-live="polite">Reading the published index…</p></div>
   <div id="breadcrumbs" class="breadcrumbs" aria-label="Current location"></div>
   <div id="workspace" class="workspace"><p class="empty">Loading reviewed resource directories…</p></div>
   <section class="source-note"><p class="eyebrow">VERIFY BEFORE USING</p>

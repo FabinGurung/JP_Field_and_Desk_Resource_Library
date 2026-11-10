@@ -13,7 +13,7 @@ def sample():
     resources = [[
         "Resource ID", "Publish", "Source Drive File ID", "Source URL", "Project ID", "Project Name",
         "Site Reference", "Display Name", "Category", "Format", "Sort Priority", "Approval Status",
-        "Company", "Document Slot",
+        "Company", "Document Slot", "Discipline", "Revision Note",
     ]]
     receipts = [[
         "Record ID", "Drive File ID", "MIME Type", "Modified At", "Access Mode", "Checked On", "Admission Basis"
@@ -27,7 +27,9 @@ def sample():
                 f"https://drive.google.com/file/d/{fid}/view")
         resources.append([rid, True, fid, link, pid, "Site " + rid[-1], "S-01", "Source " + rid[-1],
                           "source_folders" if fmt == "FOLDER" else "source_models", fmt, 1,
-                          "Review pending", owner, slot])
+                          "Review pending", owner, slot,
+                          "Architecture" if fmt == "DWG" else "Source file folder",
+                          "Issue/revision not independently certified"])
         receipts.append([rid, fid, "application/vnd.google-apps.folder" if fmt == "FOLDER" else
                          "application/dwg", "2026-11-09T06:00:00Z", "DRIVE_PERMISSION_REQUIRED",
                          "2026-11-09", "LEGACY_PUBLIC_ROUTE"])
@@ -35,7 +37,8 @@ def sample():
     resources.append(["RES-PRIVATE", False, "SensitiveOriginal12345",
                       "https://drive.google.com/file/d/SensitiveOriginal12345/view",
                       "PRJ-000001", "Site A", "S-01", "DO-NOT-PUBLISH", "source_models", "PDF", 1,
-                      "Private", "Example Construction A", "Technical reports and supporting files"])
+                      "Private", "Example Construction A", "Technical reports and supporting files",
+                      "Structure", "Issue/revision not independently certified"])
     packets = [[
         "Document ID", "Publish", "Project ID", "Company Project Code", "Project Name", "Locality",
         "Drive File ID", "Role", "Language", "Title", "Version", "Pages", "Approval",
@@ -62,6 +65,8 @@ class CompanyDirectoryTest(unittest.TestCase):
             self.assertIn(UNASSIGNED_COMPANY, [c["name"] for c in catalog["companies"]])
             self.assertEqual(catalog["resources"][0]["group"], "drawings")
             self.assertEqual(catalog["resources"][1]["group"], "source-folders")
+            self.assertEqual(catalog["resources"][0]["discipline"], "Architecture")
+            self.assertEqual(catalog["resources"][0]["revision_note"], "Issue/revision not independently certified")
             self.assertEqual(catalog["source_manifest"]["tabs_fetched"], [
                 "project_resources", "client_document_packets", "resource_source_readback"])
             self.assertFalse(catalog["source_manifest"]["private_payroll_connected"])
@@ -70,6 +75,20 @@ class CompanyDirectoryTest(unittest.TestCase):
             packet = json.loads((out / "document-packets.json").read_text())
             self.assertEqual(packet["projects"][0]["company"], UNASSIGNED_COMPANY)
             self.assertEqual(packet["documents"][0]["document_id"], "DOC-SYN-A")
+
+    def test_explicit_company_on_packet_overrides_unassigned_group_without_code_guess(self):
+        tables = sample()
+        tables["packets"][0].append("Company")
+        tables["packets"][1].append("Example Construction C")
+        with tempfile.TemporaryDirectory() as folder:
+            build(tables, Path(folder), "2026-11-09T13:00:00+05:45")
+            catalog = json.loads((Path(folder) / "catalog.json").read_text())
+            pid = next(p for p in catalog["projects"] if p["project_id"] == "PRJ-000029")
+            self.assertEqual(pid["company"], "Example Construction C")
+            self.assertEqual(pid["company_assignment"], "SOURCE_REGISTER")
+            self.assertNotIn(UNASSIGNED_COMPANY, [c["name"] for c in catalog["companies"]])
+            packet = json.loads((Path(folder) / "document-packets.json").read_text())
+            self.assertEqual(packet["projects"][0]["company"], "Example Construction C")
 
     def test_public_files_and_editor_guide(self):
         from publish_library import SITE_FILES
@@ -82,6 +101,9 @@ class CompanyDirectoryTest(unittest.TestCase):
             self.assertIn('id="' + cardinal + '"', html)
         self.assertIn("Company", html)
         self.assertIn("editing.html", html)
+        self.assertIn('id="facet-discipline"', html)
+        self.assertIn('id="facet-revision"', html)
+        self.assertIn('id="facet-approval"', html)
         self.assertIn("@media(max-width:700px)", (ROOT / "site/styles.css").read_text())
         self.assertIn('resource_source_readback', (ROOT / "site/editing.html").read_text())
         self.assertIn("Project Resources", (ROOT / "site/editing.html").read_text())

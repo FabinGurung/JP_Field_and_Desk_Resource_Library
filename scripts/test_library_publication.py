@@ -13,11 +13,11 @@ class LibraryPublicationTest(unittest.TestCase):
         tables = {
             "resources": [
                 ["Resource ID", "Publish", "Source Drive File ID", "Source URL", "Project ID",
-                 "Project Name", "Site Reference", "Display Name", "Category", "Format", "Sort Priority", "Approval Status"],
+                 "Project Name", "Site Reference", "Display Name", "Category", "Format", "Sort Priority", "Approval Status", "Discipline", "Revision Note"],
                 ["RES-001", True, file_id, f"https://drive.google.com/file/d/{file_id}/view", "PRJ-000001",
-                 "Example", "P001", "Field plan", "issued_reports", "PDF", 1, "Unverified"],
+                 "Example", "P001", "Field plan", "issued_reports", "PDF", 1, "Unverified", "Architecture", "Issue/revision not independently certified"],
                 ["RES-002", False, "private", "https://example.org/private", "PRJ-000001",
-                 "Example", "P001", "Private", "issued_reports", "PDF", 1, "Unverified"],
+                 "Example", "P001", "Private", "issued_reports", "PDF", 1, "Unverified", "Architecture", "Issue/revision not independently certified"],
             ],
             "packets": [
                 ["Document ID", "Publish", "Project ID", "Company Project Code", "Project Name", "Locality",

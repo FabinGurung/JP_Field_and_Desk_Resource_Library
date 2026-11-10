@@ -36,7 +36,7 @@ The *only* workbook fetched by the GitHub Pages publisher is the existing **Proj
 | Editing guide | No Google Sheet | `site/editing.html` in Git | Human instructions and permanent owner workbook links |
 | Release / history links | GitHub only | Owning repository commits, PRs, Actions, releases | Deployment evidence is not original-document approval |
 
-The source workbook also has `00_START_HERE`, `00_MANIFEST`, `02_HOW_TO`, `01_VERSION_HISTORY`. These control tabs are **not fetched by the website workflow**, though humans must preserve their provenance role. One `00_START_HERE` historical note still describes an older *publishing copy*; the current code explicitly reads the original live workbook directly. Correct that note through the owner's controlled Sheet edit when its native PRE/POST requirements are satisfied, rather than switching source IDs silently.
+The source workbook also has `00_START_HERE`, `00_MANIFEST`, `02_HOW_TO`, `01_VERSION_HISTORY`. These control tabs are **not fetched by the website workflow**, though humans must preserve their provenance role. The live control tabs were corrected in-place on 10 November 2026; the old publishing-copy URL remains labeled historical. No source IDs were replaced.
 
 ### Original files
 
@@ -44,9 +44,21 @@ Each published resource row contains a `Source Drive File ID` and Drive `Source 
 
 The separate Fishtail payroll/attendance root, Worker Money & Goods collection, and Wage List 11 conversion collection are **not** read by this Actions job; their original private live authority and native IDs remain in Drive. Locked M01–M03 analytical baselines are not live payroll. Worker rollout M04 is not verified final. No private worker IDs or payment rows are copied into the public catalogue.
 
-## Company mismatch requiring source-owner decision
+## Company reconciliation on 10 November 2026
 
-The resource register currently has **46 Publish=TRUE** resources: Fishtail Builders Pvt Ltd (42), Rohini Engineering and Builders Pvt Ltd (4), over eight projects. The packet tab has six A/B/C files under `PRJ-000029`, but no explicit Company column, so it is shown as **Company confirmation required** (a ninth project). The project code `REB-002` is not sufficient to infer or silently assign its ownership. To resolve, source owner should confirm the company against the operational project master, add an explicit `Company` column to `client_document_packets` without replacing its ID, and apply the same confirmed name to all relevant rows. The publisher already reads an optional Company column.
+Verified original LIVE CONTINENT_01 Project Identity assigns **PRJ-000029 / REB-002** to **ORG-000002 — Rohini Engineering and Builders Pvt Ltd**, independently of its company-code prefix. Source documentation also records the project as **is_public=FALSE**. Identity verification is not permission to disclose more documents.
+
+The permanent Project Resources workbook gained a single `Company` column on the existing `client_document_packets` tab. All six existing entries were assigned Rohini in place; document IDs, Drive links, review notes and Publish flags were preserved. The website should now have **two company groups, nine projects, 46 resources and six packet references**. The old "Company confirmation required" fallback remains in the generator for future missing data.
+
+Existing private project packet links are pre-existing and enforced by Google Drive permissions. The mismatch between earlier public-listing source flags and project-level `is_public=FALSE` remains a publication-scope HOLD: obtain a separate source-owner determination before further disclosure. Do not add private project geolocation, amounts or originals to public Git.
+
+## Filters grounded in the live workbook
+
+Within a selected project the directory filters `Discipline` (L), `Format` (G), `Revision Note` (M) and `Approval Status` (N) from the original `project_resources` rows. Raw source values are retained; the user-facing translation only makes review text easier to read. All 46 resource rows currently have `UNVERIFIED_AS_CURRENT_ISSUE` and no approved revision can be inferred.
+
+## Google Sheet V000004 archive and rollback
+
+The live source ID was preserved; `00_START_HERE` and `02_HOW_TO` now describe the direct authenticated three-tab publisher. The prior publishing-copy link is retained as **historical**. `01_VERSION_HISTORY` gained V000004, and the existing resource archive folder holds matching native `000004_PRE` and `000004_POST` snapshots. Their private provider IDs do not belong in this public GitHub source map. Restorations go into the same live Sheet ID; never repoint Actions to a snapshot.
 
 ## GitHub Actions pipeline
 
@@ -62,7 +74,7 @@ GitHub PR / push / hourly schedule / manual
   │    ├─ build source grouping, output counts and public-safe metadata
   │    └─ validate output artifact and upload to Pages
   ├─ deploy: GitHub Pages, main branch only
-  └─ release-cutover: exact served-body check, schema/count check, v1.2.0 release
+  └─ release-cutover: exact served-body check, schema/count check, v1.3.0 release
 ```
 
 An owner-edited Sheet updates the next successful scheduled/manually initiated published projection; it does **not** require a Git commit for each row. Conversely, frontend, schemas, validation and workflow changes require a reviewed Git commit. Do not edit `catalog.json` or `document-packets.json` by hand: they are derived.

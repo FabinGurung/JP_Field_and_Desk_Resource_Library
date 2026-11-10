@@ -114,7 +114,8 @@ def build(tables, out, received_at):
 
     for row in records(tables["resources"], "resource_id", "publish", "source_drive_file_id",
                        "source_url", "project_id", "project_name", "site_reference",
-                       "display_name", "category", "format", "sort_priority", "approval_status"):
+                       "display_name", "category", "format", "sort_priority", "approval_status",
+                       "discipline", "revision_note"):
         if row["publish"].upper() != "TRUE":
             continue
         source = checked_source(row, "resource_id", receipts, publication_day)
@@ -132,6 +133,7 @@ def build(tables, out, received_at):
         resources.append({
             "id": row["resource_id"], "title": row["display_name"],
             "kind": kind, "group": group, "category": row["category"],
+            "discipline": row["discipline"], "revision_note": row["revision_note"],
             "document_slot": row.get("document_slot", ""), "project_id": row["project_id"],
             "project": row["project_name"], "company": project["company"],
             "company_key": project["company_key"], "site": row["site_reference"],
