@@ -18,7 +18,16 @@ ACCESS_MODES = {"PUBLIC_LINK", "DRIVE_PERMISSION_REQUIRED"}
 ADMISSION = {"LEGACY_PUBLIC_ROUTE", "OWNER_REVIEWED_PUBLIC_LINK"}
 SITE_FILES = ("index.html", "app.js", "styles.css", "resources/project-documents.html",
               "operations.html", "operations.css", "operations.js", "source-custody.json",
-              "editing.html", "editing.css")
+              "editing.html", "editing.css",
+              "feasibility/index.html", "feasibility/buyer-guide/index.html",
+              "feasibility/buyer-guide/guide.json",
+              "ops/data/land-feasibility/astam-village-public.v1.0.json",
+              "ops/data/land-feasibility/astam-buyer-guide-public.v1.0.json",
+              "assets/css/jp-theme-tokens.css", "assets/css/site-shell.css",
+              "assets/css/jp-botanical.css",
+              "assets/botanical/garden-left.svg", "assets/botanical/garden-right.svg",
+              "assets/botanical/corner-sprig.svg", "assets/botanical/empty-garden.svg",
+              "assets/botanical/tree-silhouette.svg")
 
 
 def checked_source(row, key, receipt, publication_day=None):
