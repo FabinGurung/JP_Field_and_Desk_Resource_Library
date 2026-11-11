@@ -62,7 +62,8 @@ async function qa() {
     assert.equal(await page.locator('a[href*="docs.google.com/spreadsheets/"]').count(),0);
     assert.equal(await page.locator('a[href*="drive.google.com/drive/folders/"]').count(),0);
     await page.goto(ROOT + "/workspaces.html", {waitUntil:"domcontentloaded"});
-    await page.locator('a[href="./money.html#workforce"]').first().click();
+    await page.goto(ROOT + "/field.html", {waitUntil:"domcontentloaded"});
+    await page.locator('#fishtail a[href="./money.html#workforce"]').first().click();
     await page.locator("#workforce").waitFor();
     assert.match(await page.locator("#workforce").innerText(),/W01–W21/);
     assert.match(await page.locator("#contractors").innerText(),/Cost Estimation/);
