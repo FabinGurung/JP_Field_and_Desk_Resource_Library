@@ -81,13 +81,13 @@ async function qa() {
     await mobile.locator("#facet-discipline").selectOption({label:"Architecture"});
     assert.equal(await mobile.locator(".resource-line").count(),1);
     await mobile.locator(".resource-line").first().click();
+    assert.match(await mobile.locator("#record-detail").innerText(),/Open original/);
     await mobile.goto(ROOT + "/workspaces.html", {waitUntil:"domcontentloaded"});
     const workspaceFit = await mobile.evaluate(() => ({viewport:document.documentElement.clientWidth, scroll:document.documentElement.scrollWidth}));
     assert.ok(workspaceFit.scroll <= workspaceFit.viewport + 2, "Workspaces mobile overflow");
     await mobile.goto(ROOT + "/money.html", {waitUntil:"domcontentloaded"});
     const moneyFit = await mobile.evaluate(() => ({viewport:document.documentElement.clientWidth, scroll:document.documentElement.scrollWidth}));
     assert.ok(moneyFit.scroll <= moneyFit.viewport + 2, "Money hub mobile overflow");
-    assert.match(await mobile.locator("#record-detail").innerText(),/Open original/);
     await mobile.goto(ROOT + "/?company=display-example-construction-b&project=PRJ-000002", {waitUntil:"domcontentloaded"});
     await mobile.locator(".resource-line").first().waitFor();
     assert.match(await mobile.locator("#workspace").innerText(),/Site B/);
