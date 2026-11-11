@@ -27,3 +27,8 @@
   selected=sources[0]?.id||null;if(sources[0])show(sources[0]);render();
  }).catch(()=>{$("count").textContent="Audit snapshot unavailable";$("sources").replaceChildren(element("p","Source status cannot be inferred from missing data.","empty"));});
 })();
+// Current public document readback only. Never read private payroll in browser JS.
+fetch("./catalog.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("unavailable");return r.json()}).then(d=>{
+  const target=document.getElementById("live-catalogue-readback");
+  if(target)target.textContent="Reviewed catalogue published: "+(d.verified_on_npt||"unknown")+". Private worker data: not connected.";
+}).catch(()=>{const target=document.getElementById("live-catalogue-readback");if(target)target.textContent="Catalogue refresh unavailable; private worker data not connected.";});

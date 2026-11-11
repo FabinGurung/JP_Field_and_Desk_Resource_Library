@@ -32,9 +32,10 @@
       "name": "Worker Money & Goods",
       "status": "ROLLOUT_UNVERIFIED",
       "authority": "Existing per-worker Google Sheets with separate prototype and historical backups",
-      "custody": "Preserve original IDs, workbook tabs, sharing and transaction history. Never mirror as editable payroll.",
-      "integration": "Private, per-source permission and reconciliation needed before any aggregate use.",
-      "limit": "The source authority register says the 21-worker operational rollout is not verified as final."
+      "custody": "Original 24-item collection (W01–W21, separate W01 hardened prototype and backups) moved 11 November 2026 to 01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing / 09 Restricted Workforce Source Registers. Original IDs, histories and observed permission set preserved.",
+      "integration": "No authenticated private worker transaction read by public Pages. Operational rollout unverified final; original worker tabs differ in structure.",
+      "limit": "The source authority register says the 21-worker operational rollout is not verified as final.",
+      "reorganized_on_npt": "2026-11-11"
     },
     {
       "id": "conversions",

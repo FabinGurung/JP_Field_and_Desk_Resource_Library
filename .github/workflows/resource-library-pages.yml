@@ -7,6 +7,7 @@ on:
       - 'docs/releases/v1.3.0.md'
       - 'docs/releases/v1.3.2.md'
       - 'docs/releases/v1.4.0.md'
+      - 'docs/releases/v1.5.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -19,6 +20,7 @@ on:
       - 'docs/releases/v1.3.0.md'
       - 'docs/releases/v1.3.2.md'
       - 'docs/releases/v1.4.0.md'
+      - 'docs/releases/v1.5.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -48,6 +50,7 @@ jobs:
           persist-credentials: false
       - run: node --check site/app.js
       - run: node --check site/operations.js
+      - run: node --check site/money.js
       - run: node --check scripts/browser_qa.cjs
       - run: python -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Validate synthetic public artifact
@@ -227,4 +230,41 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library Astam Resources v1.4.0' --notes-file "$notes"
+          fi
+
+  release-workspaces-v1-5:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify normalized slots, workspaces and tag v1.5.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.5.0.md'
+          tag='v1.5.0'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in index.html app.js styles.css workspaces.html money.html money.js portal.css \
+            editing.html operations.html resources/project-documents.html; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?commit=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/catalog.json?commit=$GITHUB_SHA" | \
+            python -c 'import json,sys; x=json.load(sys.stdin); assert x["schema_version"]=="2.0.0"; assert x["source_manifest"]["private_payroll_connected"] is False; assert all("original_filename" in r for r in x["resources"])'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.5.0 — Normalized Slots and Money Routing' --notes-file "$notes"
           fi

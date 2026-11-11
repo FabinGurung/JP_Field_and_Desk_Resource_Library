@@ -61,7 +61,8 @@ def validate(directory):
                 c["project_count"], c["resource_count"], c["document_count"]):
             raise ValueError("Company summary counts differ from underlying rows")
     for path in ("index.html", "app.js", "styles.css", "editing.html",
-                 "editing.css", "operations.html", "operations.js", "operations.css",
+                 "editing.css", "workspaces.html", "money.html", "money.js", "portal.css",
+                 "operations.html", "operations.js", "operations.css",
                  "resources/project-documents.html"):
         if not (directory / path).is_file():
             raise ValueError("Missing public route/asset: " + path)
