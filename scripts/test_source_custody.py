@@ -2,7 +2,7 @@
 import json
 import re
 import unittest
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,8 +12,9 @@ class OperationsCustodyTest(unittest.TestCase):
         data=json.loads((ROOT/"site/source-custody.json").read_text())
         self.assertEqual(data["schema_version"],"1.1.0")
         self.assertFalse(data["live_worker_sync"])
-        self.assertFalse(data["authenticated_private_payroll_reads"])
-        self.assertLessEqual(date.fromisoformat(data["as_of_npt"]),date.today())
+        self.assertTrue(data["authenticated_private_payroll_reads"])
+        self.assertTrue(data["historical_clean_payment_publication"])
+        self.assertLessEqual(date.fromisoformat(data["as_of_npt"]),datetime.now(timezone(timedelta(hours=5, minutes=45))).date())
         self.assertEqual(len({r["id"] for r in data["subjects"]}),len(data["subjects"]))
         for row in data["subjects"]:
             self.assertIn(row["group"],("desk","field","labour"))

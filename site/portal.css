@@ -47,3 +47,22 @@
 .field-empty{background:#fafaf8;border-style:dashed}
 .field-empty .field-state{color:#6c726a}
 @media(max-width:760px){.field-resource-grid{grid-template-columns:1fr}.field-record{padding:15px}.field-tabs a{flex:1;text-align:center;min-width:0}}
+
+.payment-controls{display:grid;grid-template-columns:1.1fr 1fr 1.5fr auto;gap:10px;align-items:end;margin:15px 0}
+.payment-controls[hidden],#payment-view[hidden]{display:none}
+.payment-controls label{display:flex;flex-direction:column;gap:6px;min-width:0;color:var(--deep);font-size:.79rem;font-weight:760}
+.payment-controls select{padding:10px 8px;border:1px solid var(--line);border-radius:8px;background:white;min-width:0;width:100%;font:inherit}
+.payment-controls button,.payment-pager button{border:1px solid var(--line);border-radius:8px;padding:10px 13px;background:#eaf4eb;color:var(--deep);font-size:.81rem;font-weight:760;cursor:pointer}
+.payment-pager button:disabled{opacity:.42;cursor:default}
+.payment-table-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px;outline-offset:2px}
+.payment-table{border-collapse:collapse;width:100%;min-width:800px;font-size:.81rem}
+.payment-table th,.payment-table td{padding:10px 11px;border-bottom:1px solid #e8eee8;text-align:left;white-space:normal;vertical-align:top}
+.payment-table th{font-weight:820;color:var(--deep);background:#edf5ed;position:sticky;top:0}
+.payment-table tbody tr:nth-child(2n){background:#fcfdfa}
+.payment-table .payment-amount{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.payment-table .payment-source{font-family:ui-monospace,monospace;font-size:.72rem;overflow-wrap:anywhere}
+.payment-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:13px 0;font-size:.8rem}
+.payment-caveat{font-size:.75rem;color:var(--dim);line-height:1.57}
+#payment-summary{font-size:.81rem;font-weight:720}
+@media(max-width:850px){.payment-controls{grid-template-columns:1fr 1fr}.payment-controls button{width:100%}}
+@media(max-width:480px){.payment-controls{grid-template-columns:1fr}.payment-table{min-width:740px}}

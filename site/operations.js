@@ -30,5 +30,5 @@
 // Current public document readback only. Never read private payroll in browser JS.
 fetch("./catalog.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("unavailable");return r.json()}).then(d=>{
   const target=document.getElementById("live-catalogue-readback");
-  if(target)target.textContent="Reviewed catalogue published: "+(d.verified_on_npt||"unknown")+". Private worker data: not connected.";
+  if(target)target.textContent="Reviewed catalogue published: "+(d.verified_on_npt||"unknown")+". Original worker Money & Goods ledger not connected. Historical CLEAN Payment is published separately.";
 }).catch(()=>{const target=document.getElementById("live-catalogue-readback");if(target)target.textContent="Catalogue refresh unavailable; private worker data not connected.";});

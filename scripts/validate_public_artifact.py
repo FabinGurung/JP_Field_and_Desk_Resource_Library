@@ -20,6 +20,8 @@ def validate(directory):
         raise ValueError("Private payroll cannot be exposed by the Pages publisher")
     if source.get("original_drive_files_rechecked") is not False or source.get("source_revision_proven") is not False:
         raise ValueError("False independent Drive revision/readback claim")
+    if custody.get("historical_clean_payment_publication") is not True or custody.get("authenticated_private_payroll_reads") is not True:
+        raise ValueError("Authenticated historical clean Payment publication not recorded")
     if custody.get("live_worker_sync") is not False:
         raise ValueError("Source custody claims unavailable private sync")
     groups = {c["key"] for c in catalog["groups"]}

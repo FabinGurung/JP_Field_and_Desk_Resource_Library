@@ -9,6 +9,7 @@ on:
       - 'docs/releases/v1.4.0.md'
       - 'docs/releases/v1.5.0.md'
       - 'docs/releases/v1.6.0.md'
+      - 'docs/releases/v1.7.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -23,6 +24,7 @@ on:
       - 'docs/releases/v1.4.0.md'
       - 'docs/releases/v1.5.0.md'
       - 'docs/releases/v1.6.0.md'
+      - 'docs/releases/v1.7.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -53,6 +55,7 @@ jobs:
       - run: node --check site/app.js
       - run: node --check site/operations.js
       - run: node --check site/money.js
+      - run: node --check site/field-payments.js
       - run: node --check scripts/browser_qa.cjs
       - run: python -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Validate synthetic public artifact
@@ -306,4 +309,43 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library v1.6.0 — Two Primary Resource Tabs' --notes-file "$notes"
+          fi
+
+  release-clean-payment-v1-7:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify clean Payment Pages projection and tag v1.7.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.7.0.md'
+          tag='v1.7.0'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in field.html field-payments.js money.html portal.css index.html \
+            workspaces.html editing.html operations.html; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?commit=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/field-payments.json?commit=$GITHUB_SHA" > /tmp/field-payments-live.json
+          python -c 'import json; d=json.load(open("/tmp/field-payments-live.json")); assert d["schema_version"]=="1.0.0"; assert d["count"]==958; assert d["worker_count"]==21; assert len(d["records"])==958; assert round(d["total_npr"],2)==3162016.38; assert d["source"]["worker_money_goods_transaction_feed"] is False'
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/catalog.json?commit=$GITHUB_SHA" | \
+            python -c 'import json,sys; d=json.load(sys.stdin); assert d["schema_version"]=="2.0.0"; assert d["source_manifest"]["private_payroll_connected"] is False'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.7.0 — Source-derived Historical Payments' --notes-file "$notes"
           fi

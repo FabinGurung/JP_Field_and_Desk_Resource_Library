@@ -59,7 +59,7 @@ async function qa() {
     assert.match(await page.locator("#fishtail").innerText(),/Worker Money/);
     assert.match(await page.locator("#rohini").innerText(),/NOT ADMITTED/);
     assert.match(await page.locator("#unassigned").innerText(),/Measurements of works/);
-    assert.equal(await page.locator('a[href*="docs.google.com/spreadsheets/"]').count(),0);
+    assert.equal(await page.locator('a[href*="docs.google.com/spreadsheets/"]').count(),1);
     assert.equal(await page.locator('a[href*="drive.google.com/drive/folders/"]').count(),0);
     await page.goto(ROOT + "/workspaces.html", {waitUntil:"domcontentloaded"});
     await page.goto(ROOT + "/field.html", {waitUntil:"domcontentloaded"});
