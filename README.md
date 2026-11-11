@@ -32,3 +32,9 @@ This repository is now `FabinGurung/jp-field-desk-library` (unchanged GitHub pro
 ## v1.5.0 — Normalized site resources and financial navigation
 
 Every project now displays the same engineering slots even when no entry is registered; original filenames distinguish duplicate generic labels. The new Workspaces and Money & Bills pages separate field/desk originals, restricted worker money sources and contractor BOQ/bill calculations. The original 24-item Money & Goods folder moved in place under `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing` preserving original Drive IDs, worker sheet names, history and observed ACLs. Private financial rows remain outside public GitHub Pages. See [source plan](docs/operations/WORKFORCE_BILLING_SOURCE_PLAN_20261111.md).
+
+## v1.6.0 — Two primary tabs: Desk Resources / Field Resources (12 Nov 2026)
+
+The intended **Desk** surface is the existing company/project engineering-source directory (`/`): architectural and structural PDF/DWG, ETABS E2K/EDB, SketchUp SKP, reports/calculations, original folders and A/B/C client packets, including source-backed empty slots. The distinct **Field** tab (`/field.html`) groups workforce and operational-finance record families by confirmed company first, plus a separate cross-company/unassigned intake for original contractor bills, vendor bills and measurements. A status-only Fishtail worker Money & Goods and attendance reference is present; Rohini has matching visible but unregistered slots. No financial amounts, individual worker names or protected Drive links appear in the public Field page.
+
+`/workspaces.html` now promotes only the two major areas, retaining secondary governance, Money & Bills and Astam links. The original `/money.html` is a deeper Field resource guide with its URL preserved. Original workbook and Drive IDs, source status and A7 authority boundaries remain unchanged. See `docs/releases/v1.6.0.md` for release QA.

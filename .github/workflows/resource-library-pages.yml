@@ -8,6 +8,7 @@ on:
       - 'docs/releases/v1.3.2.md'
       - 'docs/releases/v1.4.0.md'
       - 'docs/releases/v1.5.0.md'
+      - 'docs/releases/v1.6.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -21,6 +22,7 @@ on:
       - 'docs/releases/v1.3.2.md'
       - 'docs/releases/v1.4.0.md'
       - 'docs/releases/v1.5.0.md'
+      - 'docs/releases/v1.6.0.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -267,4 +269,41 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library v1.5.0 — Normalized Slots and Money Routing' --notes-file "$notes"
+          fi
+
+  release-desk-field-v1-6:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify Desk Field separation and tag v1.6.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.6.0.md'
+          tag='v1.6.0'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in index.html field.html workspaces.html money.html operations.html \
+            editing.html portal.css app.js resources/project-documents.html; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?commit=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/catalog.json?commit=$GITHUB_SHA" | \
+            python -c 'import json,sys; x=json.load(sys.stdin); assert x["schema_version"]=="2.0.0"; assert x["source_manifest"]["private_payroll_connected"] is False'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.6.0 — Two Primary Resource Tabs' --notes-file "$notes"
           fi
