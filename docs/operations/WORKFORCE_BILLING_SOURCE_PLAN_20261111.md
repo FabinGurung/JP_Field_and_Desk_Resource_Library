@@ -48,3 +48,9 @@ The existing `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasin
 A7 `A9_GIT_DRIVE_BOOTSTRAP.json` and `docs/A9_GIT_DRIVE_OPERATING_RULE.md` were consulted. Domain authority remains with its original Drive and module; GitHub versions the UI logic and this public-safe governance record. Original Google Sheets' native revision histories remain and no new worker workbook copies were created.
 
 PRE Git main: `df14bcc68135ed32e496b68725ac0666b5ef3de7`. POST branch, PR, Actions run and tag `v1.5.0` must be provider-confirmed before release status is claimed. Independent source-file readback and private payroll reconciliation are not part of the public site deployment.
+
+## Clarified Desk versus Field intent, 12 November 2026
+
+User definition of **Desk Resources** is the existing published engineering-file hierarchy. User definition of **Field Resources** is the discoverability of worker Money & Goods, attendance/wages/advances, vendor bills, contractor bills, measurement of works, and associated site registers. Separate **UI tabs** are appropriate, but source-of-truth is still per-owner, not merged or rehosted: private payroll in Drive, commercial measurements/BOQ in Cost Estimation, supplier invoices in original Finance, and Library only the safe navigation/custody.
+
+The cross-chat wage audit is supplementary and flags the claimed 2,931 extracted attendance rows versus 2,932 accepted M03 payable worker-dates, which count **different admissibility criteria**. Do not treat either number as a consolidated live attendance total without source-row and worker/date reconciliation. M01–M03 stay historical locked results; cleaned October Sheets are staged intake, not promoted payroll; person-wise attendance and worker Money & Goods are separate original collections. No source values were edited under this UI change.

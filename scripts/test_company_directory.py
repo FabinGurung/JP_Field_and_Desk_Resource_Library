@@ -116,7 +116,7 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("Project Resources", (ROOT / "site/editing.html").read_text())
         self.assertTrue(company_key("Company A").startswith("display-"))
         self.assertIn(("project-packets", "Agreements & Materials"), GROUPS)
-        for resource in ("workspaces.html", "money.html", "money.js", "portal.css"):
+        for resource in ("workspaces.html", "field.html", "money.html", "money.js", "portal.css"):
             self.assertIn(resource, SITE_FILES)
             self.assertTrue((ROOT / "site" / resource).exists())
         app = (ROOT / "site/app.js").read_text()
@@ -126,6 +126,24 @@ class CompanyDirectoryTest(unittest.TestCase):
             self.assertIn(slot, app)
         self.assertIn("No ", app)
         self.assertIn("Not registered", app)
+        desk = (ROOT / "site/index.html").read_text()
+        field = (ROOT / "site/field.html").read_text()
+        workspaces = (ROOT / "site/workspaces.html").read_text()
+        self.assertIn('href="./field.html"', desk)
+        self.assertIn('aria-current="page">Desk Resources', desk)
+        self.assertIn('aria-current="page">Field Resources', field)
+        for title in ("Worker Money &amp; Goods", "Bills of contractor", "Bills of vendor",
+                      "Measurements of works", "Attendance"):
+            self.assertIn(title, field)
+        self.assertIn("Rohini Engineering and Builders", field)
+        self.assertIn("Fishtail Builders", field)
+        self.assertIn("NOT ADMITTED", field)
+        self.assertNotIn("docs.google.com/spreadsheets/d/", field)
+        self.assertNotIn("drive.google.com/file/d/", field)
+        self.assertNotIn("drive.google.com/drive/folders/", field)
+        self.assertIn('href="./field.html"', workspaces)
+        self.assertIn('href="./"', workspaces)
+        self.assertIn("Original Google Drive records remain authoritative", field)
         money = (ROOT / "site/money.html").read_text()
         self.assertIn("not verified as final", money)
         self.assertIn("01_JP", money)
