@@ -93,3 +93,11 @@ A7 canonical operating rule: **Organization → Project → Category → Resourc
 - Native Google Sheets use their **existing** version history and PRE/POST archives. No new workbook IDs.
 - Public repository stores only safely admitted metadata; private A9 Main/Local consumed cursor/ACK is **not** implicitly updated.
 - A7 itself is read-only during this site work: registering a new canonical A7 organization or peer-module identity requires a separate governed A7 change.
+
+## v1.5.0 — Normalized source slots and private financial boundaries (11 November 2026)
+
+The Library now maintains the same display slots for all projects (Architectural PDF/DWG, Structural PDF/DWG, ETABS E2K/EDB, SketchUp SKP, reports, calculations, source folders and client packet). Empty slots mean **not registered in this published workbook**; no false file or link is invented. `Original Filename` is displayed as owner-entered metadata for file differentiation.
+
+New Level 1 `workspaces.html` routes to the existing site-directory root (Level 2 → company → project) or to `money.html` (Level 2 → workforce/contractor/vendor families). Contractor BOQ and bills belong to peer Cost Estimation; payment proofs stay Finance, while public Pages is a navigator only.
+
+The existing 24-item Money & Goods original collection was renamed and moved by Drive metadata (not copied) into `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing / 09 Restricted Workforce Source Registers`; all original child IDs and Drive permissions were checked unchanged. The worker-level finance integration remains **NOT_CONNECTED**. See `docs/operations/WORKFORCE_BILLING_SOURCE_PLAN_20261111.md` for A7 PRE/POST and readiness gates.

@@ -116,6 +116,21 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("Project Resources", (ROOT / "site/editing.html").read_text())
         self.assertTrue(company_key("Company A").startswith("display-"))
         self.assertIn(("project-packets", "Agreements & Materials"), GROUPS)
+        for resource in ("workspaces.html", "money.html", "money.js", "portal.css"):
+            self.assertIn(resource, SITE_FILES)
+            self.assertTrue((ROOT / "site" / resource).exists())
+        app = (ROOT / "site/app.js").read_text()
+        for slot in ("architectural-pdf", "architectural-dwg", "structural-pdf",
+                     "structural-dwg", "etabs-e2k", "etabs-edb", "sketchup-skp",
+                     "geotechnical", "mep", "estimates", "project-source-folders"):
+            self.assertIn(slot, app)
+        self.assertIn("No ", app)
+        self.assertIn("Not registered", app)
+        money = (ROOT / "site/money.html").read_text()
+        self.assertIn("not verified as final", money)
+        self.assertIn("01_JP", money)
+        self.assertNotIn("drive.google.com/drive/folders/", money)
+        self.assertIn("Private worker data: not connected", (ROOT / "site/operations.js").read_text())
 
 
 if __name__ == "__main__":

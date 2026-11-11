@@ -47,6 +47,7 @@
       ["Document slot", r.document_slot || "Not classified"],
       ["Discipline (source register)", r.discipline || "Not classified"],
       ["Format", r.format],
+      ["Original filename", r.original_filename || "Not provided in source register"],
       ["Revision / issue note (not an approval)", r.revision_note || "Revision not established"],
       ["Owner's approval note", r.approval || "Unverified"],
       ["Source access", r.access === "PUBLIC_LINK" ? "Reviewed link · original access still enforced by Drive" : "Google Drive permission required"],
@@ -190,63 +191,144 @@
     }
     root.append(shown.length ? grid : text(make("div"), "p", "No projects match the search.", "empty"));
   }
+
+  // Stable presentation slots exist even when a project has no matching source record.
+  // This is a view contract, NOT a synthetic file or approval assertion.
+  const slotDefinitions = {
+    "drawings": [
+      ["architectural-pdf", "Architectural drawings · PDF", r => /architecture/i.test(r.discipline) && r.format === "PDF"],
+      ["architectural-dwg", "Architectural drawings · DWG", r => /architecture/i.test(r.discipline) && r.format === "DWG"],
+      ["structural-pdf", "Structural drawings · PDF", r => /structur/i.test(r.discipline) && r.format === "PDF"],
+      ["structural-dwg", "Structural drawings · DWG", r => /structur/i.test(r.discipline) && r.format === "DWG"],
+      ["other-drawings", "Other issued drawings", r => true]
+    ],
+    "models": [
+      ["etabs-e2k", "Structural analysis model · E2K", r => r.format.toUpperCase() === "E2K"],
+      ["etabs-edb", "Structural analysis model · EDB", r => r.format.toUpperCase() === "EDB"],
+      ["sketchup-skp", "3D SketchUp model · SKP", r => r.format.toUpperCase() === "SKP"],
+      ["other-models", "Other source models", r => true]
+    ],
+    "reports": [
+      ["geotechnical", "Geotechnical / soil report", r => /geotech|soil/i.test(r.discipline)],
+      ["mep", "MEP / sanitary report", r => /MEP|sanitary/i.test(r.discipline)],
+      ["municipal", "Municipal / permit report", r => /municipal|permit/i.test(r.discipline)],
+      ["other-reports", "Other technical reports", r => true]
+    ],
+    "calculations": [
+      ["estimates", "Cost estimates / BOQ references", r => /cost|estimate|BOQ/i.test(r.discipline)],
+      ["structural-calculations", "Structural calculations", r => /structural|rebar|footing/i.test(r.discipline)],
+      ["other-calculations", "Other calculations", r => true]
+    ],
+    "source-folders": [
+      ["project-source-folders", "Original project and revision folders", r => true]
+    ],
+    "project-packets": [
+      ["client-packets", "Client A / B / C document packet", r => true]
+    ],
+    "other": [
+      ["other-references", "Other reference files", r => true]
+    ]
+  };
+  function splitIntoSlots(groupKey, records) {
+    const remain = [...records];
+    const result = [];
+    for (const [key,label,accept] of slotDefinitions[groupKey] || []) {
+      const found = remain.filter(accept);
+      for (const item of found) remain.splice(remain.indexOf(item),1);
+      result.push({key,label,records:found});
+    }
+    if (remain.length) throw Error("Unclassified resource slot for " + groupKey);
+    return result;
+  }
   function projectResources() {
     const root = $("workspace"); root.replaceChildren();
     const p = state.data.projects.find(x => x.project_id === state.project && x.company_key === state.company);
     if (!p) {setLocation(); return;}
     const header = make("div", null, "section-top");
     const left = make("div");
-    text(left, "p", "03 / RESOURCE CATEGORIES", "eyebrow");
+    text(left, "p", "03 / STANDARD RESOURCE MATRIX", "eyebrow");
     text(left, "h2", p.name);
-    text(left, "p", p.project_id + (p.company_project_code ? " · " + p.company_project_code : "") + " · " + p.resource_count + " resources · " + p.document_count + " packet files");
+    text(left, "p", p.project_id + (p.company_project_code ? " · " + p.company_project_code : "") +
+      " · " + p.resource_count + " registered resources · " + p.document_count + " packet files");
     header.append(left);
-    const back = text(header, "button", "All projects", "utility-btn");
+    const back = text(header,"button","All projects","utility-btn");
     back.addEventListener("click", () => setLocation(state.company));
     root.append(header);
     if (p.company_assignment === "NEEDS_OWNER_CONFIRMATION") {
-      text(root, "p", "Company assignment is missing from the original packet register; this is not an approval or ownership inference.", "review");
+      text(root,"p","Company assignment requires original source-owner confirmation.", "review");
     }
-    const stack = make("div", null, "group-stack");
-    let displayed = 0;
+    const intro = make("div",null,"matrix-intro");
+    text(intro,"strong","Same slots for every project");
+    text(intro,"p","Empty slots are shown deliberately. Open one to see whether a file has been registered. An empty slot does not prove the original file does not exist.");
+    root.append(intro);
+    const stack = make("div",null,"group-stack");
+    let matchingFiles = 0;
+    const hasQuery = Boolean(state.query);
+    const hasFacets = Object.values(state.facets).some(Boolean);
     for (const group of state.data.groups) {
-      const records = state.data.resources.filter(r => r.project_id === p.project_id && r.group === group.key &&
-        facetsMatch(r) && matches(r.title, r.document_slot, r.format, r.discipline, r.revision_note, r.id, r.approval, group.label));
-      const packets = group.key === "project-packets" && p.document_count &&
-        matches("", "agreements", "documents", "materials", "project packets", group.label, p.name);
-      if (!records.length && !packets) continue;
-      displayed += records.length + (packets ? p.document_count : 0);
-      const details = make("details", null, "resource-group");
-      details.open = true;
+      const all = state.data.resources.filter(r => r.project_id === p.project_id && r.group === group.key);
+      const matching = all.filter(r => facetsMatch(r) &&
+        matches(r.title,r.original_filename,r.document_slot,r.format,r.discipline,r.revision_note,r.id,r.approval,group.label));
+      matchingFiles += matching.length;
+      const hasPackets = group.key === "project-packets" && p.document_count > 0;
+      const packetMatches = matches("agreements","documents","materials","packet",group.label,p.name);
+      const groupCard = make("details",null,"resource-group");
+      groupCard.open = Boolean(matching.length || (hasPackets && packetMatches));
+      groupCard.dataset.group = group.key;
       const summ = make("summary");
-      text(summ, "span", group.label);
-      text(summ, "small", records.length + (packets ? p.document_count : 0) + " items");
-      details.append(summ);
-      const body = make("div", null, "resource-items");
-      for (const r of records) {
-        const btn = make("button", null, "resource-line");
-        btn.type = "button";
-        btn.setAttribute("aria-pressed", String(state.selected === r.id));
-        text(btn, "strong", r.title);
-        text(btn, "span", [r.document_slot, r.format, r.access === "PUBLIC_LINK" ? "Link reviewed" : "Drive permission required"].filter(Boolean).join(" · "));
-        btn.addEventListener("click", () => {
-          state.selected = r.id; detail(r); render();
-          if (window.matchMedia("(max-width:700px)").matches) $("east").scrollIntoView({block:"start", behavior:"auto"});
-        });
-        body.append(btn);
+      text(summ,"span",group.label);
+      const recordCount = all.length + (hasPackets ? p.document_count : 0);
+      text(summ,"small",recordCount ? recordCount+" registered" : "No entries");
+      groupCard.append(summ);
+      const body=make("div",null,"resource-items slots");
+      const allSlots=splitIntoSlots(group.key,all);
+      for (const slot of allSlots) {
+        const matched = slot.records.filter(r => matching.includes(r));
+        const slotCard=make("details",null,"resource-slot");
+        slotCard.dataset.slot=slot.key;
+        slotCard.open=Boolean(matched.length) || (group.key === "project-packets" && hasPackets && packetMatches);
+        const slotTitle=make("summary",null,"slot-title");
+        text(slotTitle,"span",slot.label);
+        const slotCount=group.key === "project-packets" && hasPackets ? p.document_count : slot.records.length;
+        text(slotTitle,"small",slotCount ? slotCount+" registered" : "Not registered");
+        slotCard.append(slotTitle);
+        const content=make("div",null,"slot-contents");
+        if (group.key === "project-packets" && hasPackets && packetMatches) {
+          const a=text(content,"a","Open A/B/C documents · "+p.document_count+" linked PDFs","packet-link");
+          a.href="./resources/project-documents.html?project="+encodeURIComponent(p.project_id);
+        } else if (matched.length) {
+          for (const r of matched) {
+            const btn=make("button",null,"resource-line");
+            btn.type="button";
+            btn.setAttribute("aria-pressed",String(state.selected === r.id));
+            text(btn,"strong",r.title);
+            if (r.original_filename && r.original_filename !== r.title) {
+              text(btn,"span",r.original_filename,"original-name");
+            }
+            text(btn,"span",[r.format,r.access==="PUBLIC_LINK"?"Link reviewed":"Drive permission required"].filter(Boolean).join(" · "));
+            btn.addEventListener("click",()=>{
+              state.selected=r.id; detail(r); render();
+              if (window.matchMedia("(max-width:700px)").matches) $("east").scrollIntoView({block:"start",behavior:"auto"});
+            });
+            content.append(btn);
+          }
+        } else {
+          let msg;
+          if (slot.records.length && (hasQuery || hasFacets)) msg="Registered files exist, but none match the current search or filters.";
+          else msg="No "+slot.label.toLowerCase()+" registered for this project.";
+          text(content,"p",msg,"slot-empty");
+          const link=text(content,"a","How to register a verified source","slot-help");
+          link.href="./editing.html#editable";
+        }
+        slotCard.append(content);
+        body.append(slotCard);
       }
-      if (packets) {
-        const a = text(body, "a", "Open A/B/C document register · " + p.document_count + " original-linked PDFs", "packet-link");
-        a.href = "./resources/project-documents.html?project=" + encodeURIComponent(p.project_id);
-      }
-      details.append(body);
-      stack.append(details);
+      groupCard.append(body);
+      stack.append(groupCard);
     }
-    const visible = state.data.resources.filter(r => r.project_id === p.project_id && facetsMatch(r) &&
-      matches(r.title, r.document_slot, r.format, r.discipline, r.revision_note, r.id, r.approval,
-        groupLabel(r.group))).length;
-    $("facet-count").textContent = visible + " of " + p.resource_count +
-      " resource links match · Packet documents have a separate A/B/C review";
-    root.append(displayed ? stack : text(make("div"), "p", "No resources match this search in the selected project.", "empty"));
+    $("facet-count").textContent=matchingFiles+" of "+p.resource_count+
+      " resources match · Empty slots stay visible for consistent project navigation";
+    root.append(stack);
   }
   function render() {
     if (!state.data) return;

@@ -28,3 +28,7 @@ The LIVE owner workbook now includes a source-verified Company column in its six
 ## v1.3.2 — Publication and rename status QA
 
 This repository is now `FabinGurung/jp-field-desk-library` (unchanged GitHub provider ID 1448289662). Live CONTINENT_01 Project Identity and Projects & Locations now both have `PRJ-000029.is_public=TRUE`; all six original Basanti packet rows already have `Publish=TRUE`. No source flags or file permissions were modified. Public project listing is distinct from contract signature, construction issue approval, and private Drive access.
+
+## v1.5.0 — Normalized site resources and financial navigation
+
+Every project now displays the same engineering slots even when no entry is registered; original filenames distinguish duplicate generic labels. The new Workspaces and Money & Bills pages separate field/desk originals, restricted worker money sources and contractor BOQ/bill calculations. The original 24-item Money & Goods folder moved in place under `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing` preserving original Drive IDs, worker sheet names, history and observed ACLs. Private financial rows remain outside public GitHub Pages. See [source plan](docs/operations/WORKFORCE_BILLING_SOURCE_PLAN_20261111.md).

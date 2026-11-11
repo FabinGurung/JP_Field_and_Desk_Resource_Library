@@ -27,3 +27,24 @@
 @media(min-width:1161px) and (max-width:1310px){.facet-grid{grid-template-columns:1fr}}
 @media(max-width:700px){.facet-grid{grid-template-columns:1fr 1fr;gap:9px}.facet-grid select{font-size:.75rem}}
 @media(max-width:380px){.facet-grid{grid-template-columns:1fr}}
+
+/* Standard engineering slots are always shown, including unregistered categories. */
+.matrix-intro{background:#f0f5ef;border:1px solid #d6e3d6;border-radius:10px;padding:13px 16px;margin:12px 0 16px}
+.matrix-intro strong{display:block;font-size:.84rem}
+.matrix-intro p{font-size:.78rem;color:var(--dim);line-height:1.55;margin:5px 0 0}
+.resource-group{border-radius:11px}.resource-group>summary{padding:14px 17px}
+.resource-group>summary small{margin-left:auto;white-space:nowrap}
+.slots{padding:9px 12px 12px;display:grid;gap:7px}
+.resource-slot{border:1px solid #e2e9e1;border-radius:9px;background:#fcfdfa;overflow:hidden}
+.resource-slot[open]{background:white;border-color:#cad9cc}
+.slot-title{padding:10px 13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:.81rem;font-weight:790;list-style:none}
+.slot-title::-webkit-details-marker{display:none}
+.slot-title:after{content:"⌄";color:var(--green);font-size:1rem}
+.resource-slot[open] .slot-title{border-bottom:1px solid #e9eee8}
+.slot-title small{font-size:.71rem;font-weight:660;color:var(--dim);white-space:nowrap;margin-left:auto}
+.slot-contents{padding:7px 10px 12px}
+.resource-slot .resource-line{padding:11px 8px;border-bottom:1px solid #e9eee8}
+.original-name{overflow-wrap:anywhere;color:#2f6850!important;font-size:.73rem!important}
+.slot-empty{font-size:.79rem;color:var(--dim);line-height:1.5;padding:2px 6px 0;margin:6px 0}
+.slot-help{font-size:.75rem;font-weight:760;color:var(--green);padding:5px 6px;display:inline-block}
+@media(max-width:700px){.slots{padding:8px;gap:6px}.slot-title{padding:11px;font-size:.8rem}.slot-title small{font-size:.69rem}.resource-group>summary{padding:13px}.resource-group>summary small{font-size:.7rem}.section-top{margin:9px 0}}
