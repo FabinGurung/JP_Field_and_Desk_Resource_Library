@@ -45,7 +45,7 @@
       putRow(body,[
         [r.date,""],
         [r.worker,""],
-        [r.site,""],
+        [r.site || "Not specified in source",""],
         [r.category,""],
         [money.format(r.amount_npr),"payment-amount"],
         [r.source_row+" · "+r.source_cell,"payment-source"]
@@ -87,7 +87,7 @@
         if(node.value){const r=json.records.find(v=>v.worker_id===node.value);node.textContent=r.worker}
       }
       fillSelect($("payment-category"), [...new Set(json.records.map(r=>r.category))],"All categories");
-      fillSelect($("payment-site"), [...new Set(json.records.map(r=>r.site))],"All sites");
+      fillSelect($("payment-site"), [...new Set(json.records.map(r=>r.site).filter(Boolean))],"All sites");
       target.textContent="Fetched from original CLEAN Payment Google Sheet on "+json.fetched_on_npt+
         " · "+json.count+" recorded rows, "+json.worker_count+" workers. Historical source — not an approved payroll settlement.";
       $("payment-controls").hidden=false;

@@ -66,7 +66,7 @@ def build_payments(tables, output_dir: Path, published_at: str):
         worker_id, worker_name = str(row[0]).strip(), str(row[1]).strip()
         site, kind = str(row[4]).strip(), str(row[5]).strip()
         source_ref, source_cell = str(row[10]).strip(), str(row[11]).strip()
-        if (not worker_id or not worker_name or not site or kind not in CATEGORIES
+        if (not worker_id or not worker_name or kind not in CATEGORIES
                 or not source_ref or not re.fullmatch(r"[A-Z]+[0-9]+", source_cell)):
             raise ValueError(f"Missing/invalid payment source at Payment!A{source_number}:L{source_number}")
         day = date_string(row[2])
