@@ -19,7 +19,7 @@ ADMISSION = {"LEGACY_PUBLIC_ROUTE", "OWNER_REVIEWED_PUBLIC_LINK"}
 SITE_FILES = ("index.html", "app.js", "styles.css", "resources/project-documents.html",
               "operations.html", "operations.css", "operations.js", "source-custody.json",
               "editing.html", "editing.css",
-              "workspaces.html", "field.html", "money.html", "money.js", "portal.css",
+              "workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css",
               "feasibility/index.html", "feasibility/buyer-guide/index.html",
               "feasibility/buyer-guide/guide.json",
               "ops/data/land-feasibility/astam-village-public.v1.0.json",
@@ -231,3 +231,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     tables, stamp = load_tables(SOURCES, args.fixture)
     print("Catalogue records and client documents:", *build(tables, args.output, stamp))
+    if not args.fixture:
+        # Directly fetch the approved historical clean Payment workbook using
+        # the same read-only, keyless Google federation. Failure blocks deploy.
+        from publish_field_payments import publish_payments
+        print("Verified clean historical payment records:", publish_payments(args.output))

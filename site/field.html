@@ -1,23 +1,43 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Field Resources · A9 Field & Desk Library</title><meta name="description" content="Company-grouped site field records: worker money and goods, attendance, contractor bills, vendor bills, measurements and materials source custody.">
-<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./portal.css"></head><body>
+<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./portal.css"><script defer src="./field-payments.js"></script></head><body>
 <a class="skip" href="#main">Skip to field resources</a>
 <header class="north" id="north"><a class="brand" href="./workspaces.html"><span class="brand-icon">A9</span><span><strong>Field &amp; Desk</strong><small>Operations Library</small></span></a>
 <nav aria-label="Primary resource tabs"><a href="./">Desk Resources</a><a href="./field.html" aria-current="page">Field Resources</a><a href="./workspaces.html">Overview</a><a href="./operations.html">Source custody</a><a href="./editing.html">How to edit</a></nav></header>
 <main id="main" class="portal-main">
 <nav class="mini-breadcrumb" aria-label="Breadcrumb"><a href="./workspaces.html">Library</a><span>/</span><span>Field Resources</span></nav>
 <section class="portal-hero"><p class="eyebrow">FIELD RESOURCES · COMPANY → SOURCE FAMILY → ORIGINAL</p>
-<h1>People, money, bills and site records.</h1><p>This field view organizes worker Money &amp; Goods, attendance, vendor and contractor bills, measurements, and material records. It locates their original owners; it does not expose private transactions or treat unverified records as approved.</p></section>
+<h1>People, money, bills and site records.</h1><p>This field view organizes worker Money &amp; Goods, attendance, vendor and contractor bills, measurements, and material records. It locates original owners and displays your approved, source-derived historical CLEAN Payment transactions below. This does not certify payroll or replace W01–W21 source records.</p></section>
 <div class="field-tabs" aria-label="Field resource subjects"><a href="#fishtail">Fishtail Builders</a><a href="#rohini">Rohini Engineering</a><a href="#unassigned">Shared / owner not assigned</a></div>
 <section class="portal-section" id="fishtail"><p class="eyebrow">COMPANY 01 · ORIGINAL SOURCE COLLECTIONS</p><h2>Fishtail Builders Pvt Ltd</h2>
 <p>Existing worker and materials records are associated with Fishtail. Contractor, vendor and measurement files that lack a confirmed company/project relation are kept in the separate shared-source group below—not silently assigned to Fishtail.</p>
 <div class="field-resource-grid">
-<article class="field-record"><span class="field-state">SOURCE PRESENT · PRIVATE</span><h3>Worker Money &amp; Goods</h3><p>21 original per-worker Sheets, plus separate W01 prototype and backups (24 items). Existing Drive folder moved under the A9 Finance source hierarchy; W01–W21 rollout remains unverified as final.</p><a href="./money.html#workforce">Source ownership and access instructions</a></article>
+<article class="field-record"><span class="field-state">SOURCE PRESENT · PRIVATE</span><h3>Worker Money &amp; Goods</h3><p>21 original per-worker Sheets (W01–W10 money-entry templates and W11–W21 attendance templates), plus the W01 prototype and two backups (24 items). Existing Drive folder moved under the A9 Finance source hierarchy; W01–W21 rollout remains unverified as final.</p><a href="./money.html#workforce">Source ownership and access instructions</a></article>
+<article class="field-record"><span class="field-state">CLEANED HISTORICAL PAYMENTS · SOURCE-BACKED</span><h3>Cleaned payment transaction register</h3><p>The original CLEAN Payment v1.1 tab contains 958 source-referenced historical records. Actual source values, including negative adjustments, are fetched using authenticated GitHub Actions.</p><a href="#historical-payments">Explore recorded payments</a></article>
 <article class="field-record"><span class="field-state">SOURCE PRESENT · NOT RECONCILED</span><h3>Attendance, wage and advances</h3><p>Original attendance references and worker entries are preserved. M01–M03 are locked historical analytics; cleaned October conversions require record-level admission before use as operating totals.</p><a href="./money.html#workforce">Attendance and worker-money custody</a></article>
 <article class="field-record"><span class="field-state">ORIGINAL REGISTER EXISTS · NOT CONNECTED</span><h3>Materials and inventory</h3><p>Fishtail's existing materials inventory workbook is maintained separately in A9 Drive. It is not one of the three tabs read by this public Library publisher.</p><a href="./editing.html">How source registers are admitted</a></article>
 <article class="field-record field-empty"><span class="field-state">NOT ADMITTED IN FIELD INDEX</span><h3>Contractor bills &amp; measurements</h3><p>No verified company-and-project-linked contractor billing feed has been admitted to this Library. See shared original sources below.</p><a href="#unassigned">Review unassigned bill sources</a></article>
 <article class="field-record field-empty"><span class="field-state">NOT ADMITTED IN FIELD INDEX</span><h3>Vendor bills</h3><p>Original supplier bill candidates exist, but are not yet normalized into a company-scoped, approved field register.</p><a href="#unassigned">Review vendor source group</a></article>
+</div></section>
+<section class="portal-section" id="historical-payments">
+<p class="eyebrow">ORIGINAL GOOGLE SHEET → AUTHENTICATED ACTIONS → PUBLIC PAGES</p>
+<h2>Historical worker payment transactions</h2>
+<p>Original rows from <a href="https://docs.google.com/spreadsheets/d/1ShS8wI6OAZA6Is-DLJK3sVkJzl3i5mn5zK-on38fE9I/edit">Wage List 11 — PAYMENT — CLEAN v1.1</a>, tab <code>Payment</code>. Source fields and amounts are preserved. This is historical payment/advance/ration evidence, not independently certified payroll or the W01–W21 Money &amp; Goods ledger.</p>
+<p class="portal-notice"><strong>Public publication:</strong> this source-derived table is visible to everyone who visits GitHub Pages. The access restrictions on the original Google Sheet do not apply to the generated public table. No bank or contact details are exported.</p>
+<p id="payments-load-status" role="status" aria-live="polite">Loading the source-verified clean Payment publication…</p>
+<div id="payment-controls" class="payment-controls" hidden>
+<label for="payment-worker">Worker<select id="payment-worker"><option>Loading</option></select></label>
+<label for="payment-category">Payment category<select id="payment-category"><option>Loading</option></select></label>
+<label for="payment-site">Project / site<select id="payment-site"><option>Loading</option></select></label>
+<button id="payment-reset" type="button">Reset filters</button>
+</div>
+<div id="payment-view" hidden>
+<p id="payment-summary" role="status" aria-live="polite"></p>
+<div class="payment-table-wrap" tabindex="0" role="region" aria-label="Source-derived historical payments, horizontally scrollable on small screens">
+<table class="payment-table"><thead><tr><th>Date</th><th>Worker</th><th>Project / Site</th><th>Category</th><th>Amount (NPR)</th><th>Source evidence</th></tr></thead><tbody id="payment-record-body"></tbody></table></div>
+<div class="payment-pager"><button type="button" id="payment-prev">Previous</button><span id="payment-page"></span><button type="button" id="payment-next">Next</button></div>
+<p class="payment-caveat">Dates, amounts and source coordinates are recorded, not inferred. Negative contract adjustments retain their original signs. The original worker money ledger and final payable reconciliation remain separately governed.</p>
 </div></section>
 <section class="portal-section" id="rohini"><p class="eyebrow">COMPANY 02 · EMPTY GROUPS PRESERVED</p><h2>Rohini Engineering and Builders Pvt Ltd</h2>
 <p>The engineering and client-document directory has Rohini project entries; that does not establish verified worker financial, invoice or measurement data in this Field index. All the same headings are shown so the folder structure stays predictable.</p>
@@ -36,6 +56,6 @@
 <article class="field-record"><span class="field-state">MEASUREMENT WORKBOOK EXISTS</span><h3>Measurements of works</h3><p>Amrit Rawat's measurements, BOQ, AOC and bills workbook was located. It is one project-specific source, not evidence that a global live measurement feed is already operating.</p><a href="https://github.com/FabinGurung/jp-estimating-and-boq">Cost Estimation / BOQ repository</a></article>
 <article class="field-record field-empty"><span class="field-state">INTAKE NOT VERIFIED</span><h3>Tools, equipment and field forms</h3><p>Reserved for governed site registers, handover forms, inspections and equipment logs after the original source and update owner are established.</p><a href="./operations.html">Source custody and intake status</a></article>
 </div></section>
-<section class="portal-section portal-provenance"><h2>Why aren't the amounts displayed here?</h2><p>GitHub Pages is public, while individual wages, advances, payments and contractor bills require controlled access. A genuinely live Field view needs source-normalization checks, an approved owner registry, a separately scoped reader and a staff-authenticated service. No private worker Sheet is fetched into this page.</p>
+<section class="portal-section portal-provenance"><h2>What is published, and what remains separate?</h2><p>The historical CLEAN Payment register above is directly fetched and owner-approved for public display. The original W01–W10 Money &amp; Goods templates currently show no entered transactions; W11–W21 contain attendance structures; the W01 hardened prototype remains a prototype. Do not confuse these sources or treat historical payments as certified final balances.</p>
 <p>Last source-structure audit: <strong>11 November 2026</strong>. Not a financial synchronization timestamp. For approved engineering PDFs and ETABS/SketchUp originals, use <a href="./">Desk Resources</a>.</p></section>
 </main><footer class="south" id="south"><div><p class="eyebrow">A7 SOURCE CUSTODY</p><strong>Original Google Drive records remain authoritative.</strong><p>Field Resources is navigation and admission status—not a second payroll, purchasing or BOQ database.</p></div><div class="foot-links"><a href="./">Desk Resources</a><a href="./money.html">Money &amp; Bills guide</a><a href="./editing.html">Source editing</a><a href="https://github.com/FabinGurung/jp-field-desk-library/releases">Version history</a></div></footer></body></html>

@@ -116,7 +116,7 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("Project Resources", (ROOT / "site/editing.html").read_text())
         self.assertTrue(company_key("Company A").startswith("display-"))
         self.assertIn(("project-packets", "Agreements & Materials"), GROUPS)
-        for resource in ("workspaces.html", "field.html", "money.html", "money.js", "portal.css"):
+        for resource in ("workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css"):
             self.assertIn(resource, SITE_FILES)
             self.assertTrue((ROOT / "site" / resource).exists())
         app = (ROOT / "site/app.js").read_text()
@@ -138,7 +138,9 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("Rohini Engineering and Builders", field)
         self.assertIn("Fishtail Builders", field)
         self.assertIn("NOT ADMITTED", field)
-        self.assertNotIn("docs.google.com/spreadsheets/d/", field)
+        self.assertIn("1ShS8wI6OAZA6Is-DLJK3sVkJzl3i5mn5zK-on38fE9I", field)
+        self.assertIn("historical-payments", field)
+        self.assertNotIn("1MsHpWUj5NU7eEWhAgyJTusn19c1VeppY", field)
         self.assertNotIn("drive.google.com/file/d/", field)
         self.assertNotIn("drive.google.com/drive/folders/", field)
         self.assertIn('href="./field.html"', workspaces)
@@ -148,7 +150,7 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("not verified as final", money)
         self.assertIn("01_JP", money)
         self.assertNotIn("drive.google.com/drive/folders/", money)
-        self.assertIn("Private worker data: not connected", (ROOT / "site/operations.js").read_text())
+        self.assertIn("Original worker Money & Goods ledger not connected", (ROOT / "site/operations.js").read_text())
 
 
 if __name__ == "__main__":

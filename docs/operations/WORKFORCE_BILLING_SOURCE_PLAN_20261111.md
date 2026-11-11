@@ -1,3 +1,5 @@
+> **12 November 2026 source-publication addendum:** The 11 November note below is the prior baseline. The owner explicitly approved a limited public projection of the historical CLEAN Payment register. The separate original W01–W21 Money & Goods operational ledger remains disconnected. See the addendum at the end.
+
 # A9 — Workforce / Contractor Billing Sources and A7 Custody
 **Verified:** 11 November 2026 · Asia/Kathmandu
 
@@ -54,3 +56,17 @@ PRE Git main: `df14bcc68135ed32e496b68725ac0666b5ef3de7`. POST branch, PR, Actio
 User definition of **Desk Resources** is the existing published engineering-file hierarchy. User definition of **Field Resources** is the discoverability of worker Money & Goods, attendance/wages/advances, vendor bills, contractor bills, measurement of works, and associated site registers. Separate **UI tabs** are appropriate, but source-of-truth is still per-owner, not merged or rehosted: private payroll in Drive, commercial measurements/BOQ in Cost Estimation, supplier invoices in original Finance, and Library only the safe navigation/custody.
 
 The cross-chat wage audit is supplementary and flags the claimed 2,931 extracted attendance rows versus 2,932 accepted M03 payable worker-dates, which count **different admissibility criteria**. Do not treat either number as a consolidated live attendance total without source-row and worker/date reconciliation. M01–M03 stay historical locked results; cleaned October Sheets are staged intake, not promoted payroll; person-wise attendance and worker Money & Goods are separate original collections. No source values were edited under this UI change.
+
+## 12 Nov 2026 — Actual worker-source normalization, archive and publication
+
+A live structural scan of all 21 original worker-site workbooks found two source types, despite their former common Money & Goods title:
+- **W01–W10 (10):** 31 tabs, `S00` plus project-site tabs with 8-column `Money Entry ID | Date | Type | Amount / Value (NPR) | Details | Worker ID | Site ID | Slot`. Home summaries for all ten have **zero recorded money entries**.
+- **W11–W21 (11):** 30 tabs with attendance-only `Attendance Entry ID | Date | Attendance`; no `S00` and no money ledger columns. Renamed in place to accurately say `Attendance by Project Site — ORIGINAL`, preserving permanent IDs and native formulas/history.
+- **W01 v2 hardened (1):** independent 35-tab prototype with `99 Transactions`, explicit statuses/voids and five active records. The Home setup warning says its row-local Apps Script staging is not ready for broad rollout. It remains under `80_Prototype — W01 Hardened v2 — Not Final`.
+- **Two older W01 backups:** preserved by a metadata-only move into `90_Archive — W01 Historical Backups — Preserve`. They are not published or deleted. The original 21 workbooks stay at the root of the original stable 24-item collection. Original folder/file IDs and Drive-native history remain; PR/release records the before/after roles.
+
+**Clean original identified:** `Wage_List_11__PAYMENT__CLEAN_v1.1`, one of four October 2026 historical cleaning outputs. It is not a normalized Money & Goods ledger. Its tab `Payment` has exactly 958 transaction rows and a TOTAL footer. The workbook manifest says 958, 21 distinct worker identifiers. Unformatted values reconcile to NPR 3,162,016.38476, or NPR 3,162,016.38 for display. Two signed negative Contract adjustments are preserved. Source dates are interpreted from the native Google Sheets date values, including serials.
+
+The user approved publishing selected rows from this clean historical Payment tab on 12 November 2026. An explicit read-only grant was made to **only this workbook** for the existing Google keyless Pages publisher. GitHub source code never includes the transaction corpus: the source is read and validated at build time and the generated `field-payments.json` resides in the Pages artifact. It is **public**; source Google Sheet permissions do **not** carry over to that generated file. The export includes worker ID/name, date, site, category, signed NPR amount and source provenance, but excludes paid-by, narrative remarks, contact and bank information.
+
+**Critical distinction:** Historical CLEAN Payment is now a source-backed public register, but the 21-worker Money & Goods original operational rollout, reconciled wage balances and certified payable totals remain unverified. Do not replace or merge worker-site templates solely by filename; normalize distinct grains and reconcile any overlaps explicitly.

@@ -8,7 +8,7 @@ fetch("./catalog.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Public
   const manifest=data.source_manifest||{};
   const stamp=data.verified_on_npt||"unavailable";
   el.textContent="Reviewed site-resource catalogue: "+stamp+
-    ". Private worker money and contractor payment feeds: not connected to this public website.";
+    ". Original W01–W21 Money & Goods and contractor billing feeds are not connected; historical CLEAN Payment is published on Field Resources.";
   if(manifest.private_payroll_connected!==false){
     el.textContent="Private feed status cannot be verified. Do not rely on this site for worker payments.";
   }
