@@ -150,7 +150,7 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("not verified as final", money)
         self.assertIn("01_JP", money)
         self.assertNotIn("drive.google.com/drive/folders/", money)
-        self.assertIn("Private worker data: not connected", (ROOT / "site/operations.js").read_text())
+        self.assertIn("Original worker Money & Goods ledger not connected", (ROOT / "site/operations.js").read_text())
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@
  filters.forEach(b=>b.addEventListener("click",()=>{group=b.dataset.group;filters.forEach(x=>x.setAttribute("aria-pressed",String(b===x)));render();}));
  $("search").addEventListener("input",render);
  fetch("./source-custody.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
-  if(data.schema_version!=="1.1.0"||data.live_worker_sync!==false||data.authenticated_private_payroll_reads!==false||
+  if(data.schema_version!=="1.1.0"||data.live_worker_sync!==false||data.authenticated_private_payroll_reads!==true||data.historical_clean_payment_publication!==true||
    !Array.isArray(data.subjects)||data.subjects.some(s=>!states[s.status]))throw Error();
   sources=data.subjects;const age=Math.floor((Date.now()-new Date(data.as_of_npt+"T00:00:00+05:45").getTime())/86400000);
   $("audited").textContent="Audit: "+data.as_of_npt+(age>30?" · historical, re-audit needed":" · owner classification");
