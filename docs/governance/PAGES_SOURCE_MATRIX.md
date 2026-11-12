@@ -119,3 +119,15 @@ The A7 source and version discipline remain: Drive keeps immutable/history origi
 ### Actual Library service account
 
 For source-derived historical CLEAN Payment publication, the actual Library Actions WIF identity read from the production auth log is `jp-resource-library-reader@just-a-project-5007.iam.gserviceaccount.com`. The original CLEAN Payment workbook was shared with that existing reader-only account on 12 November 2026, after an initial HTTP 403 (expected fail-closed). This corrects previous notes that incorrectly called it the Pages publisher identity. The extra `jp-pages-publisher` reader grant is separate; it was observed in Drive but is **not** the Library Actions reader. No other private worker sources were granted to the Library reader.
+
+## 12 November 2026 — authoritative Drive PRE/POST folder readback and schedule fix
+
+The published historical source `Wage_List_11__PAYMENT__CLEAN_v1.1` was relocated **in place** from `A9_Fabin_Gurung / 03_JP_Cost_Estimation / 97_STAGED_INTAKE_NOT_ADMITTED / Wage_List_11__Conversion_and_Cleaning__20261024` to `A9_Fabin_Gurung / 01_JP / 02 Website Sheets and Registers / 04 Published Historical Source Sheets — Reviewed`. Same permanent Sheet ID, read-only WIF publisher permission, existing owner/collaborator permissions and historical content. No copy. The original source manifest points to the same historic conversion source hash. The other conversion siblings remain staged.
+
+**Correction to previous v1.5 write-up:** the original Fishtail worker collection was never at `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing`. Current Drive parent metadata verifies `01_JP / 03 Fishtail Builders / Manpower / 09 Restricted Workforce Source Registers`. The existing permanent Worker Site Records folder was renamed to reflect mixed contents and now contains:
+- `01 Money & Goods Entries — ORIGINAL W01–W10`: **10 original** worker Sheets, moved from direct parent.
+- `02 Attendance — ORIGINAL W11–W21`: **11 original** worker Sheets, moved from direct parent.
+- `80_Prototype`: original hardened W01 prototype; `90_Archive`: two original W01 backups.
+All 24 original worker file IDs remain intact. No source Sheet cells, native histories or formulas changed by the 12 November subfolder moves.
+
+**Hourly scheduled Pages bug:** schedule intentionally skips browser QA (cost control); the source-verified `project` job explicitly tolerates it using `always()`, but `deploy` previously inherited GitHub's default implicit `success()` condition and was consequently **skipped**, yielding a misleading green workflow. The corrected `deploy` job uses `!cancelled() && needs.project.result == 'success' && (github.event_name != 'workflow_dispatch' || inputs.publish)`. The new `scheduled-refresh-assert` job is explicitly schedule-only and fails if either source project or Pages deploy did not succeed. Release history: `docs/releases/v1.7.1.md`.

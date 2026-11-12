@@ -10,6 +10,7 @@ on:
       - 'docs/releases/v1.5.0.md'
       - 'docs/releases/v1.6.0.md'
       - 'docs/releases/v1.7.0.md'
+      - 'docs/releases/v1.7.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -25,6 +26,7 @@ on:
       - 'docs/releases/v1.5.0.md'
       - 'docs/releases/v1.6.0.md'
       - 'docs/releases/v1.7.0.md'
+      - 'docs/releases/v1.7.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -142,7 +144,13 @@ jobs:
           path: _site
 
   deploy:
-    if: github.event_name != 'workflow_dispatch' || inputs.publish
+    # Explicit status function disables GitHub's implicit success() over the
+    # entire dependency chain. browser-qa is intentionally skipped on schedule.
+    # Require an actual successful validated project build before deployment.
+    if: >-
+      !cancelled() &&
+      needs.project.result == 'success' &&
+      (github.event_name != 'workflow_dispatch' || inputs.publish)
     needs: project
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -348,4 +356,58 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library v1.7.0 — Source-derived Historical Payments' --notes-file "$notes"
+          fi
+
+  scheduled-refresh-assert:
+    # Prevent a green 'schedule' run if the validated build succeeded but
+    # Pages deployment was skipped. Status function tolerates skipped QA.
+    if: ${{ !cancelled() && github.event_name == 'schedule' }}
+    needs: [project, deploy]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Require scheduled verified build AND Pages deployment success
+        env:
+          BUILD_RESULT: ${{ needs.project.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+        shell: bash
+        run: |
+          test "$BUILD_RESULT" = 'success'
+          test "$DEPLOY_RESULT" = 'success'
+
+  release-scheduled-refresh-v1-7-1:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify served v1.7.1 pages, payment source and release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.7.1.md'
+          tag='v1.7.1'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in field.html money.html editing.html operations.html index.html \
+            field-payments.js portal.css; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?commit=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/field-payments.json?commit=$GITHUB_SHA" | \
+            python -c 'import json,sys; d=json.load(sys.stdin); assert d["schema_version"]=="1.0.0"; assert d["count"]==958; assert len(d["records"])==958; assert d["source"]["worker_money_goods_transaction_feed"] is False'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.7.1 — Scheduled Refresh & Source Folders' --notes-file "$notes"
           fi

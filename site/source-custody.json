@@ -32,7 +32,7 @@
       "name": "Worker Money & Goods",
       "status": "ROLLOUT_UNVERIFIED",
       "authority": "Existing per-worker Google Sheets with separate prototype and historical backups",
-      "custody": "W01–W10 are original blank Money & Goods entry workbooks (0 used entries on all site summaries reviewed); W11–W21 are separate attendance-only site originals and have been renamed to accurately identify their content. The W01 hardened prototype remains nonfinal in 80_Prototype, and its two historical backups are preserved in 90_Archive. Original file IDs and formulas remain unchanged.",
+      "custody": "Original 21 worker Sheets are reorganized (12 November 2026) under Fishtail Builders / Manpower / 09 Restricted Workforce Source Registers / FBL — Worker Site Records — ORIGINAL W01–W21: 01 Money & Goods Entries (W01–W10, 10 originals), 02 Attendance (W11–W21, 11 originals), 80_Prototype (W01 hardened), 90_Archive (two W01 historical backups). Permanent original IDs, contents and native histories are retained. Source path 01_JP / 02 Website Sheets and Registers / 06 Finance was incorrectly stated in earlier v1.5 documentation; provider-parent readback confirms Fishtail Builders / Manpower.",
       "integration": "Original W01–W21 Money & Goods ledger NOT CONNECTED. Historical CLEAN Payment v1.1 has a separate owner-approved source-backed public projection and must not be mistaken for this ledger.",
       "limit": "The source authority register says the 21-worker operational rollout is not verified as final.",
       "reorganized_on_npt": "2026-11-11"
@@ -43,7 +43,7 @@
       "name": "Wage List 11 cleaning & conversion",
       "status": "DERIVED_REFERENCE",
       "authority": "Original Fishtail Wage List 11 remains governing source; conversions are historic derivatives.",
-      "custody": "Keep clean attendance, work, wage and payment conversions with their preparation history.",
+      "custody": "Keep clean attendance, work, wage and payment conversions with their preparation history. On 12 November 2026, the previously staged but owner-approved CLEAN Payment v1.1 original was moved without changing its file ID to 01_JP / 02 Website Sheets and Registers / 04 Published Historical Source Sheets — Reviewed. The other CLEAN conversion variants remain in their original historical staged-intake package and are not fetched by this Library.",
       "integration": "The historical CLEAN Payment v1.1 tab is now authenticated and published via read-only Actions as selected source-derived worker/date/site/category/amount/provenance fields; 958 source records. CLEAN Work/Wage/Attendance remain separately staged.",
       "limit": "Historical CLEAN Payment is not the certified payroll or final W01–W21 operational ledger. Publishing it is a specific owner-approved public disclosure; original Sheet permissions do not protect the resulting public JSON."
     },
