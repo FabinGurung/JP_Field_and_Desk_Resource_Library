@@ -40,6 +40,15 @@ class HistoricalPaymentPublicationTest(unittest.TestCase):
             self.assertNotIn("Paid by", (root / "field-payments.json").read_text())
             self.assertNotIn("Synthetic Person's phone", (root / "field-payments.json").read_text())
 
+    def test_blank_project_site_is_preserved_not_invented(self):
+        tables = fixture()
+        tables["payments"][1][4] = ""
+        with tempfile.TemporaryDirectory() as tmp:
+            build_payments(tables, Path(tmp), "2026-11-12T04:00:00+05:45")
+            records = json.loads((Path(tmp) / "field-payments.json").read_text())["records"]
+            self.assertEqual(1, sum(1 for x in records if x["site"] == ""))
+            self.assertFalse(any(x["site"] == "General" for x in records))
+
     def test_fails_if_manifest_claims_different_record_count(self):
         tables = fixture()
         tables["manifest"][1][1] = "3"

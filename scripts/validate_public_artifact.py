@@ -13,6 +13,31 @@ def validate(directory):
     catalog = json.loads((directory / "catalog.json").read_text(encoding="utf-8"))
     packets = json.loads((directory / "document-packets.json").read_text(encoding="utf-8"))
     custody = json.loads((directory / "source-custody.json").read_text(encoding="utf-8"))
+    payment = json.loads((directory / "field-payments.json").read_text(encoding="utf-8"))
+    if payment.get("schema_version") != "1.0.0":
+        raise ValueError("Unexpected historical Payment publication schema")
+    src = payment.get("source", {})
+    if (src.get("source_status") != "HISTORICAL_CLEANED_PAYMENT_NOT_CERTIFIED_PAYROLL"
+            or src.get("public_export_approved_on") != "2026-11-12"
+            or src.get("worker_money_goods_transaction_feed") is not False):
+        raise ValueError("Unapproved/misclassified historical Payment publication")
+    entries = payment.get("records", [])
+    if (len(entries) != payment.get("count")
+            or len({r.get("id") for r in entries}) != len(entries)
+            or len({r.get("worker_id") for r in entries}) != payment.get("worker_count")):
+        raise ValueError("Historical Payment row/grain count mismatch")
+    if round(sum(float(r["amount_npr"]) for r in entries), 2) != round(float(payment["total_npr"]), 2):
+        raise ValueError("Historical Payment amount sum mismatch")
+    for r in entries:
+        # A blank source site is legitimate (184 of the 958 real records).
+        # It must remain "", never guessed as a project/site or discarded.
+        if (not all(r.get(k) for k in ("id", "worker_id", "worker", "date",
+                                     "category", "source_row", "source_cell"))
+                or "site" not in r or not isinstance(r["site"], str)
+                or not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}", r["date"])
+                or any(k in r for k in ("paid_by", "bank_details", "phone", "remarks"))):
+            raise ValueError("Historical Payment source identity or allowed fields invalid")
+
     if catalog.get("schema_version") != "2.0.0" or packets.get("schema_version") != "1.0.0":
         raise ValueError("Unexpected public artifact schema")
     source = catalog["source_manifest"]
@@ -63,7 +88,7 @@ def validate(directory):
                 c["project_count"], c["resource_count"], c["document_count"]):
             raise ValueError("Company summary counts differ from underlying rows")
     for path in ("index.html", "app.js", "styles.css", "editing.html",
-                 "editing.css", "workspaces.html", "field.html", "money.html", "money.js", "portal.css",
+                 "editing.css", "workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css",
                  "operations.html", "operations.js", "operations.css",
                  "resources/project-documents.html"):
         if not (directory / path).is_file():
