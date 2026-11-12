@@ -7,7 +7,7 @@
 ## Purpose
 A reviewed public-safe directory arranged by **Company → Project → Resource category → Original Drive record**. The existing Project Resources LIVE workbook owns catalogue rows. GitHub owns the grouping generator, source-consistency checks, site UI, tests, release notes, and publication pipeline. The original Google Drive files and their permissions remain authoritative.
 
-**Not live:** Worker-level payroll, attendance, advances and private Money & Goods. They retain their original restricted authorities. The resource custody page is a dated static classification, not a worker dataset.
+**Currently published:** the reviewed Project Resources LIVE directory and owner-approved **historical CLEAN Payment v1.1** transactions. Operational W01–W21 Money & Goods balances, live payroll certification and contractor bill calculations remain separate; the source-custody page is dated evidence, not itself a current operational ledger.
 
 ## Operate and verify
 - [Pages source map and version-control contract](docs/governance/PAGES_SOURCE_MATRIX.md)
@@ -46,3 +46,15 @@ The owner explicitly authorized publishing original-derived worker transaction f
 The checked baseline is **958 source transaction rows** (21 worker identifiers) and an original TOTAL footer. Negative contract adjustments are retained; manifest record-count, source hash, source row uniqueness, date conversion and unrounded totals are strictly validated. Historical CLEAN Payment is **not** the operational W01–W21 Money & Goods ledger nor a certified payroll settlement. The W01–W10 originals currently report zero used money entries; W11–W21 are attendance-only originals and were renamed accordingly. The W01 hardened prototype is retained under a Prototype folder and its two backups are archived, with all source IDs/history preserved. No unrelated worker originals were replaced.
 
 **Read-back correction:** Source publication uses the actual configured WIF `jp-resource-library-reader@just-a-project-5007.iam.gserviceaccount.com`, not `jp-pages-publisher@...`. First attempted deployment correctly failed closed on HTTP 403; the correct reader permission was then granted to the one clean Payment workbook and independently verified in Google Drive metadata. See the revised v1.7.0 release notes.
+
+## Current Drive custody and scheduled publishing (12 November 2026)
+
+The authoritative source locations were verified through Google Drive parent readback:
+- **LIVE catalogue** — `01_JP / 02 Website Sheets and Registers / 01 Website Source Sheets — Edit Here / Project Resources — LIVE — V000002` (unchanged original ID).
+- **Approved historical Payment publication** — `01_JP / 02 Website Sheets and Registers / 04 Published Historical Source Sheets — Reviewed / Wage_List_11__PAYMENT__CLEAN_v1.1`. This is the original workbook **moved** out of Cost Estimation's `97_STAGED_INTAKE_NOT_ADMITTED` conversion folder, not a replacement workbook. Its original ID and specific read-only Library Actions service-account grant remain.
+- **Original worker-site registers** — `01_JP / 03 Fishtail Builders / Manpower / 09 Restricted Workforce Source Registers / FBL — Worker Site Records — ORIGINAL W01–W21`. Includes separate `01 Money & Goods Entries` (10 W01–W10 originals), `02 Attendance` (11 W11–W21 originals), `80_Prototype` and `90_Archive`; original 24 file IDs remain intact across children.
+- Original other cleaned Wage List conversions remain in `03_JP_Cost_Estimation / 97_STAGED_INTAKE_NOT_ADMITTED / Wage_List_11__Conversion_and_Cleaning__20261024`. They are not published by this Library.
+
+Earlier v1.5 descriptions of a `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing` worker path were **incorrect**. The verified original parent is the Fishtail Builders Manpower branch above, before and after the 12 November subfolder grouping.
+
+GitHub Actions scheduled runs previously passed `project` but skipped `deploy` because intentional schedule-only `browser-qa=skipped` propagated through an implicit `success()` status check on `deploy.if`. v1.7.1 adds `!cancelled()` with an explicit `needs.project.result == 'success'` gate, allowing **scheduled validated builds** to deploy while still blocking on failed/cancelled builds. A separate scheduled assertion marks the run failed rather than green when deployment is skipped or unsuccessful.
