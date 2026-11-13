@@ -12,6 +12,13 @@ def validate(directory):
     directory = Path(directory)
     catalog = json.loads((directory / "catalog.json").read_text(encoding="utf-8"))
     packets = json.loads((directory / "document-packets.json").read_text(encoding="utf-8"))
+    wall = (directory / "memory-wall/index.html").read_text(encoding="utf-8")
+    links = re.findall(r'href="(https://docs\.google\.com/spreadsheets/d/[A-Za-z0-9_-]+/edit)"', wall)
+    if len(links) != 35 or len(set(links)) != 35:
+        raise ValueError("Google Sheets staff page must contain 35 distinct original links")
+    for file in ("memory-wall/sheets.css", "memory-wall/sheets.js"):
+        if not (directory / file).exists():
+            raise ValueError("Staff Google Sheets page assets missing")
     custody = json.loads((directory / "source-custody.json").read_text(encoding="utf-8"))
     payment = json.loads((directory / "field-payments.json").read_text(encoding="utf-8"))
     if payment.get("schema_version") != "1.0.0":

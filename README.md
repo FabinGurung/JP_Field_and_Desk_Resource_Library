@@ -2,7 +2,7 @@
 
 **Human-facing name:** Field & Desk Operations Library. The live GitHub Pages site uses the `jp-field-desk-library` repository slug.
 
-[Company-first Pages directory](https://fabingurung.github.io/jp-field-desk-library/) · [Source custody](https://fabingurung.github.io/jp-field-desk-library/operations.html) · [How to edit](https://fabingurung.github.io/jp-field-desk-library/editing.html)
+[Google Sheets for staff](https://fabingurung.github.io/jp-field-desk-library/memory-wall/) · [Company-first Pages directory](https://fabingurung.github.io/jp-field-desk-library/) · [Source custody](https://fabingurung.github.io/jp-field-desk-library/operations.html) · [How to edit](https://fabingurung.github.io/jp-field-desk-library/editing.html)
 
 ## Purpose
 A reviewed public-safe directory arranged by **Company → Project → Resource category → Original Drive record**. The existing Project Resources LIVE workbook owns catalogue rows. GitHub owns the grouping generator, source-consistency checks, site UI, tests, release notes, and publication pipeline. The original Google Drive files and their permissions remain authoritative.
@@ -58,3 +58,15 @@ The authoritative source locations were verified through Google Drive parent rea
 Earlier v1.5 descriptions of a `01_JP / 02 Website Sheets and Registers / 06 Finance and Purchasing` worker path were **incorrect**. The verified original parent is the Fishtail Builders Manpower branch above, before and after the 12 November subfolder grouping.
 
 GitHub Actions scheduled runs previously passed `project` but skipped `deploy` because intentional schedule-only `browser-qa=skipped` propagated through an implicit `success()` status check on `deploy.if`. v1.7.1 adds `!cancelled()` with an explicit `needs.project.result == 'success'` gate, allowing **scheduled validated builds** to deploy while still blocking on failed/cancelled builds. A separate scheduled assertion marks the run failed rather than green when deployment is skipped or unsuccessful.
+
+## Google Sheets for staff — Memory Wall (13 November 2026)
+
+Open `/memory-wall/` on the Library website for the everyday Google Sheets directory. This page gives employees direct links, names the working tabs and groups the Sheets by their actual work: site visits/daily progress, company and people, projects, materials, website notices, scheduling and earlier cleaned copies. Staff see clean names and simple entry instructions, not internal program terminology.
+
+**Currently read by this Library: exactly two original Google Sheets:**
+1. `Project Resources — LIVE — V000002` — three original tabs: `project_resources`, `client_document_packets` and `resource_source_readback`.
+2. `Wage_List_11__PAYMENT__CLEAN_v1.1` — `Payment` and `00_Manifest_History` for the owner-approved, earlier payment publication. It is not a current worker money-entry Sheet.
+
+The 27 other native Sheets directly inside `01_JP / 02 Website Sheets and Registers / 01 Website Source Sheets — Edit Here` are **not** read by this Library. The page also links two scheduling reference Sheets under their existing folder and four earlier cleaned conversion workbooks under their existing folder, clearly separated. An employee opening or updating one of those other Sheets does not automatically change the Field & Desk website.
+
+The directory contains **35 distinct direct Google Sheet links: 2 used here, 27 other Website Sheets, 2 scheduling Sheets and 4 earlier cleaned copies**. Original Sheet IDs, Drive parents, permissions, tabs, values and publishing rules remain unchanged. No new Google Sheets were created, moved or renamed for this page.

@@ -116,7 +116,7 @@ class CompanyDirectoryTest(unittest.TestCase):
         self.assertIn("Project Resources", (ROOT / "site/editing.html").read_text())
         self.assertTrue(company_key("Company A").startswith("display-"))
         self.assertIn(("project-packets", "Agreements & Materials"), GROUPS)
-        for resource in ("workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css"):
+        for resource in ("workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css", "memory-wall/index.html", "memory-wall/sheets.css", "memory-wall/sheets.js"):
             self.assertIn(resource, SITE_FILES)
             self.assertTrue((ROOT / "site" / resource).exists())
         app = (ROOT / "site/app.js").read_text()
