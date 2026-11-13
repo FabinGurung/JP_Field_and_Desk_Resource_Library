@@ -20,6 +20,7 @@ SITE_FILES = ("index.html", "app.js", "styles.css", "resources/project-documents
               "operations.html", "operations.css", "operations.js", "source-custody.json",
               "editing.html", "editing.css",
               "workspaces.html", "field.html", "field-payments.js", "money.html", "money.js", "portal.css",
+              "memory-wall/index.html", "memory-wall/sheets.css", "memory-wall/sheets.js",
               "feasibility/index.html", "feasibility/buyer-guide/index.html",
               "feasibility/buyer-guide/guide.json",
               "ops/data/land-feasibility/astam-village-public.v1.0.json",

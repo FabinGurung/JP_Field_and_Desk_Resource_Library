@@ -1,3 +1,5 @@
+> **Staff directory, 13 November 2026:** The human-facing Memory Wall page `/memory-wall/` lists the **two** Google Sheets actually read by this repository plus the **27** other native Sheets in the A9 Website Source Sheets folder, **two** Skyforge scheduling Sheets and **four** preserved cleaned workbooks. It provides direct edit links and grounded tab names without claiming those 33 other workbooks are fetched by this Library. This page is an employee navigation aid, not a change of source ownership. The earlier paragraphs below are period-specific; the later v1.7.0 section supersedes the old claim that only one workbook was fetched.
+
 # A9 Field & Desk — Pages, Sheets and original-Drive source map
 
 **Observed source state:** 9 November 2026. **Owning Git repository:** `FabinGurung/jp-field-desk-library`, provider repository ID `1448289662`. **PRE-main:** `9aa0969cfcc6d341962129f6789eab5b76ec0b7e`.

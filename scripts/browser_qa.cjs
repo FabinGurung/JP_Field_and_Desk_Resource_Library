@@ -45,6 +45,25 @@ async function qa() {
     assert.equal(await page.locator(".company-card").count(),1);
     await page.locator("#clear-search").click();
     assert.equal(await page.locator(".company-card").count(),3);
+    await page.goto(ROOT + "/memory-wall/", {waitUntil:"domcontentloaded"});
+    assert.match(await page.locator("h1").textContent(),/Find the right Sheet/);
+    assert.equal(await page.locator(".sheet-card").count(),35);
+    assert.equal(await page.locator("#used-here .sheet-card").count(),2);
+    assert.equal(await page.locator("#site .sheet-card").count(),6);
+    assert.equal(await page.locator("#people .sheet-card").count(),7);
+    assert.equal(await page.locator("#projects .sheet-card").count(),9);
+    assert.equal(await page.locator("#materials .sheet-card").count(),2);
+    assert.equal(await page.locator("#office .sheet-card").count(),3);
+    assert.equal(await page.locator("#schedule .sheet-card").count(),2);
+    assert.equal(await page.locator("#previous .sheet-card").count(),4);
+    assert.equal(await page.locator('.sheet-card a[href^="https://docs.google.com/spreadsheets/d/"]').count(),35);
+    assert.match(await page.locator("#used-here").innerText(),/Payment/);
+    assert.match(await page.locator("#site").innerText(),/Daily progress/);
+    await page.locator("#sheet-search").fill("materials");
+    assert.ok(await page.locator(".sheet-card:visible").count() >= 2);
+    assert.ok(await page.locator(".sheet-card:visible").count() < 35);
+    await page.locator("#sheet-clear").click();
+    assert.equal(await page.locator(".sheet-card:visible").count(),35);
     await page.goto(ROOT + "/editing.html", {waitUntil:"domcontentloaded"});
     assert.match(await page.locator("main").innerText(),/project_resources/);
     assert.equal(await page.locator("a[href*='gid=8000011']").count() > 0,true);
@@ -91,6 +110,16 @@ async function qa() {
     assert.equal(await mobile.locator(".resource-line").count(),1);
     await mobile.locator(".resource-line").first().click();
     assert.match(await mobile.locator("#record-detail").innerText(),/Open original/);
+    await mobile.goto(ROOT + "/memory-wall/", {waitUntil:"domcontentloaded"});
+    assert.equal(await mobile.locator(".sheet-card").count(),35);
+    const sheetsFit = await mobile.evaluate(() => ({
+      viewport:document.documentElement.clientWidth,
+      scroll:document.documentElement.scrollWidth
+    }));
+    assert.ok(sheetsFit.scroll <= sheetsFit.viewport + 2, "Google Sheets page mobile overflow");
+    await mobile.locator("#sheet-search").fill("attendance");
+    assert.ok(await mobile.locator(".sheet-card:visible").count() >= 2);
+    await mobile.locator("#sheet-clear").click();
     await mobile.goto(ROOT + "/workspaces.html", {waitUntil:"domcontentloaded"});
     const workspaceFit = await mobile.evaluate(() => ({viewport:document.documentElement.clientWidth, scroll:document.documentElement.scrollWidth}));
     assert.ok(workspaceFit.scroll <= workspaceFit.viewport + 2, "Workspaces mobile overflow");
