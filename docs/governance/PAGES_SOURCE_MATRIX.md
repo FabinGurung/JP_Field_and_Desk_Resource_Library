@@ -46,6 +46,12 @@ Each published resource row contains a `Source Drive File ID` and Drive `Source 
 
 The separate Fishtail payroll/attendance root, Worker Money & Goods collection, and Wage List 11 conversion collection are **not** read by this Actions job; their original private live authority and native IDs remain in Drive. Locked M01–M03 analytical baselines are not live payroll. Worker rollout M04 is not verified final. No private worker IDs or payment rows are copied into the public catalogue.
 
+### Stable client-packet rule (2026-11-14)
+
+**Method:** stable/canonical client URL + source-driven document registry (link/pointer indirection). Share the project packet URL once; keep project ID, A/B/C slots, EN/NE labels and page layout stable. Google Drive owns each issued PDF, its permissions and PRE/POST history. To change an item, update **only** its source row's file ID *if it changed*, version, approval/access note and verified Drive readback in `client_document_packets` / `resource_source_readback`; Actions rebuilds the public read-only listing. A same-ID replacement changes the PDF/version, **not** its link. Do not edit generated JSON or redesign the page to revise a file. Signed/issued records remain immutable historical evidence; a "latest for review" pointer must not silently overwrite legal approvals.
+
+**Basanti PRJ-000029 example:** English C v0.1 → v0.2 (13 Nov 2026): letterhead reformatted; live PDF ID `1WlyUifhvjpTAAfYdM3iNfDWDOg3j0Q2X` preserved; six packet records remain; PRE/POST originals held in restricted Drive and V000005 logged in the original source workbook. **Open follow-up:** Agreement A v0.4 still references C v0.1; reconcile when next authorized A revision is made. Source-registry readback is verified; live Pages deployment requires separate browser proof.
+
 ## PRJ-000029 — current publication status, checked 10 November 2026
 
 The original project identity is **PRJ-000029 / REB-002 → ORG-000002**, Rohini Engineering and Builders Pvt Ltd. The permanent Resource Library owner workbook contains the verified Company on all six original A/B/C packet rows; those source IDs and approval notes were preserved.
