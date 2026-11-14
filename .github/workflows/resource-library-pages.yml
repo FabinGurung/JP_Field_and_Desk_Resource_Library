@@ -12,6 +12,7 @@ on:
       - 'docs/releases/v1.7.0.md'
       - 'docs/releases/v1.7.1.md'
       - 'docs/releases/v1.8.0.md'
+      - 'docs/releases/v1.8.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -29,6 +30,7 @@ on:
       - 'docs/releases/v1.7.0.md'
       - 'docs/releases/v1.7.1.md'
       - 'docs/releases/v1.8.0.md'
+      - 'docs/releases/v1.8.1.md'
       - 'docs/governance/**'
       - 'docs/operations/**'
       - 'README.md'
@@ -457,4 +459,60 @@ jobs:
           else
             gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
               --title 'Field & Desk Library v1.8.0 — Google Sheets for Staff' --notes-file "$notes"
+          fi
+
+  release-desk-source-v1-8-1:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Verify Desk catalogue from live Pages and tag v1.8.1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          notes='docs/releases/v1.8.1.md'
+          tag='v1.8.1'
+          if git diff --quiet HEAD^ HEAD -- "$notes"; then
+            exit 0
+          fi
+          pages="https://fabingurung.github.io/${GITHUB_REPOSITORY#*/}"
+          for file in index.html app.js editing.html resources/project-documents.html; do
+            curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/$file?revision=$GITHUB_SHA" | cmp - "site/$file"
+          done
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/catalog.json?revision=$GITHUB_SHA" > /tmp/desk-catalog-live.json
+          curl -fsS --retry 6 --retry-delay 4 --retry-all-errors "$pages/document-packets.json?revision=$GITHUB_SHA" > /tmp/desk-packets-live.json
+          python - <<'PY'
+          import json
+          c=json.load(open('/tmp/desk-catalog-live.json'))
+          p=json.load(open('/tmp/desk-packets-live.json'))
+          resources=c['resources']
+          docs=p['documents']
+          assert len(c['companies'])==2 and len(c['projects'])==9
+          assert len(resources)==68, 'Expected 46 prior plus 22 new references'
+          assert len(docs)==6 and len({d['document_id'] for d in docs})==6
+          new=[r for r in resources if '20261114' in r['id']]
+          assert len(new)==22 and len({r['id'] for r in new})==22
+          assert all(r['approval']=='UNVERIFIED_AS_CURRENT_ISSUE' for r in new)
+          assert all(r['access']=='DRIVE_PERMISSION_REQUIRED' for r in new)
+          b=[r for r in new if r['project_id']=='PRJ-000029']
+          assert len(b)==3 and len({r['url'] for r in b})==1
+          assert {r['group'] for r in b}=={'drawings','reports'}
+          assert all(d['project_id']=='PRJ-000029' for d in docs)
+          assert c['source_manifest']['private_payroll_connected'] is False
+          print('Desk release verified: 68 resource references, 22 new, six existing packets.')
+          PY
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$(git ls-remote origin "refs/tags/$tag" | cut -f1)" = "$GITHUB_SHA"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Field & Desk Library v1.8.1 — Desk Source Reconciliation' --notes-file "$notes"
           fi

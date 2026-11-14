@@ -70,3 +70,13 @@ Open `/memory-wall/` on the Library website for the everyday Google Sheets direc
 The 27 other native Sheets directly inside `01_JP / 02 Website Sheets and Registers / 01 Website Source Sheets — Edit Here` are **not** read by this Library. The page also links two scheduling reference Sheets under their existing folder and four earlier cleaned conversion workbooks under their existing folder, clearly separated. An employee opening or updating one of those other Sheets does not automatically change the Field & Desk website.
 
 The directory contains **35 distinct direct Google Sheet links: 2 used here, 27 other Website Sheets, 2 scheduling Sheets and 4 earlier cleaned copies**. Original Sheet IDs, Drive parents, permissions, tabs, values and publishing rules remain unchanged. No new Google Sheets were created, moved or renamed for this page.
+
+## v1.8.1 — Desk drawings and models (14 November 2026)
+
+The existing `Project Resources — LIVE — V000002` original Google Sheet now contains **68** project resource entries (previously 46), **74** matching source checks, and the original **six** Basanti A/B/C packet documents. The workbook ID, original 46 existing rows and client packet references are preserved.
+
+**19 full-size original engineering files** were copied from the separate Construction Sites Drive into seven existing A9 project source folders, with destination ownership, matching byte sizes and parent folders verified. Project counts: Bishal Paija 2; Samir Man Ghubaju 5; Hari Baral 4; Yamuna Pun Adai 2; Sabitri/Dipti Giri 2; Sharada Adhikari 3; Kharika Paudel 1. Foreign originals and unrelated financial/personal records were not changed. The A9 copies have their own permanent Drive IDs and normal Drive access permissions.
+
+Basanti's existing 21-page original B drawing PDF includes architectural floor plans, structural details and septic/soak-pit details. Its one unchanged original PDF is now listed under three corresponding Desk categories, not misrepresented as three separate files. Kharika's already-listed structural analysis report was recategorized from Drawings to Reports.
+
+All 22 new entries are `UNVERIFIED_AS_CURRENT_ISSUE` and require ordinary Google Drive permissions. No engineering approval, signed issuance or current design revision is inferred. The same native owner Sheet contains its PRE/POST snapshots under `000005`, history entry `V000007`, and refreshed original-sheet staff guidance. GitHub Actions regenerates public links from the original native sheet; do not edit generated JSON.
